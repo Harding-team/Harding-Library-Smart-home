@@ -7505,10 +7505,9 @@ module.exports = g;
   !*** D:/git/Harding-Library-Smart-home/Smart-home/pages.json ***!
   \***************************************************************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-
+throw new Error("Module build failed (from ./node_modules/@dcloudio/webpack-uni-pages-loader/lib/index.js):\nError: ENOENT: no such file or directory, open 'D:\\git\\Harding-Library-Smart-home\\Smart-home\\pages.json'");
 
 /***/ }),
 /* 5 */
@@ -8412,10 +8411,9 @@ module.exports = {"_from":"@dcloudio/uni-stat@next","_id":"@dcloudio/uni-stat@2.
   !*** D:/git/Harding-Library-Smart-home/Smart-home/pages.json?{"type":"style"} ***!
   \********************************************************************************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/home/home": { "navigationBarTitleText": "首页" }, "pages/new/new": { "navigationBarTitleText": "新品" }, "pages/cart/cart": { "navigationBarTitleText": "购物车" }, "pages/my/my": { "navigationBarTitleText": "我的" }, "pages/details/details": { "navigationStyle": "custom" }, "pages/review/review": { "navigationBarTitleText": "评价详情" } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "uni-app", "navigationBarBackgroundColor": "#F8F8F8", "backgroundColor": "#F8F8F8" } };exports.default = _default;
+throw new Error("Module build failed (from ./node_modules/@dcloudio/webpack-uni-pages-loader/lib/index.js):\nError: ENOENT: no such file or directory, open 'D:\\git\\Harding-Library-Smart-home\\Smart-home\\pages.json'");
 
 /***/ }),
 /* 8 */
@@ -8423,10 +8421,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
   !*** D:/git/Harding-Library-Smart-home/Smart-home/pages.json?{"type":"stat"} ***!
   \*******************************************************************************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "appid": "__UNI__EAA48DF" };exports.default = _default;
+throw new Error("Module build failed (from ./node_modules/@dcloudio/webpack-uni-pages-loader/lib/index.js):\nError: ENOENT: no such file or directory, open 'D:\\git\\Harding-Library-Smart-home\\Smart-home\\pages.json'");
 
 /***/ }),
 /* 9 */,

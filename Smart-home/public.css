@@ -1,0 +1,15 @@
+button{
+	background-color:#fff; 
+	border-radius: 0rpx;
+	padding:0rpx;
+	margin:0rpx;
+	display: inline-block;
+	line-height: 1;
+}
+button::after{ 
+	border:none;
+}
+.button-hover{ 
+	color:#000;
+	background-color: rgb(247, 247, 247);
+}

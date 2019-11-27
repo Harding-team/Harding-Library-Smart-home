@@ -4,6 +4,8 @@
     "pages/new/new",
     "pages/cart/cart",
     "pages/my/my",
+    "pages/details/details",
+    "pages/review/review",
     "pages/order/order",
     "pages/collection/collection",
     "pages/history/history",
@@ -47,6 +49,5 @@
       }
     ]
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap31.json"
+  "usingComponents": {}
 }

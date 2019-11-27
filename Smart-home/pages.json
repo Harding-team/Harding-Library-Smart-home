@@ -60,6 +60,12 @@
 				"navigationBarTitleText":"领劵中心"
 			}
         }
+        ,{
+            "path" : "pages/confirmorder/confirmorder",
+            "style" : {
+				"navigationBarTitleText":"确认订单"
+			}
+        }
     ],
 	"tabBar": {
 	  "list": [

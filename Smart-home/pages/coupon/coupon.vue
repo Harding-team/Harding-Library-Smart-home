@@ -18,7 +18,7 @@
 					<view></view>
 					<view></view>
 				</view>
-				<view class="dian" style="right:-2upx;">
+				<view class="dian" style="right:-4upx;">
 					<view></view>
 					<view></view>
 					<view></view>
@@ -36,7 +36,7 @@
 					<view>收藏+关注</view>
 				</view>
 				<view class="btn">
-					<view>立即使用</view>
+					<view  @click="goToDetails(item.id)">立即使用</view>
 				</view>
 			</view>
 		</view>
@@ -56,12 +56,15 @@
 					{
 						price:'5',
 						manPrice:'199',
+						id:'1'
 					},{
 						price:'55',
 						manPrice:'500',
+						id:'2'
 					},{
 						price:'2',
 						manPrice:'100',
+						id:'3'
 					}
 				]
 			}
@@ -70,7 +73,11 @@
 			this.number = this.couponArr.length
 		},
 		methods: {
-			
+			goToDetails(id){
+				// uni.navigateTo({
+				// 	url:'pages/details/details?id='+id
+				// })
+			}
 		}
 	}
 </script>

@@ -179,13 +179,16 @@ var _default =
       couponArr: [
       {
         price: '5',
-        manPrice: '199' },
+        manPrice: '199',
+        id: '1' },
       {
         price: '55',
-        manPrice: '500' },
+        manPrice: '500',
+        id: '2' },
       {
         price: '2',
-        manPrice: '100' }] };
+        manPrice: '100',
+        id: '3' }] };
 
 
 
@@ -193,7 +196,12 @@ var _default =
   onLoad: function onLoad() {
     this.number = this.couponArr.length;
   },
-  methods: {} };exports.default = _default;
+  methods: {
+    goToDetails: function goToDetails(id) {
+      // uni.navigateTo({
+      // 	url:'pages/details/details?id='+id
+      // })
+    } } };exports.default = _default;
 
 /***/ }),
 

@@ -177,6 +177,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 //
 //
+//
 var _default =
 {
   data: function data() {
@@ -189,13 +190,15 @@ var _default =
         imgSrc: 'http://img1.imgtn.bdimg.com/it/u=2973069531,657782944&fm=26&gp=0.jpg',
         count: 1,
         price: '299',
-        shopName: 'neodpillo海外旗舰店' },
+        shopName: 'neodpillo海外旗舰店',
+        id: '1' },
       {
         title: 'Neo然乳胶枕头波浪颈椎枕...',
         imgSrc: 'http://img1.imgtn.bdimg.com/it/u=2752453349,2871240348&fm=26&gp=0.jpg',
         count: 13,
         price: '23339',
-        shopName: '恒源祥苏恒专卖店' }],
+        shopName: '恒源祥苏恒专卖店',
+        id: '2' }],
 
 
       recommendArr: [
@@ -203,27 +206,32 @@ var _default =
         imgSrc: '../../static/home/1.jpg',
         name: '[官方正品]亚泰集团全自动机械表男让他一人头表方',
         price: '555',
-        fight: '36994' },
+        fight: '36994',
+        id: '1' },
       {
         imgSrc: '../../static/home/1.jpg',
         name: '[官方try正品]尔特全体育教育表男士手表方',
         price: '445',
-        fight: '154' },
+        fight: '154',
+        id: '2' },
       {
         imgSrc: '../../static/home/1.jpg',
         name: '[任何人]卡罗蒂夫全自动很反感表男士手表方',
         price: '625',
-        fight: '34454' },
+        fight: '34454',
+        id: '3' },
       {
         imgSrc: '../../static/home/1.jpg',
         name: '[官方正让他忽然他品]卡罗蒂夫全自动机械表男士手表方',
         price: '825',
-        fight: '8754' },
+        fight: '8754',
+        id: '4' },
       {
         imgSrc: '../../static/home/1.jpg',
         name: '[官方让他让他正品]卡罗蒂夫全自动机械表男士手表方',
         price: '36',
-        fight: '98875' }] };
+        fight: '98875',
+        id: '5' }] };
 
 
 
@@ -234,6 +242,11 @@ var _default =
   methods: {
     tabbar: function tabbar(index) {//选项卡切换
       this.tabbarIndex = index;
+    },
+    goToDetails: function goToDetails(id) {//跳转详情页
+      // uni.navigateTo({
+      // 	url:'pages/details/details?id='+id
+      // })
     } } };exports.default = _default;
 
 /***/ }),

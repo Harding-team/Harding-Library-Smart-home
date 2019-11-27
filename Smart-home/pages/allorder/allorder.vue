@@ -6,7 +6,7 @@
 		</view>
 		<!-- 下面有商品部分 -->
 		<view class="have" v-if="allorderArr.length">
-			<view class="info" v-for="(item,index) in allorderArr" :key="index">
+			<view class="info" v-for="(item,index) in allorderArr" :key="index" @click="goToDetails(item.id)">
 				<view class="shop">
 					<image src="../../static/home/assemble-1.jpeg"></image>
 					<view>{{item.shopName}}</view>
@@ -22,6 +22,7 @@
 				<view class="price">
 					<view>实付:¥<text>{{item.price}}.00</text></view>
 				</view>
+				<!-- 按钮部分 -->
 				<view class="seeDetails">
 					<view>删除订单</view>
 					<view>申请退款</view>
@@ -40,7 +41,7 @@
 		<view class="recommend">
 			<view><text class="iconfont icon-shoucang2"></text>精品推荐</view>
 			<view class="list">
-				<view class="li" v-for="(item,index) in recommendArr" :key="index">
+				<view class="li" v-for="(item,index) in recommendArr" :key="index"  @click="goToDetails(item.id)">
 					<image :src="item.imgSrc"></image>
 					<view class="li-name">{{item.name}}</view>
 					<view class="li-price">
@@ -65,13 +66,15 @@
 						imgSrc:'http://img1.imgtn.bdimg.com/it/u=2973069531,657782944&fm=26&gp=0.jpg',
 						count:1,
 						price:'299',
-						shopName:'neodpillo海外旗舰店'
+						shopName:'neodpillo海外旗舰店',
+						id:'1'
 					},{
 						title:'Neo然乳胶枕头波浪颈椎枕...',
 						imgSrc:'http://img1.imgtn.bdimg.com/it/u=2752453349,2871240348&fm=26&gp=0.jpg',
 						count:13,
 						price:'23339',
-						shopName:'恒源祥苏恒专卖店'
+						shopName:'恒源祥苏恒专卖店',
+						id:'2'
 					}
 				],
 				recommendArr:[
@@ -79,27 +82,32 @@
 						imgSrc:'../../static/home/1.jpg',
 						name:'[官方正品]亚泰集团全自动机械表男让他一人头表方',
 						price:'555',
-						fight:'36994'
+						fight:'36994',
+						id:'1'
 					},{
 						imgSrc:'../../static/home/1.jpg',
 						name:'[官方try正品]尔特全体育教育表男士手表方',
 						price:'445',
-						fight:'154'
+						fight:'154',
+						id:'2'
 					},{
 						imgSrc:'../../static/home/1.jpg',
 						name:'[任何人]卡罗蒂夫全自动很反感表男士手表方',
 						price:'625',
-						fight:'34454'
+						fight:'34454',
+						id:'3'
 					},{
 						imgSrc:'../../static/home/1.jpg',
 						name:'[官方正让他忽然他品]卡罗蒂夫全自动机械表男士手表方',
 						price:'825',
-						fight:'8754'
+						fight:'8754',
+						id:'4'
 					},{
 						imgSrc:'../../static/home/1.jpg',
 						name:'[官方让他让他正品]卡罗蒂夫全自动机械表男士手表方',
 						price:'36',
-						fight:'98875'
+						fight:'98875',
+						id:'5'
 					},
 				]
 			}
@@ -110,6 +118,11 @@
 		methods: {
 			tabbar(index){//选项卡切换
 				this.tabbarIndex = index;
+			},
+			goToDetails(id){//跳转详情页
+				// uni.navigateTo({
+				// 	url:'pages/details/details?id='+id
+				// })
 			}
 		}
 	}
@@ -205,7 +218,6 @@ html{
 			}
 		}
 	}
-	//退款价钱
 	.price{
 		padding:0 18upx 16upx;
 		border-bottom:1px solid #ccc;
@@ -214,7 +226,7 @@ html{
 		margin-top:26upx;
 		font-size:28upx;
 	}
-	//查看详情
+	//按钮部分
 	.seeDetails{
 		padding:18upx 0;
 		display: flex;

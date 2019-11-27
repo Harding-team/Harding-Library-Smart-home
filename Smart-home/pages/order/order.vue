@@ -7,7 +7,7 @@
 				<text style="color:#24ab63; font-size:26upx;">订单完成</text>
 			</view>
 			<!-- 商品信息 -->
-			<view class="info">
+			<view class="info" @click="goToDetails(item.id)">
 				<image :src="item.imgSrc"></image>
 				<view class="info-r">
 					<view class="info-r-top">
@@ -48,7 +48,8 @@
 						description:'天然乳胶',
 						imgSrc:'https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1574666627&di=35b2f2df4e32e92808cb60f4216398ab&src=http://wx4.sinaimg.cn/crop.0.0.1024.574/8a533d85ly1fqpto24uq4j20sg0izdld.jpg',
 						freight:'22.00',
-						orderNumber:9876543211025666
+						orderNumber:9876543211025666,
+						id:'1'
 					},{
 						title:'POKALEN乳胶枕发色粉色粉色',
 						price:'99',
@@ -56,6 +57,7 @@
 						description:'哎呦我去',
 						imgSrc:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1574676713235&di=b26d717eb7845d961473430db4d5eb35&imgtype=0&src=http%3A%2F%2Fpic4.zhimg.com%2Fv2-06273e88b28b75cc0cbe4cee51312cf7_b.jpg',
 						freight:'0.00',
+						id:'2'
 					},{
 						title:'无法色号热乎乎枕头泰国原装进口颈椎天然橡胶枕',
 						price:'799',
@@ -63,12 +65,17 @@
 						description:'什么东西',
 						imgSrc:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1574676713232&di=83c7f4d5c0a0e8ed7030adf246e015bb&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201706%2F03%2F20170603213152_sKuLT.jpeg',
 						freight:'0.00',
+						id:'3'
 					}
 				]
 			}
 		},
 		methods: {
-			
+			goToDetails(id){//跳转详情页
+				// uni.navigateTo({
+				// 	url:'pages/details/details?id='+id
+				// })
+			}
 		}
 	}
 </script>

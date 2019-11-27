@@ -9,7 +9,8 @@
     "pages/history/history",
     "pages/refund/refund",
     "pages/allorder/allorder",
-    "pages/coupon/coupon"
+    "pages/coupon/coupon",
+    "pages/confirmorder/confirmorder"
   ],
   "subPackages": [],
   "window": {
@@ -47,5 +48,5 @@
     ]
   },
   "usingComponents": {},
-  "sitemapLocation": "sitemap44.json"
+  "sitemapLocation": "sitemap31.json"
 }

@@ -25,7 +25,6 @@
 			}
 		},
 		{
-<<<<<<< HEAD
 			"path": "pages/details/details",
 			"style": {
 				"navigationStyle": "custom",
@@ -41,11 +40,9 @@
 				"usingComponents": {
 				  "van-popup": "/wxcomponents/vant/dist/popup/index"
 				}
-=======
 			"path": "pages/coupon/coupon",
 			"style": {
 				"navigationBarTitleText": "领卷中心"
->>>>>>> 504e36ffcc1a874931911140cc85969f9f08e65d
 			}
 		}
 	    ,{

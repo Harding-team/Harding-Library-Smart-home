@@ -13,5 +13,10 @@
 </script>
 
 <style>
-	/*每个页面公共css */
+	/* 公共css */
+	@import url("./public.css");
+	/* icon */
+	@import url("./iconfont.css");
+	/* vant */
+	@import url("/wxcomponents/vant/dist/common/index.wxss");
 </style>

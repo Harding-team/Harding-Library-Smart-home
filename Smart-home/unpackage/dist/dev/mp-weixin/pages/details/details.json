@@ -1,0 +1,6 @@
+{
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "van-popup": "/wxcomponents/vant/dist/popup/index"
+  }
+}

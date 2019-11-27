@@ -3,12 +3,18 @@
     "pages/home/home",
     "pages/new/new",
     "pages/cart/cart",
-    "pages/my/my"
+    "pages/my/my",
+    "pages/order/order",
+    "pages/collection/collection",
+    "pages/history/history",
+    "pages/refund/refund",
+    "pages/allorder/allorder",
+    "pages/coupon/coupon"
   ],
   "subPackages": [],
   "window": {
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "uni-app",
+    "navigationBarTitleText": "",
     "navigationBarBackgroundColor": "#F8F8F8",
     "backgroundColor": "#F8F8F8"
   },
@@ -41,5 +47,5 @@
     ]
   },
   "usingComponents": {},
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap44.json"
 }

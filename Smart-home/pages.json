@@ -1,5 +1,5 @@
 {
-	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+	"pages": [ 
 		{
 			"path": "pages/home/home",
 			"style": {
@@ -24,7 +24,43 @@
 				"navigationBarTitleText": "我的"
 			}
 		}
-	],
+	    ,{
+            "path" : "pages/order/order",
+            "style" : {
+				"navigationBarTitleText":"我的订单"
+			}
+        }
+        ,{
+            "path" : "pages/collection/collection",
+            "style" : {
+				"navigationBarTitleText":"商品收藏"
+			}
+        }
+        ,{
+            "path" : "pages/history/history",
+            "style" : {
+				"navigationBarTitleText":"历史浏览"
+			}
+        }
+        ,{
+            "path" : "pages/refund/refund",
+            "style" : {
+				"navigationBarTitleText":"退款/售后"
+			}
+        }
+        ,{
+            "path" : "pages/allorder/allorder",
+            "style" : {
+				"navigationBarTitleText":"订单分类"
+			}
+        }
+        ,{
+            "path" : "pages/coupon/coupon",
+            "style" : {
+				"navigationBarTitleText":"领劵中心"
+			}
+        }
+    ],
 	"tabBar": {
 	  "list": [
 	    {
@@ -55,7 +91,7 @@
 	},
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
+		"navigationBarTitleText": "",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
 	}

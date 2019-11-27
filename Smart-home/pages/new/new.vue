@@ -85,7 +85,7 @@
 		position:relative;
 		width:100vw;
 		height:100vh;
-		overflow:hidden;
+		/* overflow:hidden; */
 	}
 	.content .text-area{
 		padding-top:135rpx;
@@ -94,7 +94,7 @@
 		text-align:center;
 		width:100%;
 		height:340rpx;
-		background:url("../../luimage/banner.png");
+		/* background:url("../../luimage/banner.png"); */
 		background-size:100% 185%;
 	}
 	.content .text-area .mei{

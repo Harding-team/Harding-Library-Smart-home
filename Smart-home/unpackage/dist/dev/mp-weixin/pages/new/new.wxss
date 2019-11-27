@@ -1,0 +1,180 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 	@import '../../luimage/font/iconfont.css'; */
+.content{
+		position:relative;
+		width:100vw;
+		height:100vh;
+		/* overflow:hidden; */
+}
+.content .text-area{
+		padding-top:135rpx;
+		-webkit-box-sizing:border-box;
+		        box-sizing:border-box;
+		position:relative;
+		text-align:center;
+		width:100%;
+		height:340rpx;
+		/* background:url("../../luimage/banner.png"); */
+		background-size:100% 185%;
+}
+.content .text-area .mei{
+		font-size: 36rpx;
+		color:#fff;
+}
+.content .text-area .tui{
+		font-size:24rpx;
+		color:#fff;
+		marin-top:5rpx;
+}
+.content .newlist{
+		width:100vw;
+		min-height:300rpx;
+		padding:30rpx 30rpx 100rpx 30rpx;
+		display:-webkit-box;
+		display:-webkit-flex;
+		display:-ms-flexbox;
+		display:flex;
+		-webkit-flex-wrap:wrap;
+		    -ms-flex-wrap:wrap;
+		        flex-wrap:wrap;
+}
+.content .newlist .list{
+		position:relative;
+		width:330rpx;
+		height:520rpx;
+		margin-right:35rpx;
+		margin-top:10rpx;
+		border:1px solid #ddd;
+		-webkit-box-shadow:0 0 10rpx 2rpx #ddd;
+		        box-shadow:0 0 10rpx 2rpx #ddd;
+		-webkit-box-sizing:border-box;
+		        box-sizing:border-box;
+}
+.content .newlist .list .icon-shoucang2{
+		position:absolute;
+		right:10rpx;
+		top:20rpx;
+		z-index:2;
+}
+.content .newlist .list .icon-buoumaotubiao44{
+		position:absolute;
+		right:10rpx;
+		top:20rpx;
+		z-index:3;
+		display:none;
+}
+.content .newlist .list .active{
+		display:block;
+}
+.content .newlist .list .images{
+		width:100%;
+		height:330rpx;
+}
+.content .newlist .list .images image{
+		width:100%;
+		height:330rpx;
+		position:absolute;
+		top:0;
+		left:0;
+		z-index:1;
+}
+.list .name{
+		font-size:34rpx;
+		color:#3333333;
+		margin-top:20rpx;
+		margin-left:15rpx;
+}
+.list .brief{
+		font-size:24rpx;
+		color:#999999;
+		margin-top:20rpx;
+		margin-left:15rpx;
+}
+.list .price{
+		font-size:32rpx;
+		color:#df0000;
+		margin-top:25rpx;
+		margin-left:15rpx;
+}
+

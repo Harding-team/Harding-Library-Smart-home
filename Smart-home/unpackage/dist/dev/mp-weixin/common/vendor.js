@@ -7501,9 +7501,15 @@ module.exports = g;
 
 /***/ }),
 /* 4 */
+<<<<<<< HEAD
 /*!*****************************************************************************************!*\
   !*** C:/Users/齐文蒸/Desktop/智能家具uni-app/Harding-Library-Smart-home/Smart-home/pages.json ***!
   \*****************************************************************************************/
+=======
+/*!**********************************************************************!*\
+  !*** E:/smart home/Harding-Library-Smart-home/Smart-home/pages.json ***!
+  \**********************************************************************/
+>>>>>>> 504e36ffcc1a874931911140cc85969f9f08e65d
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -8408,13 +8414,20 @@ module.exports = {"_from":"@dcloudio/uni-stat@next","_id":"@dcloudio/uni-stat@2.
 
 /***/ }),
 /* 7 */
+<<<<<<< HEAD
 /*!**********************************************************************************************************!*\
   !*** C:/Users/齐文蒸/Desktop/智能家具uni-app/Harding-Library-Smart-home/Smart-home/pages.json?{"type":"style"} ***!
   \**********************************************************************************************************/
+=======
+/*!***************************************************************************************!*\
+  !*** E:/smart home/Harding-Library-Smart-home/Smart-home/pages.json?{"type":"style"} ***!
+  \***************************************************************************************/
+>>>>>>> 504e36ffcc1a874931911140cc85969f9f08e65d
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+<<<<<<< HEAD
 Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/home/home": { "navigationBarTitleText": "首页" }, "pages/new/new": { "navigationBarTitleText": "新品" }, "pages/cart/cart": { "navigationBarTitleText": "购物车" }, "pages/my/my": { "navigationBarTitleText": "我的" }, "pages/details/details": {}, "pages/review/review": {}, "pages/order/order": { "navigationBarTitleText": "我的订单" }, "pages/collection/collection": { "navigationBarTitleText": "商品收藏" }, "pages/history/history": { "navigationBarTitleText": "历史浏览" }, "pages/refund/refund": { "navigationBarTitleText": "退款/售后" }, "pages/allorder/allorder": { "navigationBarTitleText": "订单分类" }, "pages/coupon/coupon": { "navigationBarTitleText": "领劵中心" }, "pages/confirmorder/confirmorder": { "navigationBarTitleText": "确认订单" } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "", "navigationBarBackgroundColor": "#F8F8F8", "backgroundColor": "#F8F8F8" } };exports.default = _default;
 
 /***/ }),
@@ -8422,6 +8435,15 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /*!*********************************************************************************************************!*\
   !*** C:/Users/齐文蒸/Desktop/智能家具uni-app/Harding-Library-Smart-home/Smart-home/pages.json?{"type":"stat"} ***!
   \*********************************************************************************************************/
+=======
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/home/home": { "navigationStyle": "custom" }, "pages/new/new": { "navigationBarTitleText": "新品" }, "pages/cart/cart": { "navigationBarTitleText": "购物车" }, "pages/my/my": { "navigationBarTitleText": "我的" }, "pages/coupon/coupon": { "navigationBarTitleText": "领卷中心" } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "uni-app", "navigationBarBackgroundColor": "#F8F8F8", "backgroundColor": "#F8F8F8" } };exports.default = _default;
+
+/***/ }),
+/* 8 */
+/*!**************************************************************************************!*\
+  !*** E:/smart home/Harding-Library-Smart-home/Smart-home/pages.json?{"type":"stat"} ***!
+  \**************************************************************************************/
+>>>>>>> 504e36ffcc1a874931911140cc85969f9f08e65d
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 

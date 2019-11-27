@@ -4,6 +4,7 @@
     "pages/new/new",
     "pages/cart/cart",
     "pages/my/my",
+<<<<<<< HEAD
     "pages/details/details",
     "pages/review/review",
     "pages/order/order",
@@ -13,6 +14,9 @@
     "pages/allorder/allorder",
     "pages/coupon/coupon",
     "pages/confirmorder/confirmorder"
+=======
+    "pages/coupon/coupon"
+>>>>>>> 504e36ffcc1a874931911140cc85969f9f08e65d
   ],
   "subPackages": [],
   "window": {
@@ -49,5 +53,10 @@
       }
     ]
   },
+<<<<<<< HEAD
   "usingComponents": {}
+=======
+  "usingComponents": {},
+  "sitemapLocation": "sitemap17.json"
+>>>>>>> 504e36ffcc1a874931911140cc85969f9f08e65d
 }

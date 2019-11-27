@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
 	<view class="coupon">
 		<view class="top">
 			<view class="t-left"></view>
@@ -182,4 +183,13 @@ body{
 		}
 	}
 }
+=======
+	
+</template>
+
+<script>
+</script>
+
+<style>
+>>>>>>> 504e36ffcc1a874931911140cc85969f9f08e65d
 </style>

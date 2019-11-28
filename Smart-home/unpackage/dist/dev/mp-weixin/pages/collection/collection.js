@@ -122,7 +122,11 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+<<<<<<< HEAD
 Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+=======
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+>>>>>>> 6554d8396c08ee0bbeabbda3a4d09311b6f24ac2
 //
 //
 //
@@ -148,34 +152,69 @@ var _default =
         imgSrc: '/static/home/1.jpg',
         priceReduction: '323.00',
         price: '233.00',
+<<<<<<< HEAD
         collectionNum: 33 },
+=======
+        collectionNum: 33,
+        id: '1' },
+>>>>>>> 6554d8396c08ee0bbeabbda3a4d09311b6f24ac2
       {
         title: 'NeoDPillo印尼邓禄普官方正品原装进口天然34乳胶枕头波浪颈椎枕',
         imgSrc: '/static/home/2.jpg',
         price: '39.00',
+<<<<<<< HEAD
         collectionNum: 12 },
+=======
+        collectionNum: 12,
+        id: '2' },
+>>>>>>> 6554d8396c08ee0bbeabbda3a4d09311b6f24ac2
       {
         title: 'NeoDPillo印尼邓禄普官方234正品原装进口天然乳胶枕头波浪颈椎枕',
         imgSrc: 'https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1574666627&di=35b2f2df4e32e92808cb60f4216398ab&src=http://wx4.sinaimg.cn/crop.0.0.1024.574/8a533d85ly1fqpto24uq4j20sg0izdld.jpg',
         priceReduction: '3113.00',
         price: '3349.00',
+<<<<<<< HEAD
         collectionNum: 3 },
+=======
+        collectionNum: 3,
+        id: '3' },
+>>>>>>> 6554d8396c08ee0bbeabbda3a4d09311b6f24ac2
       {
         title: 'NeoDPillo印尼邓禄普官方正品原装进口天然乳胶枕头234波浪颈椎枕',
         imgSrc: '/static/home/4.jpg',
         price: '239.00',
+<<<<<<< HEAD
         collectionNum: 323 },
+=======
+        collectionNum: 323,
+        id: '4' },
+>>>>>>> 6554d8396c08ee0bbeabbda3a4d09311b6f24ac2
       {
         title: 'NeoDPillo印尼邓禄普官方正23423品原装进口天然乳胶枕头波浪颈椎枕',
         imgSrc: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1574676713232&di=83c7f4d5c0a0e8ed7030adf246e015bb&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201706%2F03%2F20170603213152_sKuLT.jpeg',
         priceReduction: '3444.00',
         price: '299.00',
+<<<<<<< HEAD
         collectionNum: 32223 }] };
+=======
+        collectionNum: 32223,
+        id: '5' }] };
+>>>>>>> 6554d8396c08ee0bbeabbda3a4d09311b6f24ac2
 
 
 
   },
+<<<<<<< HEAD
   methods: {} };exports.default = _default;
+=======
+  methods: {
+    goToDetails: function goToDetails(id) {
+      uni.navigateTo({
+        url: '/pages/details/details?id=' + id });
+
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+>>>>>>> 6554d8396c08ee0bbeabbda3a4d09311b6f24ac2
 
 /***/ }),
 

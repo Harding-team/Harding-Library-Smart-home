@@ -122,7 +122,12 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+<<<<<<< HEAD
 Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+=======
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+//
+>>>>>>> 6554d8396c08ee0bbeabbda3a4d09311b6f24ac2
 //
 //
 //
@@ -189,13 +194,23 @@ var _default =
         imgSrc: 'http://img1.imgtn.bdimg.com/it/u=2973069531,657782944&fm=26&gp=0.jpg',
         count: 1,
         price: '299',
+<<<<<<< HEAD
         shopName: 'neodpillo海外旗舰店' },
+=======
+        shopName: 'neodpillo海外旗舰店',
+        id: '1' },
+>>>>>>> 6554d8396c08ee0bbeabbda3a4d09311b6f24ac2
       {
         title: 'Neo然乳胶枕头波浪颈椎枕...',
         imgSrc: 'http://img1.imgtn.bdimg.com/it/u=2752453349,2871240348&fm=26&gp=0.jpg',
         count: 13,
         price: '23339',
+<<<<<<< HEAD
         shopName: '恒源祥苏恒专卖店' }],
+=======
+        shopName: '恒源祥苏恒专卖店',
+        id: '2' }],
+>>>>>>> 6554d8396c08ee0bbeabbda3a4d09311b6f24ac2
 
 
       recommendArr: [
@@ -203,27 +218,52 @@ var _default =
         imgSrc: '../../static/home/1.jpg',
         name: '[官方正品]亚泰集团全自动机械表男让他一人头表方',
         price: '555',
+<<<<<<< HEAD
         fight: '36994' },
+=======
+        fight: '36994',
+        id: '1' },
+>>>>>>> 6554d8396c08ee0bbeabbda3a4d09311b6f24ac2
       {
         imgSrc: '../../static/home/1.jpg',
         name: '[官方try正品]尔特全体育教育表男士手表方',
         price: '445',
+<<<<<<< HEAD
         fight: '154' },
+=======
+        fight: '154',
+        id: '2' },
+>>>>>>> 6554d8396c08ee0bbeabbda3a4d09311b6f24ac2
       {
         imgSrc: '../../static/home/1.jpg',
         name: '[任何人]卡罗蒂夫全自动很反感表男士手表方',
         price: '625',
+<<<<<<< HEAD
         fight: '34454' },
+=======
+        fight: '34454',
+        id: '3' },
+>>>>>>> 6554d8396c08ee0bbeabbda3a4d09311b6f24ac2
       {
         imgSrc: '../../static/home/1.jpg',
         name: '[官方正让他忽然他品]卡罗蒂夫全自动机械表男士手表方',
         price: '825',
+<<<<<<< HEAD
         fight: '8754' },
+=======
+        fight: '8754',
+        id: '4' },
+>>>>>>> 6554d8396c08ee0bbeabbda3a4d09311b6f24ac2
       {
         imgSrc: '../../static/home/1.jpg',
         name: '[官方让他让他正品]卡罗蒂夫全自动机械表男士手表方',
         price: '36',
+<<<<<<< HEAD
         fight: '98875' }] };
+=======
+        fight: '98875',
+        id: '5' }] };
+>>>>>>> 6554d8396c08ee0bbeabbda3a4d09311b6f24ac2
 
 
 
@@ -234,7 +274,17 @@ var _default =
   methods: {
     tabbar: function tabbar(index) {//选项卡切换
       this.tabbarIndex = index;
+<<<<<<< HEAD
     } } };exports.default = _default;
+=======
+    },
+    goToDetails: function goToDetails(id) {//跳转详情页
+      uni.navigateTo({
+        url: '/pages/details/details?id=' + id });
+
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+>>>>>>> 6554d8396c08ee0bbeabbda3a4d09311b6f24ac2
 
 /***/ }),
 

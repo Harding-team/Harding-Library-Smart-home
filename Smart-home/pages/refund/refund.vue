@@ -1,6 +1,10 @@
 <template>
 	<view class="refund">
+<<<<<<< HEAD
 		<view class="info" v-for="(item,index) in refundArr" :key="index">
+=======
+		<view class="info" v-for="(item,index) in refundArr" :key="index" @click="goToDetails(item.id)">
+>>>>>>> 6554d8396c08ee0bbeabbda3a4d09311b6f24ac2
 			<view class="shop">
 				<text class="iconfont icon-6"></text>
 				<view>{{item.shopName}}</view>
@@ -40,19 +44,37 @@
 						imgSrc:'http://img1.imgtn.bdimg.com/it/u=2973069531,657782944&fm=26&gp=0.jpg',
 						count:1,
 						price:'299',
+<<<<<<< HEAD
 						shopName:'neodpillo海外旗舰店'
+=======
+						shopName:'neodpillo海外旗舰店',
+						id:'1'
+>>>>>>> 6554d8396c08ee0bbeabbda3a4d09311b6f24ac2
 					},{
 						title:'Neo然乳胶枕头波浪颈椎枕...',
 						imgSrc:'http://img1.imgtn.bdimg.com/it/u=2752453349,2871240348&fm=26&gp=0.jpg',
 						count:13,
 						price:'23339',
+<<<<<<< HEAD
 						shopName:'恒源祥苏恒专卖店'
+=======
+						shopName:'恒源祥苏恒专卖店',
+						id:'2'
+>>>>>>> 6554d8396c08ee0bbeabbda3a4d09311b6f24ac2
 					}
 				]
 			}
 		},
 		methods: {
+<<<<<<< HEAD
 			
+=======
+			goToDetails(id){
+				uni.navigateTo({
+					url:'/pages/details/details?id='+id
+				})
+			}
+>>>>>>> 6554d8396c08ee0bbeabbda3a4d09311b6f24ac2
 		}
 	}
 </script>

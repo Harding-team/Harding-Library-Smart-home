@@ -122,7 +122,11 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+<<<<<<< HEAD
 Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+=======
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+>>>>>>> 6554d8396c08ee0bbeabbda3a4d09311b6f24ac2
 //
 //
 //
@@ -172,26 +176,52 @@ var _default =
         description: '天然乳胶',
         imgSrc: 'https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1574666627&di=35b2f2df4e32e92808cb60f4216398ab&src=http://wx4.sinaimg.cn/crop.0.0.1024.574/8a533d85ly1fqpto24uq4j20sg0izdld.jpg',
         freight: '22.00',
+<<<<<<< HEAD
         orderNumber: 9876543211025666 },
+=======
+        orderNumber: 9876543211025666,
+        id: '1' },
+>>>>>>> 6554d8396c08ee0bbeabbda3a4d09311b6f24ac2
       {
         title: 'POKALEN乳胶枕发色粉色粉色',
         price: '99',
         count: 3,
         description: '哎呦我去',
         imgSrc: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1574676713235&di=b26d717eb7845d961473430db4d5eb35&imgtype=0&src=http%3A%2F%2Fpic4.zhimg.com%2Fv2-06273e88b28b75cc0cbe4cee51312cf7_b.jpg',
+<<<<<<< HEAD
         freight: '0.00' },
+=======
+        freight: '0.00',
+        id: '2' },
+>>>>>>> 6554d8396c08ee0bbeabbda3a4d09311b6f24ac2
       {
         title: '无法色号热乎乎枕头泰国原装进口颈椎天然橡胶枕',
         price: '799',
         count: 15,
         description: '什么东西',
         imgSrc: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1574676713232&di=83c7f4d5c0a0e8ed7030adf246e015bb&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201706%2F03%2F20170603213152_sKuLT.jpeg',
+<<<<<<< HEAD
         freight: '0.00' }] };
+=======
+        freight: '0.00',
+        id: '3' }] };
+>>>>>>> 6554d8396c08ee0bbeabbda3a4d09311b6f24ac2
 
 
 
   },
+<<<<<<< HEAD
   methods: {} };exports.default = _default;
+=======
+  methods: {
+    goToDetails: function goToDetails(id) {//跳转详情页
+      console.log(1111);
+      uni.navigateTo({
+        url: '/pages/details/details?id=' + id });
+
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+>>>>>>> 6554d8396c08ee0bbeabbda3a4d09311b6f24ac2
 
 /***/ }),
 

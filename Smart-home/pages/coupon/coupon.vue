@@ -18,7 +18,11 @@
 					<view></view>
 					<view></view>
 				</view>
+<<<<<<< HEAD
 				<view class="dian" style="right:-2upx;">
+=======
+				<view class="dian" style="right:-4upx;">
+>>>>>>> 6554d8396c08ee0bbeabbda3a4d09311b6f24ac2
 					<view></view>
 					<view></view>
 					<view></view>
@@ -36,7 +40,11 @@
 					<view>收藏+关注</view>
 				</view>
 				<view class="btn">
+<<<<<<< HEAD
 					<view>立即使用</view>
+=======
+					<view  @click="goToDetails(item.id)">立即使用</view>
+>>>>>>> 6554d8396c08ee0bbeabbda3a4d09311b6f24ac2
 				</view>
 			</view>
 		</view>
@@ -56,12 +64,24 @@
 					{
 						price:'5',
 						manPrice:'199',
+<<<<<<< HEAD
 					},{
 						price:'55',
 						manPrice:'500',
 					},{
 						price:'2',
 						manPrice:'100',
+=======
+						id:'1'
+					},{
+						price:'55',
+						manPrice:'500',
+						id:'2'
+					},{
+						price:'2',
+						manPrice:'100',
+						id:'3'
+>>>>>>> 6554d8396c08ee0bbeabbda3a4d09311b6f24ac2
 					}
 				]
 			}
@@ -70,7 +90,15 @@
 			this.number = this.couponArr.length
 		},
 		methods: {
+<<<<<<< HEAD
 			
+=======
+			goToDetails(id){
+				uni.navigateTo({
+					url:'/pages/details/details?id='+id
+				})
+			}
+>>>>>>> 6554d8396c08ee0bbeabbda3a4d09311b6f24ac2
 		}
 	}
 </script>

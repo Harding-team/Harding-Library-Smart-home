@@ -133,7 +133,11 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+<<<<<<< HEAD
 Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+=======
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+>>>>>>> 6554d8396c08ee0bbeabbda3a4d09311b6f24ac2
 //
 //
 //
@@ -175,18 +179,38 @@ var _default =
         imgSrc: 'http://img1.imgtn.bdimg.com/it/u=2973069531,657782944&fm=26&gp=0.jpg',
         count: 1,
         price: '299',
+<<<<<<< HEAD
         shopName: 'neodpillo海外旗舰店' },
+=======
+        shopName: 'neodpillo海外旗舰店',
+        id: '1' },
+>>>>>>> 6554d8396c08ee0bbeabbda3a4d09311b6f24ac2
       {
         title: 'Neo然乳胶枕头波浪颈椎枕...',
         imgSrc: 'http://img1.imgtn.bdimg.com/it/u=2752453349,2871240348&fm=26&gp=0.jpg',
         count: 13,
         price: '23339',
+<<<<<<< HEAD
         shopName: '恒源祥苏恒专卖店' }] };
+=======
+        shopName: '恒源祥苏恒专卖店',
+        id: '2' }] };
+>>>>>>> 6554d8396c08ee0bbeabbda3a4d09311b6f24ac2
 
 
 
   },
+<<<<<<< HEAD
   methods: {} };exports.default = _default;
+=======
+  methods: {
+    goToDetails: function goToDetails(id) {
+      uni.navigateTo({
+        url: '/pages/details/details?id=' + id });
+
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+>>>>>>> 6554d8396c08ee0bbeabbda3a4d09311b6f24ac2
 
 /***/ }),
 

@@ -1,0 +1,123 @@
+{
+	"pages": [ 
+		{
+			"path": "pages/home/home",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/new/new",
+			"style": {
+				"navigationBarTitleText": "新品"
+			}
+		},
+		{
+			"path": "pages/cart/cart",
+			"style": {
+				"navigationBarTitleText": "购物车"
+			}
+		},
+		{
+			"path": "pages/my/my",
+			"style": {
+				"navigationBarTitleText": "我的"
+			}
+		},
+		{
+			"path": "pages/details/details",
+			"style": {
+				"navigationStyle": "custom",
+				"usingComponents": {
+				  "van-popup": "/wxcomponents/vant/dist/popup/index"
+				}
+			}
+		},
+		{
+			"path": "pages/review/review",
+			"style": {
+				"navigationBarTitleText": "评价详情",
+				"usingComponents": {
+				  "van-popup": "/wxcomponents/vant/dist/popup/index"
+				}
+			}
+		},
+		{
+			"path": "pages/coupon/coupon",
+			"style": {
+				"navigationBarTitleText": "领卷中心"
+			}
+		}
+	    ,{
+            "path" : "pages/order/order",
+            "style" : {
+				"navigationBarTitleText":"我的订单"
+			}
+        }
+        ,{
+            "path" : "pages/collection/collection",
+            "style" : {
+				"navigationBarTitleText":"商品收藏"
+			}
+        }
+        ,{
+            "path" : "pages/history/history",
+            "style" : {
+				"navigationBarTitleText":"历史浏览"
+			}
+        }
+        ,{
+            "path" : "pages/refund/refund",
+            "style" : {
+				"navigationBarTitleText":"退款/售后"
+			}
+        }
+        ,{
+            "path" : "pages/allorder/allorder",
+            "style" : {
+				"navigationBarTitleText":"订单分类"
+			}
+        }
+        ,{
+            "path" : "pages/confirmorder/confirmorder",
+            "style" : {
+				"navigationBarTitleText":"确认订单"
+			}
+        }
+    ],
+	"tabBar": {
+	  "list": [
+	    {
+	      "pagePath": "pages/home/home",
+	      "text": "首页",
+	      "iconPath": "./static/tabbar/home.jpg",
+	      "selectedIconPath": "./static/tabbar/home-active.jpg"
+	    },
+	    {
+	      "pagePath": "pages/new/new",
+	      "text": "新品",
+	      "iconPath": "./static/tabbar/new.jpg",
+	      "selectedIconPath": "./static/tabbar/new-active.jpg"
+	    },
+	    {
+	      "pagePath": "pages/cart/cart",
+	      "text": "购物车",
+	      "iconPath": "./static/tabbar/cart.jpg",
+	      "selectedIconPath": "./static/tabbar/cart-active.jpg"
+	    },
+	    {
+	      "pagePath": "pages/my/my",
+	      "text": "我的",
+	      "iconPath": "./static/tabbar/mine.jpg",
+	      "selectedIconPath": "./static/tabbar/mine-active.jpg"
+	    }
+	  ]
+	},
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	}
+}
+

@@ -35,7 +35,11 @@
 			"list": [
 				{
 					"id": -1,
+<<<<<<< HEAD
 					"name": "1",
+=======
+					"name": "111",
+>>>>>>> 6554d8396c08ee0bbeabbda3a4d09311b6f24ac2
 					"pathName": "pages/details/details",
 					"scene": null
 				}

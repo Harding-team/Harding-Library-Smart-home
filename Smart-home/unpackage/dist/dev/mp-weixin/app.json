@@ -6,15 +6,24 @@
     "pages/my/my",
 <<<<<<< HEAD
     "pages/details/details",
+<<<<<<< HEAD
     "pages/review/review"
 =======
+=======
+    "pages/review/review",
+    "pages/coupon/coupon",
+>>>>>>> 6554d8396c08ee0bbeabbda3a4d09311b6f24ac2
     "pages/order/order",
     "pages/collection/collection",
     "pages/history/history",
     "pages/refund/refund",
     "pages/allorder/allorder",
+<<<<<<< HEAD
     "pages/coupon/coupon"
 >>>>>>> bc921ae3222b9c4585fe95e85188ccf364b6dc83
+=======
+    "pages/confirmorder/confirmorder"
+>>>>>>> 6554d8396c08ee0bbeabbda3a4d09311b6f24ac2
   ],
   "subPackages": [],
   "window": {

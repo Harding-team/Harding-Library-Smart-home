@@ -11,7 +11,6 @@
 		}
 	}
 </script>
-
 <style>
 	/* 公共css */
 	@import url("./public.css");
@@ -19,4 +18,5 @@
 	@import url("./iconfont.css");
 	/* vant */
 	@import url("/wxcomponents/vant/dist/common/index.wxss");
+	/*每个页面公共css */
 </style>

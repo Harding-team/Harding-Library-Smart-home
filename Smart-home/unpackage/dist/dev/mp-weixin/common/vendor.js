@@ -7501,9 +7501,9 @@ module.exports = g;
 
 /***/ }),
 /* 4 */
-/*!***************************************************************!*\
-  !*** D:/git/Harding-Library-Smart-home/Smart-home/pages.json ***!
-  \***************************************************************/
+/*!*****************************************************************************************!*\
+  !*** C:/Users/齐文蒸/Desktop/智能家具uni-app/Harding-Library-Smart-home/Smart-home/pages.json ***!
+  \*****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -8408,9 +8408,9 @@ module.exports = {"_from":"@dcloudio/uni-stat@next","_id":"@dcloudio/uni-stat@2.
 
 /***/ }),
 /* 7 */
-/*!********************************************************************************!*\
-  !*** D:/git/Harding-Library-Smart-home/Smart-home/pages.json?{"type":"style"} ***!
-  \********************************************************************************/
+/*!**********************************************************************************************************!*\
+  !*** C:/Users/齐文蒸/Desktop/智能家具uni-app/Harding-Library-Smart-home/Smart-home/pages.json?{"type":"style"} ***!
+  \**********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -8419,9 +8419,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 8 */
-/*!*******************************************************************************!*\
-  !*** D:/git/Harding-Library-Smart-home/Smart-home/pages.json?{"type":"stat"} ***!
-  \*******************************************************************************/
+/*!*********************************************************************************************************!*\
+  !*** C:/Users/齐文蒸/Desktop/智能家具uni-app/Harding-Library-Smart-home/Smart-home/pages.json?{"type":"stat"} ***!
+  \*********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 

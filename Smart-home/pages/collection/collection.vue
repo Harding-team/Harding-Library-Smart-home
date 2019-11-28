@@ -58,9 +58,9 @@
 		},
 		methods: {
 			goToDetails(id){
-				// uni.navigateTo({
-				// 	url:'pages/details/details?id='+id
-				// })
+				uni.navigateTo({
+					url:'/pages/details/details?id='+id
+				})
 			}
 		}
 	}

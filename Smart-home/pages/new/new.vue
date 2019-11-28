@@ -4,9 +4,8 @@
 			<view class='mei'>RECOMMENDED 每日推荐</view>
 			<view class="tui">每 日 推 荐</view>
 		</view>
-		<view class='newlist'>
-			<block  v-for="(item,index) in list" :key="index">
-				<view class='list' :key="index">
+		<view class='newlist' >
+				<view class='list' v-for="(item,index) in list" :key="index" @tap="goToDetails()">
 					<text class='iconfont icon-shoucang2' @click="collect(index)"></text>
 					<text class='iconfont icon-buoumaotubiao44'></text>
 					<view class='images'>
@@ -16,7 +15,6 @@
 					<view class='brief'>{{item.brief}}</view>
 					<view class='price'>￥{{item.price}}</view>
 				</view>
-			</block>
 				
 			
 			<!-- <view class='list'>
@@ -74,6 +72,13 @@
 		methods: {
 			collect(index){
 				
+			},
+			// 跳转详情
+			goToDetails(){
+				let id = 1
+				uni.navigateTo({
+					url: '/pages/details/details?id='+id
+				})
 			}
 		}
 	}

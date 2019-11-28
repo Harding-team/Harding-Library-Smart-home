@@ -40,6 +40,9 @@
 				"usingComponents": {
 				  "van-popup": "/wxcomponents/vant/dist/popup/index"
 				}
+			}
+		},
+		{
 			"path": "pages/coupon/coupon",
 			"style": {
 				"navigationBarTitleText": "领卷中心"
@@ -73,12 +76,6 @@
             "path" : "pages/allorder/allorder",
             "style" : {
 				"navigationBarTitleText":"订单分类"
-			}
-        }
-        ,{
-            "path" : "pages/coupon/coupon",
-            "style" : {
-				"navigationBarTitleText":"领劵中心"
 			}
         }
         ,{

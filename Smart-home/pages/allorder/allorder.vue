@@ -120,9 +120,9 @@
 				this.tabbarIndex = index;
 			},
 			goToDetails(id){//跳转详情页
-				// uni.navigateTo({
-				// 	url:'pages/details/details?id='+id
-				// })
+				uni.navigateTo({
+					url:'/pages/details/details?id='+id
+				})
 			}
 		}
 	}

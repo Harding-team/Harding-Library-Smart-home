@@ -1,5 +1,4 @@
 <template>
-<<<<<<< HEAD
 	<view class="coupon">
 		<view class="top">
 			<view class="t-left"></view>
@@ -75,9 +74,9 @@
 		},
 		methods: {
 			goToDetails(id){
-				// uni.navigateTo({
-				// 	url:'pages/details/details?id='+id
-				// })
+				uni.navigateTo({
+					url:'/pages/details/details?id='+id
+				})
 			}
 		}
 	}
@@ -183,13 +182,4 @@ body{
 		}
 	}
 }
-=======
-	
-</template>
-
-<script>
-</script>
-
-<style>
->>>>>>> 504e36ffcc1a874931911140cc85969f9f08e65d
 </style>

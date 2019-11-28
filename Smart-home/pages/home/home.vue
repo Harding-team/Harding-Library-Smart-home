@@ -190,7 +190,7 @@
 		        </view>
 		  </view>
 		  <view class='home-paihang'>
-		        <view class='home-paihang-list' v-for="(item,index) in ranking" :key='index'>
+		        <view class='home-paihang-list' v-for="(item,index) in ranking" :key='index' @tap="goToDetails()">
 		              <image class='home-paihang-img' :src='item.images'></image>
 		              <image class='home-paihang-num' src='../../static/home/assemble-no.png'></image>
 		              <view>{{item.name}}</view>
@@ -214,7 +214,7 @@
 		 <view class='home-lick-tlt'>猜你喜欢</view>
 		 <view class='home-lick'>
 		       <view class='home-lick-box'>
-		             <view class='home-lick-list'  v-for="(item,index) in piex" :key='index'>
+		             <view class='home-lick-list'  v-for="(item,index) in piex" :key='index'  @tap="goToDetails()">
 		                   <image :src='item.images'></image>
 		                   <view>{{item.name}}</view>
 		                   <view>{{item.details}}</view>
@@ -326,66 +326,22 @@
 			//this.getmsglist();//第一次加载数据
 		},
 		methods: {
+			// 跳转领劵中心
 			Jumpcoupon(){
 				uni.navigateTo({
-					url:'../coupon/coupon',
-					animationType: 'pop-in',
-					animationDuration: 200
+					url:'/pages/coupon/coupon'
 				})
-				},
-			// getmsglist: function() {
-			// 					var _self = this;
-			// 				_self.goodsid = uni.getStorageSync('goodsid');
-			// 				uni.request({
-			// 					url:'1111',
-			// 					method: 'POST',
-			// 					header: {
-			// 						'content-type': 'application/x-www-form-urlencoded'
-			// 					},
-			// 					data: {
-			// 						openid: _self.openid,
-			// 						token: _self.token,
-			// 					},
-			// 					success: (res) => {
-			// 						console.log(res);
-			// 						var data = res.data;
-			// 						_self.remainingd = data.data.timestamp;
-			// 						_self.jishiqi();//执行一次倒计时，因为进入页面有等待
-									
-			// 						setInterval(function() {
-			// 							_self.jishiqi();
-			// 						}, 1000)
-			 
-			// 						uni.hideLoading(); //关闭加载
-			 
-			 
-			// 					}
-			// 				})
-			// 			},
-			// 			//倒计时计时器
-			// 			jishiqi: function() {
-			// 				var dj = this.remainingd;
-			// 				if (dj <= 0) {
-			// 					this.remaining = "已过期";
-			// 				} else {
-			// 					var ddf = this.djs(dj); //格式化过后的时间
-			// 					this.remaining = ddf;
-			// 					//当前时间减去时间
-			// 					dj = dj - 1;
-			// 					this.remainingd = dj;
-			// 				}
-			 
-			// 			},
-			// 			//得到的秒换算成时分秒
-			// 			djs: function(ms) { 
-			// 				var h = parseInt(ms / (60 * 60));
-			// 				var m = parseInt((ms % (60 * 60)) / 60);
-			// 				var s = (ms % (60 * 60)) % 60;
-			// 				return h + ":" + m + ":" + s;
-			// 			},
-				limit(){
-					console.log('限时抢购')
-				}
+			},
+			limit(){
+				console.log('限时抢购')
+			},
+			// 跳转详情
+			goToDetails(){
+				let id = 1
+				uni.navigateTo({
+					url: '/pages/details/details?id='+id
+				})
+			}
 			
 		}
 	}

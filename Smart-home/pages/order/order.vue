@@ -72,9 +72,10 @@
 		},
 		methods: {
 			goToDetails(id){//跳转详情页
-				// uni.navigateTo({
-				// 	url:'pages/details/details?id='+id
-				// })
+				console.log(1111);
+				uni.navigateTo({
+					url:'/pages/details/details?id='+id
+				})
 			}
 		}
 	}

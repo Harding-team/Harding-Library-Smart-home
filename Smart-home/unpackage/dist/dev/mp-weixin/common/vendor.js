@@ -7505,9 +7505,10 @@ module.exports = g;
   !*** D:/git/Harding-Library-Smart-home/Smart-home/pages.json ***!
   \***************************************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/@dcloudio/webpack-uni-pages-loader/lib/index.js):\nError: ENOENT: no such file or directory, open 'D:\\git\\Harding-Library-Smart-home\\Smart-home\\pages.json'");
+"use strict";
+
 
 /***/ }),
 /* 5 */
@@ -8411,14 +8412,10 @@ module.exports = {"_from":"@dcloudio/uni-stat@next","_id":"@dcloudio/uni-stat@2.
   !*** D:/git/Harding-Library-Smart-home/Smart-home/pages.json?{"type":"style"} ***!
   \********************************************************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
-throw new Error("Module build failed (from ./node_modules/@dcloudio/webpack-uni-pages-loader/lib/index.js):\nError: ENOENT: no such file or directory, open 'D:\\git\\Harding-Library-Smart-home\\Smart-home\\pages.json'");
-=======
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/home/home": { "navigationStyle": "custom" }, "pages/new/new": { "navigationBarTitleText": "新品" }, "pages/cart/cart": { "navigationBarTitleText": "购物车" }, "pages/my/my": { "navigationBarTitleText": "我的" }, "pages/details/details": { "navigationStyle": "custom" }, "pages/review/review": { "navigationBarTitleText": "评价详情" }, "pages/coupon/coupon": { "navigationBarTitleText": "领卷中心" }, "pages/order/order": { "navigationBarTitleText": "我的订单" }, "pages/collection/collection": { "navigationBarTitleText": "商品收藏" }, "pages/history/history": { "navigationBarTitleText": "历史浏览" }, "pages/refund/refund": { "navigationBarTitleText": "退款/售后" }, "pages/allorder/allorder": { "navigationBarTitleText": "订单分类" }, "pages/confirmorder/confirmorder": { "navigationBarTitleText": "确认订单" } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "", "navigationBarBackgroundColor": "#F8F8F8", "backgroundColor": "#F8F8F8" } };exports.default = _default;
->>>>>>> 6554d8396c08ee0bbeabbda3a4d09311b6f24ac2
 
 /***/ }),
 /* 8 */
@@ -8426,9 +8423,10 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
   !*** D:/git/Harding-Library-Smart-home/Smart-home/pages.json?{"type":"stat"} ***!
   \*******************************************************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/@dcloudio/webpack-uni-pages-loader/lib/index.js):\nError: ENOENT: no such file or directory, open 'D:\\git\\Harding-Library-Smart-home\\Smart-home\\pages.json'");
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "appid": "__UNI__EAA48DF" };exports.default = _default;
 
 /***/ }),
 /* 9 */,

@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-/* pages/home/home.wxss */
-=======
 
 
 
@@ -902,4 +899,3 @@ swiper swiper-item image{
           transform: translate(-50%)
 }
 
->>>>>>> 6554d8396c08ee0bbeabbda3a4d09311b6f24ac2

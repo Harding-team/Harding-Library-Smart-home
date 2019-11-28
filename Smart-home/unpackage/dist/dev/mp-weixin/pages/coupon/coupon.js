@@ -86,13 +86,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-}
+var render = function () {}
 var staticRenderFns = []
-render._withStripped = true
 
 
 
@@ -122,11 +117,9 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-<<<<<<< HEAD
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-=======
 /* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
->>>>>>> 6554d8396c08ee0bbeabbda3a4d09311b6f24ac2
+//
+//
 //
 //
 //
@@ -183,16 +176,13 @@ var _default =
       couponArr: [
       {
         price: '5',
-<<<<<<< HEAD
         manPrice: '199' },
       {
         price: '55',
         manPrice: '500' },
       {
         price: '2',
-        manPrice: '100' }] };
-=======
-        manPrice: '199',
+        manPrice: '100',
         id: '1' },
       {
         price: '55',
@@ -202,7 +192,6 @@ var _default =
         price: '2',
         manPrice: '100',
         id: '3' }] };
->>>>>>> 6554d8396c08ee0bbeabbda3a4d09311b6f24ac2
 
 
 
@@ -210,9 +199,6 @@ var _default =
   onLoad: function onLoad() {
     this.number = this.couponArr.length;
   },
-<<<<<<< HEAD
-  methods: {} };exports.default = _default;
-=======
   methods: {
     goToDetails: function goToDetails(id) {
       uni.navigateTo({
@@ -220,7 +206,6 @@ var _default =
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
->>>>>>> 6554d8396c08ee0bbeabbda3a4d09311b6f24ac2
 
 /***/ }),
 

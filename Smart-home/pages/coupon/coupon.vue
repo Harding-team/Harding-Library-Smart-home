@@ -18,7 +18,6 @@
 					<view></view>
 					<view></view>
 				</view>
-				<view class="dian" style="right:-2upx;">
 				<view class="dian" style="right:-4upx;">
 					<view></view>
 					<view></view>

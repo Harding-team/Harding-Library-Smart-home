@@ -1,6 +1,5 @@
 <template>
 	<view class="refund">
-		<view class="info" v-for="(item,index) in refundArr" :key="index">
 		<view class="info" v-for="(item,index) in refundArr" :key="index" @click="goToDetails(item.id)">
 			<view class="shop">
 				<text class="iconfont icon-6"></text>
@@ -41,7 +40,6 @@
 						imgSrc:'http://img1.imgtn.bdimg.com/it/u=2973069531,657782944&fm=26&gp=0.jpg',
 						count:1,
 						price:'299',
-						shopName:'neodpillo海外旗舰店'
 						shopName:'neodpillo海外旗舰店',
 						id:'1'
 					},{
@@ -49,7 +47,6 @@
 						imgSrc:'http://img1.imgtn.bdimg.com/it/u=2752453349,2871240348&fm=26&gp=0.jpg',
 						count:13,
 						price:'23339',
-						shopName:'恒源祥苏恒专卖店'
 						shopName:'恒源祥苏恒专卖店',
 						id:'2'
 					}

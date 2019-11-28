@@ -1,7 +1,6 @@
 <template>
 	<view class="history">
 		<view>
-			<view class="info" v-for="(item,index) in historyArr" :key="index">
 			<view class="info" v-for="(item,index) in historyArr" :key="index" @click="goToDetails(item.id)">
 				<image :src="item.imgSrc"></image>
 				<view class="info-r">

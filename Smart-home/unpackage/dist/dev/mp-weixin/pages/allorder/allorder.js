@@ -86,8 +86,13 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function () {}
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+}
 var staticRenderFns = []
+render._withStripped = true
 
 
 
@@ -114,9 +119,136 @@ __webpack_require__.r(__webpack_exports__);
   !*** ./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--12-1!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-custom-block-loader??ref--0-1!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!D:/git/Harding-Library-Smart-home/Smart-home/pages/allorder/allorder.vue?vue&type=script&lang=js& ***!
   \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js):\nSyntaxError: Unexpected token, expected \",\" (72:5)\n    at _class.raise (D:\\DownLoad\\DownLoad_Browser\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:4051:15)\n    at _class.unexpected (D:\\DownLoad\\DownLoad_Browser\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:5382:16)\n    at _class.expect (D:\\DownLoad\\DownLoad_Browser\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:5370:28)\n    at _class.parseObj (D:\\DownLoad\\DownLoad_Browser\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:6861:14)\n    at _class.parseExprAtom (D:\\DownLoad\\DownLoad_Browser\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:6487:21)\n    at _class.parseExprSubscripts (D:\\DownLoad\\DownLoad_Browser\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:6104:21)\n    at _class.parseMaybeUnary (D:\\DownLoad\\DownLoad_Browser\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:6083:21)\n    at _class.parseMaybeUnary (D:\\DownLoad\\DownLoad_Browser\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:10675:54)\n    at _class.parseExprOps (D:\\DownLoad\\DownLoad_Browser\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:5968:21)\n    at _class.parseMaybeConditional (D:\\DownLoad\\DownLoad_Browser\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:5940:21)\n    at _class.parseMaybeAssign (D:\\DownLoad\\DownLoad_Browser\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:5887:21)\n    at _class.parseMaybeAssign (D:\\DownLoad\\DownLoad_Browser\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:10631:87)\n    at _class.parseExprListItem (D:\\DownLoad\\DownLoad_Browser\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:7226:18)\n    at _class.parseExprList (D:\\DownLoad\\DownLoad_Browser\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:7206:22)\n    at _class.parseExprAtom (D:\\DownLoad\\DownLoad_Browser\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:6478:30)\n    at _class.parseExprSubscripts (D:\\DownLoad\\DownLoad_Browser\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:6104:21)");
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var _default =
+{
+  data: function data() {
+    return {
+      tabbarArr: ['全部', '代付款', '待分享', '待发货', '待收货', '待评价'],
+      tabbarIndex: 0,
+      allorderArr: [
+      {
+        title: 'NeoDPillo印尼邓禄普官方正品原装进口天然乳胶枕头波浪颈椎枕...',
+        imgSrc: 'http://img1.imgtn.bdimg.com/it/u=2973069531,657782944&fm=26&gp=0.jpg',
+        count: 1,
+        price: '299',
+        shopName: 'neodpillo海外旗舰店',
+        id: '1' },
+      {
+        title: 'Neo然乳胶枕头波浪颈椎枕...',
+        imgSrc: 'http://img1.imgtn.bdimg.com/it/u=2752453349,2871240348&fm=26&gp=0.jpg',
+        count: 13,
+        price: '23339',
+        shopName: '恒源祥苏恒专卖店',
+        id: '2' }],
+
+
+      recommendArr: [
+      {
+        imgSrc: '../../static/home/1.jpg',
+        name: '[官方正品]亚泰集团全自动机械表男让他一人头表方',
+        price: '555',
+        fight: '36994',
+        id: '1' },
+      {
+        imgSrc: '../../static/home/1.jpg',
+        name: '[官方try正品]尔特全体育教育表男士手表方',
+        price: '445',
+        fight: '154',
+        id: '2' },
+      {
+        imgSrc: '../../static/home/1.jpg',
+        name: '[任何人]卡罗蒂夫全自动很反感表男士手表方',
+        price: '625',
+        fight: '34454',
+        id: '3' },
+      {
+        imgSrc: '../../static/home/1.jpg',
+        name: '[官方正让他忽然他品]卡罗蒂夫全自动机械表男士手表方',
+        price: '825',
+        fight: '8754',
+        id: '4' },
+      {
+        imgSrc: '../../static/home/1.jpg',
+        name: '[官方让他让他正品]卡罗蒂夫全自动机械表男士手表方',
+        price: '36',
+        fight: '98875',
+        id: '5' }] };
+
+
+
+  },
+  onLoad: function onLoad(options) {
+    this.tabbarIndex = options.index;
+  },
+  methods: {
+    tabbar: function tabbar(index) {//选项卡切换
+      this.tabbarIndex = index;
+    },
+    goToDetails: function goToDetails(id) {//跳转详情页
+      uni.navigateTo({
+        url: '/pages/details/details?id=' + id });
+
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

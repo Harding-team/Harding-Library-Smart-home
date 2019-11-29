@@ -7501,9 +7501,15 @@ module.exports = g;
 
 /***/ }),
 /* 4 */
+<<<<<<< HEAD
 /*!***************************************************************!*\
   !*** D:/git/Harding-Library-Smart-home/Smart-home/pages.json ***!
   \***************************************************************/
+=======
+/*!*****************************************************************************************!*\
+  !*** C:/Users/齐文蒸/Desktop/智能家具uni-app/Harding-Library-Smart-home/Smart-home/pages.json ***!
+  \*****************************************************************************************/
+>>>>>>> d480efc20a72045eda85c1b9f2929fbd13cfd352
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -8408,13 +8414,20 @@ module.exports = {"_from":"@dcloudio/uni-stat@next","_id":"@dcloudio/uni-stat@2.
 
 /***/ }),
 /* 7 */
+<<<<<<< HEAD
 /*!********************************************************************************!*\
   !*** D:/git/Harding-Library-Smart-home/Smart-home/pages.json?{"type":"style"} ***!
   \********************************************************************************/
+=======
+/*!**********************************************************************************************************!*\
+  !*** C:/Users/齐文蒸/Desktop/智能家具uni-app/Harding-Library-Smart-home/Smart-home/pages.json?{"type":"style"} ***!
+  \**********************************************************************************************************/
+>>>>>>> d480efc20a72045eda85c1b9f2929fbd13cfd352
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+<<<<<<< HEAD
 Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/home/home": { "navigationStyle": "custom" }, "pages/new/new": { "navigationBarTitleText": "新品" }, "pages/cart/cart": { "navigationBarTitleText": "购物车" }, "pages/my/my": { "navigationBarTitleText": "我的" }, "pages/details/details": { "navigationStyle": "custom" }, "pages/review/review": { "navigationBarTitleText": "评价详情" }, "pages/coupon/coupon": { "navigationBarTitleText": "领卷中心" }, "pages/order/order": { "navigationBarTitleText": "我的订单" }, "pages/collection/collection": { "navigationBarTitleText": "商品收藏" }, "pages/history/history": { "navigationBarTitleText": "历史浏览" }, "pages/refund/refund": { "navigationBarTitleText": "退款/售后" }, "pages/allorder/allorder": { "navigationBarTitleText": "订单分类" }, "pages/confirmorder/confirmorder": { "navigationBarTitleText": "确认订单" } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "", "navigationBarBackgroundColor": "#F8F8F8", "backgroundColor": "#F8F8F8" } };exports.default = _default;
 
 /***/ }),
@@ -8422,6 +8435,19 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /*!*******************************************************************************!*\
   !*** D:/git/Harding-Library-Smart-home/Smart-home/pages.json?{"type":"stat"} ***!
   \*******************************************************************************/
+=======
+<<<<<<< HEAD
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/home/home": { "navigationStyle": "custom", "usingComponents": {} }, "pages/new/new": { "navigationBarTitleText": "新品", "usingComponents": {} }, "pages/cart/cart": { "navigationBarTitleText": "购物车", "usingComponents": {} }, "pages/my/my": { "navigationBarTitleText": "我的", "usingComponents": {} }, "pages/details/details": { "navigationStyle": "custom", "usingComponents": {} }, "pages/review/review": { "navigationBarTitleText": "评价详情", "usingComponents": {} }, "pages/coupon/coupon": { "navigationBarTitleText": "领卷中心", "usingComponents": {} }, "pages/order/order": { "navigationBarTitleText": "我的订单", "usingComponents": {} }, "pages/collection/collection": { "navigationBarTitleText": "商品收藏", "usingComponents": {} }, "pages/history/history": { "navigationBarTitleText": "历史浏览", "usingComponents": {} }, "pages/refund/refund": { "navigationBarTitleText": "退款/售后", "usingComponents": {} }, "pages/allorder/allorder": { "navigationBarTitleText": "订单分类", "usingComponents": {} }, "pages/confirmorder/confirmorder": { "navigationBarTitleText": "确认订单", "usingComponents": {} }, "pages/getAddress/getAddress": { "navigationBarTitleText": "收货地址", "usingComponents": {} } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "", "navigationBarBackgroundColor": "#F8F8F8", "backgroundColor": "#F8F8F8" } };exports.default = _default;
+=======
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/home/home": { "navigationStyle": "custom" }, "pages/new/new": { "navigationBarTitleText": "新品" }, "pages/cart/cart": { "navigationBarTitleText": "购物车" }, "pages/my/my": { "navigationBarTitleText": "我的" }, "pages/details/details": { "navigationStyle": "custom" }, "pages/review/review": { "navigationBarTitleText": "评价详情" }, "pages/coupon/coupon": { "navigationBarTitleText": "领卷中心" }, "pages/order/order": { "navigationBarTitleText": "我的订单" }, "pages/collection/collection": { "navigationBarTitleText": "商品收藏" }, "pages/history/history": { "navigationBarTitleText": "历史浏览" }, "pages/refund/refund": { "navigationBarTitleText": "退款/售后" }, "pages/allorder/allorder": { "navigationBarTitleText": "订单分类" }, "pages/confirmorder/confirmorder": { "navigationBarTitleText": "确认订单" }, "pages/getAddress/getAddress": { "navigationBarTitleText": "收货地址" } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "", "navigationBarBackgroundColor": "#F8F8F8", "backgroundColor": "#F8F8F8" } };exports.default = _default;
+>>>>>>> 979b22d4e205edf13afa29a31af2f1abe9f1c172
+
+/***/ }),
+/* 8 */
+/*!*********************************************************************************************************!*\
+  !*** C:/Users/齐文蒸/Desktop/智能家具uni-app/Harding-Library-Smart-home/Smart-home/pages.json?{"type":"stat"} ***!
+  \*********************************************************************************************************/
+>>>>>>> d480efc20a72045eda85c1b9f2929fbd13cfd352
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 

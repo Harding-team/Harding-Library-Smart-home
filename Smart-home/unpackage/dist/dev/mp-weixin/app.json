@@ -12,7 +12,12 @@
     "pages/history/history",
     "pages/refund/refund",
     "pages/allorder/allorder",
+<<<<<<< HEAD
     "pages/confirmorder/confirmorder"
+=======
+    "pages/confirmorder/confirmorder",
+    "pages/getAddress/getAddress"
+>>>>>>> d480efc20a72045eda85c1b9f2929fbd13cfd352
   ],
   "subPackages": [],
   "window": {

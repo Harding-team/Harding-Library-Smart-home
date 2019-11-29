@@ -190,7 +190,11 @@
 		        </view>
 		  </view>
 		  <view class='home-paihang'>
+<<<<<<< HEAD
 		        <view class='home-paihang-list' v-for="(item,index) in ranking" :key='index' @tap="goToDetails(index)">
+=======
+		        <view class='home-paihang-list' v-for="(item,index) in ranking" :key='index' @tap="goToDetails()">
+>>>>>>> d480efc20a72045eda85c1b9f2929fbd13cfd352
 		              <image class='home-paihang-img' :src='item.images'></image>
 		              <image class='home-paihang-num' src='../../static/home/assemble-no.png'></image>
 		              <view>{{item.name}}</view>
@@ -214,7 +218,11 @@
 		 <view class='home-lick-tlt'>猜你喜欢</view>
 		 <view class='home-lick'>
 		       <view class='home-lick-box'>
+<<<<<<< HEAD
 		             <view class='home-lick-list'  v-for="(item,index) in piex" :key='index'  @tap="goToDetails(index)">
+=======
+		             <view class='home-lick-list'  v-for="(item,index) in piex" :key='index'  @tap="goToDetails()">
+>>>>>>> d480efc20a72045eda85c1b9f2929fbd13cfd352
 		                   <image :src='item.images'></image>
 		                   <view>{{item.name}}</view>
 		                   <view>{{item.details}}</view>
@@ -336,8 +344,13 @@
 				console.log('限时抢购')
 			},
 			// 跳转详情
+<<<<<<< HEAD
 			goToDetails(index){
 				let id = index
+=======
+			goToDetails(){
+				let id = 1
+>>>>>>> d480efc20a72045eda85c1b9f2929fbd13cfd352
 				uni.navigateTo({
 					url: '/pages/details/details?id='+id
 				})

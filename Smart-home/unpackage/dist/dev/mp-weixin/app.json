@@ -12,7 +12,8 @@
     "pages/history/history",
     "pages/refund/refund",
     "pages/allorder/allorder",
-    "pages/confirmorder/confirmorder"
+    "pages/confirmorder/confirmorder",
+    "pages/asigu/asigu"
   ],
   "subPackages": [],
   "window": {
@@ -49,6 +50,5 @@
       }
     ]
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap62.json"
+  "usingComponents": {}
 }

@@ -7501,9 +7501,9 @@ module.exports = g;
 
 /***/ }),
 /* 4 */
-/*!*****************************************************************************************!*\
-  !*** C:/Users/齐文蒸/Desktop/智能家具uni-app/Harding-Library-Smart-home/Smart-home/pages.json ***!
-  \*****************************************************************************************/
+/*!****************************************************************************!*\
+  !*** E:/smart home/smart/Harding-Library-Smart-home/Smart-home/pages.json ***!
+  \****************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -8408,20 +8408,20 @@ module.exports = {"_from":"@dcloudio/uni-stat@next","_id":"@dcloudio/uni-stat@2.
 
 /***/ }),
 /* 7 */
-/*!**********************************************************************************************************!*\
-  !*** C:/Users/齐文蒸/Desktop/智能家具uni-app/Harding-Library-Smart-home/Smart-home/pages.json?{"type":"style"} ***!
-  \**********************************************************************************************************/
+/*!*********************************************************************************************!*\
+  !*** E:/smart home/smart/Harding-Library-Smart-home/Smart-home/pages.json?{"type":"style"} ***!
+  \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/home/home": { "navigationStyle": "custom" }, "pages/new/new": { "navigationBarTitleText": "新品" }, "pages/cart/cart": { "navigationBarTitleText": "购物车" }, "pages/my/my": { "navigationBarTitleText": "我的" }, "pages/details/details": { "navigationStyle": "custom" }, "pages/review/review": { "navigationBarTitleText": "评价详情" }, "pages/coupon/coupon": { "navigationBarTitleText": "领卷中心" }, "pages/order/order": { "navigationBarTitleText": "我的订单" }, "pages/collection/collection": { "navigationBarTitleText": "商品收藏" }, "pages/history/history": { "navigationBarTitleText": "历史浏览" }, "pages/refund/refund": { "navigationBarTitleText": "退款/售后" }, "pages/allorder/allorder": { "navigationBarTitleText": "订单分类" }, "pages/confirmorder/confirmorder": { "navigationBarTitleText": "确认订单" } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "", "navigationBarBackgroundColor": "#F8F8F8", "backgroundColor": "#F8F8F8" } };exports.default = _default;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/home/home": { "navigationStyle": "custom", "usingComponents": { "uni-countdown": "/static/coment/cartData" } }, "pages/new/new": { "navigationBarTitleText": "新品", "usingComponents": {} }, "pages/cart/cart": { "navigationBarTitleText": "购物车", "usingComponents": {} }, "pages/my/my": { "navigationBarTitleText": "我的", "usingComponents": {} }, "pages/details/details": { "navigationStyle": "custom", "usingComponents": {} }, "pages/review/review": { "navigationBarTitleText": "评价详情", "usingComponents": {} }, "pages/coupon/coupon": { "navigationBarTitleText": "领卷中心", "usingComponents": {} }, "pages/order/order": { "navigationBarTitleText": "我的订单", "usingComponents": {} }, "pages/collection/collection": { "navigationBarTitleText": "商品收藏", "usingComponents": {} }, "pages/history/history": { "navigationBarTitleText": "历史浏览", "usingComponents": {} }, "pages/refund/refund": { "navigationBarTitleText": "退款/售后", "usingComponents": {} }, "pages/allorder/allorder": { "navigationBarTitleText": "订单分类", "usingComponents": {} }, "pages/confirmorder/confirmorder": { "navigationBarTitleText": "确认订单", "usingComponents": {} }, "pages/asigu/asigu": { "navigationBarTitleText": "练习页面" } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "", "navigationBarBackgroundColor": "#F8F8F8", "backgroundColor": "#F8F8F8" } };exports.default = _default;
 
 /***/ }),
 /* 8 */
-/*!*********************************************************************************************************!*\
-  !*** C:/Users/齐文蒸/Desktop/智能家具uni-app/Harding-Library-Smart-home/Smart-home/pages.json?{"type":"stat"} ***!
-  \*********************************************************************************************************/
+/*!********************************************************************************************!*\
+  !*** E:/smart home/smart/Harding-Library-Smart-home/Smart-home/pages.json?{"type":"stat"} ***!
+  \********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 

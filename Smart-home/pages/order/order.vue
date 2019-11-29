@@ -26,6 +26,11 @@
 			<!-- 商品按钮 -->
 			<view class="btn" v-if="item.orderNumber">
 				<view class="delete">删除</view>
+				<view class="evaluation">评价</view>
+			</view>
+			<view class="btn" v-else>
+				<view class="cancelOrder">取消订单</view>
+				<view class="toPay">去支付</view>
 				<view class="evaluation" @click="goToReview(item.id)">评价</view>
 			</view>
 			<view class="btn" v-else>

@@ -1,6 +1,7 @@
 {
   "navigationStyle": "custom",
   "usingComponents": {
-    "van-popup": "/wxcomponents/vant/dist/popup/index"
+    "van-popup": "/wxcomponents/vant/dist/popup/index",
+    "uni-countdown": "/wxcomponents/uni-countdown/uni-countdown"
   }
 }

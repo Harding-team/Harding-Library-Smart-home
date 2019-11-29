@@ -48,9 +48,7 @@
 		              <view>仅剩3人,快呼唤小伙伴才参加吧!</view>
 		              <view>
 		                    剩余
-		                    <text>00</text>:
-		                    <text>{{remaining}}</text>:
-		                    <text>00</text>
+		                    <uniCountdown background-color='#fd897d' color='#f50e0c' :show-day="false" :hour="12" :minute="12" :second="12"></uniCountdown>
 		                    结束
 		              </view>
 		        </view>  
@@ -68,7 +66,7 @@
 		               </view>
 					   <!-- 优惠卷 -->
 		               <view class='home-pt-quan'>
-		                    <image @click="Jumpcoupon" v-for="(item,index) in neck" :key='index' :src='item.neckName' ></image>
+		                    <image @tap="Jumpcoupon" v-for="(item,index) in neck" :key='index' :src='item.neckName' ></image>
 		               </view>  
 		        </view>
 		  </view>
@@ -239,7 +237,9 @@
 </template>
 
 <script>
+	import uniCountdown from "@/static/coment/cartData.vue"
 	export default {
+		components: {uniCountdown},
 		data() {
 			return {
 				title: 'Hello',
@@ -802,5 +802,15 @@
 	  left: 50%;
 	  top: 171rpx;
 	  transform: translate(-50%)
+	}
+	.home-all-b{
+		width: 94vw;
+		height: 70rpx;
+		margin: 20rpx auto;
+		text-align: center;
+		line-height: 70rpx;
+		/* border: 1px solid #ccc; */
+		font-size:24rpx;
+		box-shadow: 0 0 10rpx #f2f6f5;
 	}
 </style>

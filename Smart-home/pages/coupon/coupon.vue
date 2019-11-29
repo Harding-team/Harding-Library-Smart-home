@@ -36,6 +36,7 @@
 					<view>收藏+关注</view>
 				</view>
 				<view class="btn">
+					<view>立即使用</view>
 					<view  @click="goToDetails(item.id)">立即使用</view>
 				</view>
 			</view>
@@ -54,6 +55,12 @@
 				number:0,
 				couponArr:[
 					{
+						price:'5',
+						manPrice:'199',
+					},{
+						price:'55',
+						manPrice:'500',
+					},{
 						price:'2',
 						manPrice:'100',
 						id:'1'
@@ -62,6 +69,8 @@
 						manPrice:'500',
 						id:'2'
 					},{
+						price:'2',
+						manPrice:'100',
 						price:'245',
 						manPrice:'20',
 						id:'3'

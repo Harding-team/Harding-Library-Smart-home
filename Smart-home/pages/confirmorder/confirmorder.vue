@@ -134,6 +134,10 @@
 	margin:0;
 	padding:0;
 }
+.confirmorder{
+	width:100vw;
+	// 地图部分
+	}
 body{
 	background: #f2f2f2;
 }

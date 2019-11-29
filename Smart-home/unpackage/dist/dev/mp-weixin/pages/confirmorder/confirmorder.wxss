@@ -13,6 +13,9 @@
  */
 /* 颜色变量 */
 /* 行为相关颜色 */
+.confirmorder {
+  width: 100vw;
+}
 page {
   background: #f2f2f2;
 }

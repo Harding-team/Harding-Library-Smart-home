@@ -83,6 +83,11 @@
             "style" : {
 				"navigationBarTitleText":"确认订单"
 			}
+        },{
+            "path" : "pages/getAddress/getAddress",
+            "style" : {
+				"navigationBarTitleText":"收货地址"
+			}
         }
     ],
 	"tabBar": {

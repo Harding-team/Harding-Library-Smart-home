@@ -200,6 +200,18 @@ var _default =
       uni.navigateTo({
         url: '/pages/details/details?id=' + id });
 
+    },
+    goToConfirmorder: function goToConfirmorder(index) {//跳转确认订单页面
+      var arr = [];
+      arr.push(this.orderArr[index]);
+      uni.navigateTo({
+        url: '/pages/confirmorder/confirmorder?arr=' + arr });
+
+    },
+    goToReview: function goToReview(id) {//跳转评论页面
+      uni.navigateTo({
+        url: '/pages/review/review' });
+
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

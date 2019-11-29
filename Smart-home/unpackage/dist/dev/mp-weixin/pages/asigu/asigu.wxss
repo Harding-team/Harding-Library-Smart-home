@@ -1,0 +1,63 @@
+
+.rela-box{
+	width: 100vw;
+	height: 100vh;
+	position: relative;
+	background: #636363;
+	opacity: 0.6;
+}
+.slit{
+	position: fixed;
+	top: 25%;
+	left: 3vw;
+	width: 94vw;
+	height: 500rpx;
+	background: #fff;
+	border-radius:10rpx;
+}
+.slit-tow{
+	width: 100%;
+	height: 100rpx;
+	border-bottom: 1px solid #ccc;
+	position: relative;
+}
+.slit-title{
+	text-align: center;
+	line-height: 100rpx;
+	font-size:40rpx;
+	color: #000000;
+	display: block;
+}
+.remove-right{
+	line-height: 100rpx;
+	font-size:42rpx;
+	position: absolute;
+	right: 20rpx;
+	top: 0;
+	color: #ccc;
+}
+.slit-inp{
+	width: 100%;
+	height: 80rpx;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	padding: 0rpx 10rpx 0rpx 10rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	border-bottom: 1px solid #ccc;
+}
+.slit-inp input{
+	height: 80rpx;
+	line-height: 80rpx;
+}
+input::-webkit-input-placeholder { 
+	padding-left: 10rpx;
+}
+.slit-prcker{
+	height: 80rpx;
+	border-bottom:1px solid #ccc ;
+}
+
+

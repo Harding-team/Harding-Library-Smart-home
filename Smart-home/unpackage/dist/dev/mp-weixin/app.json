@@ -13,7 +13,8 @@
     "pages/refund/refund",
     "pages/allorder/allorder",
     "pages/confirmorder/confirmorder",
-    "pages/getAddress/getAddress"
+    "pages/getAddress/getAddress",
+    "pages/asigu/asigu"
   ],
   "subPackages": [],
   "window": {

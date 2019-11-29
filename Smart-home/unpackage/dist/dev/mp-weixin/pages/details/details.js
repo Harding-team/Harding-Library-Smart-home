@@ -122,7 +122,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var uniCountdown = function uniCountdown() {return __webpack_require__.e(/*! import() | wxcomponents/uni-countdown/uni-countdown */ "wxcomponents/uni-countdown/uni-countdown").then(__webpack_require__.bind(null, /*! @/wxcomponents/uni-countdown/uni-countdown.vue */ 125));};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var uniCountdown = function uniCountdown() {return __webpack_require__.e(/*! import() | wxcomponents/uni-countdown/uni-countdown */ "wxcomponents/uni-countdown/uni-countdown").then(__webpack_require__.bind(null, /*! @/wxcomponents/uni-countdown/uni-countdown.vue */ 140));};var _default =
 
 
 

@@ -1,4 +1,6 @@
 {
   "navigationStyle": "custom",
-  "usingComponents": {}
+  "usingComponents": {
+    "uni-countdown": "/static/coment/cartData"
+  }
 }

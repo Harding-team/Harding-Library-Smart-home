@@ -344,6 +344,183 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* 标题 */
 .status_bar {
      height: 25px;
@@ -893,5 +1070,16 @@ swiper swiper-item image{
   -webkit-transform: translate(-50%);
       -ms-transform: translate(-50%);
           transform: translate(-50%)
+}
+.home-all-b{
+	width: 94vw;
+	height: 70rpx;
+	margin: 20rpx auto;
+	text-align: center;
+	line-height: 70rpx;
+	/* border: 1px solid #ccc; */
+	font-size:24rpx;
+	-webkit-box-shadow: 0 0 10rpx #f2f6f5;
+	        box-shadow: 0 0 10rpx #f2f6f5;
 }
 

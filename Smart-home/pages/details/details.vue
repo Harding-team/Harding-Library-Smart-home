@@ -974,7 +974,7 @@
 					return ''+num
 				}
 			}	
-		},
+		}
 	}
 </script>
 

@@ -1,178 +1,6 @@
 <template>
 	<view>
 		<view class="status_bar">
-			</view>
-			<!-- 标题 -->
-			  <view class="home-box">
-				<text class="title-text">智能生态家居馆</text>
-				<!-- ；轮播图 -->
-				<swiper autoplay circular previous-margin="60rpx" next-margin="40rpx" indicator-dots>
-					<swiper-item v-for="(item,index) in swiperData" :key='index'>
-						<image :src='item.name'></image>
-					</swiper-item>
-				</swiper>
-			  </view>
-			  <!-- 拼团 -->
-			  <view class='home-pt'>
-					<image class='home-b' src='../../static/home/4.jpg '></image>
-					<view class='home-pt-tlt'>快来和我拼团吧!!</view>
-					<view class='home-pt-sp'>
-						 <image src='../../static/home/assemble-shop.png'></image>
-						 <view class='home-pt-spright'>
-							  <view>双面透气设计呵护颈椎健康泰国乳胶薄款平面枕头</view>
-							  <view>
-								  <text class='home-pt-money'>228</text>
-								  <text class='home-pt-moneyo'>150</text>
-							  </view>
-							  <view @click="limit">限时抢购</view>     
-						 </view>  
-					</view>
-					<!-- 拼团头像 -->
-					<view class='home-pt-pp'>
-						  <view>
-							  <image v-for="(item,index) in people" :key='index' :src='item.image'></image>
-							 <!-- <image src='../../static/home/assemble-no.png'></image>
-							  <image src='../../static/home/assemble-no.png'></image>
-							  <image src='../../static/home/assemble-no.png'></image>
-							  <image src='../../static/home/assemble-no.png'></image> -->
-						  </view>
-					</view>
-					<!-- 倒计时 -->
-					<view class='home-pt-time'>
-						  <view>仅剩3人,快呼唤小伙伴才参加吧!</view>
-						  <view>
-								剩余
-								<text>00</text>:
-								<text>{{remaining}}</text>:
-								<text>00</text>
-								结束
-						  </view>
-					</view>  
-					<view class='home-pt-wf'>
-						   <view>
-								<image src='../../static/home/logo1.png'></image>
-						   </view>
-						   <view>
-								 <text>玩趣加购</text>
-								 <text>分享有礼</text> 
-						   </view>
-						   <view>
-								  <text>先领券</text>
-								  <text>再购物</text>
-						   </view>
-						   <!-- 优惠卷 -->
-						   <view class='home-pt-quan'>
-								<image @click="Jumpcoupon" v-for="(item,index) in neck" :key='index' :src='item.neckName' ></image>
-						   </view>  
-					</view>
-			  </view>
-			  <!-- 镇店之宝 -->
-			  <view class='home-zhendian'>
-					<image class='home-b' src='../../static/home/4.jpg '></image>
-					<view class='home-zhendian-header'>
-						  <view>`
-								<image src='../../static/home/ele-left.png'></image>
-								<text>镇店之宝</text>
-								<text>任君挑选</text>
-								<image src='../../static/home/ele-right.png'></image>
-						  </view>
-						  <view>
-							  <image src='../../static/home/logo1.png'></image>
-							  <text>泰国平面波浪枕</text>
-						  </view>
-					</view>
-					<view class='home-zhendian-body'>
-						  <view class='home-zhendian-body1'>
-							   <image src='../../static/home/tailand-bg.png'></image>
-								<image src='../../static/home/tailand-1.png'></image>
-								<view>
-									  <image src='../../static/home/logo3.png'></image>
-									  <text>￥228.00</text>
-								</view>
-								<view>立即购买</view>
-						  </view>
-						  <view class='home-zhendian-body2'>
-								<image src='../../static/home/城堡.png'></image>
-								<view class='home-zhendian-body22'>
-									<image src='../../static/home/tailand-pmz.png'></image>
-									<view>
-										  <image src='../../static/home/logo2.png'></image>
-										  <view>泰国平面乳胶枕</view>
-										  <image src='../../static/home/tailand-pmzdt.png'></image>
-										  <view>￥228.00</view>
-										  <view>立即购买</view>
-									</view>
-								</view>
-						  </view>
-						  <view class='home-zhendian-body3'>
-								<image src='../../static/home/logo1.png'></image>
-								<view>泰国波浪按摩枕</view>
-								<image src='../../static/home/tailand--1.png'></image>
-								<view class='home-zhendian-body33'>
-									  <view>
-										  <view>波浪按摩枕</view>
-										  <image src='../../static/home/tailand11.png'></image>
-										  <view>
-												<image src='../../static/home/logo3.png'></image>
-												<text>￥238.00</text>
-												<text>立即购买</text>
-										  </view>
-									  </view>
-									  <view>
-										  <view>狼牙按摩枕</view>
-										  <image src='../../static/home/tailand11.png'></image>
-										  <view>
-												<image src='../../static/home/logo3.png'></image>
-												<text>￥228.00</text>
-												<text>立即购买</text>
-										  </view>
-									  </view>
-								</view>
-						  </view>
-					</view>
-			  </view>
-			  
-			  <!-- 品牌臻品 店长力荐 -->
-			  
-			  <view class='home-zhendian'>
-					<image class='home-b' src='../../static/home/4.jpg '></image>
-					<view class='home-zhendian-header'>
-						  <view>
-								<image src='../../static/home/ele-left.png'></image>
-								<text>品牌臻品</text>
-								<text>店长力荐</text>
-								<image src='../../static/home/ele-right.png'></image>
-						  </view>
-						  <view>
-							  <image src='../../static/home/logo1.png'></image>
-							  <text>泰国乳胶美容枕</text>
-						  </view>
-					</view>
-					
-					<view class='home-zhendian-body33' style='margin-top: 20px;'>
-						  <view>
-							  <view>波浪按摩枕</view>
-							  <image src='../../static/home/tailand11.png'></image>
-							  <view>
-									<image src='../../static/home/logo3.png'></image>
-									<text>￥238.00</text>
-									<text>立即购买</text>
-							  </view>
-						  </view>
-						  <view>
-							  <view>狼牙按摩枕</view>
-							  <image src='../../static/home/tailand-pmz.png'></image>
-							  <view>
-									<image src='../../static/home/logo3.png'></image>
-									<text>￥228.00</text>
-									<text>立即购买</text>
-							  </view>
-						  </view>
-						  
-					</view>
-					<view class="home-latex">
-						<image src="../../static/home/beti.png" mode=""></image>
-					</view>
 		</view>
 		<!-- 标题 -->
 		  <view class="home-box">
@@ -349,63 +177,62 @@
 				<view class="home-latex">
 					<image src="../../static/home/beti.png" mode=""></image>
 				</view>
-			  </view>
-			  
-			  <!-- 排行榜 -->
-			  <view class='home-paihang-tlt'>
-					<view>排行榜</view>
-					<view>
-						  <text>销量排行</text>
-					</view>
-			  </view>
-			  <view class='home-paihang'>
-					<view class='home-paihang-list' v-for="(item,index) in ranking" :key='index' @tap="goToDetails(index)">
-					<view class='home-paihang-list' v-for="(item,index) in ranking" :key='index' @tap="goToDetails()">
-						  <image class='home-paihang-img' :src='item.images'></image>
-						  <image class='home-paihang-num' src='../../static/home/assemble-no.png'></image>
-						  <view>{{item.name}}</view>
-						  <view>{{item.payment}}人付款</view>
-					</view>
-					<!-- <view class='home-paihang-list'>
-						  <image class='home-paihang-img' src='../../static/home/tailand11.png'></image>
-						  <image class='home-paihang-num' src='../../static/home/assemble-no.png'></image>
-						  <view>泰国乳胶狼牙按摩枕</view>
-						  <view>199人付款</view>
-					</view>
-					 <view class='home-paihang-list'>
-						  <image class='home-paihang-img' src='../../static/home/tailand11.png'></image>
-						  <image class='home-paihang-num' src='../../static/home/assemble-no.png'></image>
-						  <view>泰国乳胶狼牙按摩枕</view>
-						  <view>199人付款</view>
-					</view> -->
-			  </view>
-			  
-			  <!-- 猜你喜欢 -->
-			 <view class='home-lick-tlt'>猜你喜欢</view>
-			 <view class='home-lick'>
-				   <view class='home-lick-box'>
-						 <view class='home-lick-list'  v-for="(item,index) in piex" :key='index'  @tap="goToDetails(index)">
-							   <image :src='item.images'></image>
-							   <view>{{item.name}}</view>
-							   <view>{{item.details}}</view>
-							   <view>￥{{item.price}}</view>
-						 </view>
-						<!-- <view class='home-lick-list'>
-							   <image src='../../static/home/tailand-pmz.png'></image>
-							   <view>泰国波浪平面枕</view>
-							   <view>泰国天然乳胶原料</view>
-							   <view>￥228.0</view>
-						 </view>
-						 <view class='home-lick-list'>
-							   <image src='../../static/home/tailand-pmz.png'></image>
-							   <view>泰国波浪平面枕</view>
-							   <view>泰国天然乳胶原料</view>
-							   <view>￥228.0</view>
-						 </view> -->
-				   </view>  
-			 </view>
-			 <view class='home-all-b'>查看全部宝贝</view>
+
 		  </view>
+		  
+		  <!-- 排行榜 -->
+		  <view class='home-paihang-tlt'>
+		        <view>排行榜</view>
+		        <view>
+		              <text>销量排行</text>
+		        </view>
+		  </view>
+		  <view class='home-paihang'>
+		        <view class='home-paihang-list' v-for="(item,index) in ranking" :key='index' @tap="goToDetails()">
+		              <image class='home-paihang-img' :src='item.images'></image>
+		              <image class='home-paihang-num' src='../../static/home/assemble-no.png'></image>
+		              <view>{{item.name}}</view>
+		              <view>{{item.payment}}人付款</view>
+		        </view>
+		        <!-- <view class='home-paihang-list'>
+		              <image class='home-paihang-img' src='../../static/home/tailand11.png'></image>
+		              <image class='home-paihang-num' src='../../static/home/assemble-no.png'></image>
+		              <view>泰国乳胶狼牙按摩枕</view>
+		              <view>199人付款</view>
+		        </view>
+		         <view class='home-paihang-list'>
+		              <image class='home-paihang-img' src='../../static/home/tailand11.png'></image>
+		              <image class='home-paihang-num' src='../../static/home/assemble-no.png'></image>
+		              <view>泰国乳胶狼牙按摩枕</view>
+		              <view>199人付款</view>
+		        </view> -->
+		  </view>
+		  
+		  <!-- 猜你喜欢 -->
+		 <view class='home-lick-tlt'>猜你喜欢</view>
+		 <view class='home-lick'>
+		       <view class='home-lick-box'>
+		             <view class='home-lick-list'  v-for="(item,index) in piex" :key='index'  @tap="goToDetails()">
+		                   <image :src='item.images'></image>
+		                   <view>{{item.name}}</view>
+		                   <view>{{item.details}}</view>
+		                   <view>￥{{item.price}}</view>
+		             </view>
+		            <!-- <view class='home-lick-list'>
+		                   <image src='../../static/home/tailand-pmz.png'></image>
+		                   <view>泰国波浪平面枕</view>
+		                   <view>泰国天然乳胶原料</view>
+		                   <view>￥228.0</view>
+		             </view>
+		             <view class='home-lick-list'>
+		                   <image src='../../static/home/tailand-pmz.png'></image>
+		                   <view>泰国波浪平面枕</view>
+		                   <view>泰国天然乳胶原料</view>
+		                   <view>￥228.0</view>
+		             </view> -->
+		       </view>  
+		 </view>
+		 <view class='home-all-b'>查看全部宝贝</view>
 	  </view>
 </template>
 
@@ -509,8 +336,8 @@
 				console.log('限时抢购')
 			},
 			// 跳转详情
-			goToDetails(index){
-				let id = index
+			goToDetails(){
+				let id = 1
 				uni.navigateTo({
 					url: '/pages/details/details?id='+id
 				})

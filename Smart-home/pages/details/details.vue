@@ -13,35 +13,30 @@
 						:duration="1000" 
 						@change="onChange"
 						class="swiper">
-					<swiper-item v-for="(item,index) in bannerList"
-								 :item-id="index"
+					<swiper-item v-for="(item,index) in detailData.imgSrc"
 								 :key="index">
 						<image :src="item" 
-							   :data-pid="index" 
 							   class="swiper-image"
-							   @tap="onPreviewBannerImage"/>
+							   @tap="onPreviewBannerImage(index)"/>
 					</swiper-item>
 				</swiper>
-				<view class="dots">{{currentIndex+1}} / {{bannerList.length}}</view>
+				<view class="dots">{{currentIndex+1}} / {{detailData.imgSrc.length}}</view>
 				<view class="back" @tap="onBack">
 					<text class="icon-fanhui iconfont"></text>
 				</view>
 				<view class="cart" @tap="onCart">
 					<text class="icon-icon22fuzhi iconfont"></text>
 				</view>
-				<view class="more" @tap="onMore">
-					<text class="icon-gengduo iconfont"></text>
-				</view>
-				<view class="more-num">99</view>
+				<view class="cartAllCount">33</view>
 			</view>
 			<!-- 商品信息 -->
 			<view class="info">
 				<view class="info-detail">
-					<view class="info-title">新款正品外胎林/煊赫乳胶转/泰国正品波浪按摩枕60*49cm泰国正品波浪按摩枕60*49cm</view>
-					<view class="info-price">￥<text class="info-text"> 118-159</text></view>
+					<view class="info-title">{{detailData.title}}</view>
+					<view class="info-price">￥<text class="info-text"> {{detailData.smallPrice}}-{{detailData.bigPrice}}</text></view>
 					<view class="info-box">
-						<view class="ib-left">快递：免运费</view>
-						<view class="ib-right">已拼118笔</view>
+						<view class="ib-left">快递：{{detailData.freight}}</view>
+						<view class="ib-right">已拼{{detailData.toFight}}笔</view>
 					</view>
 				</view>
 				<button class="share" open-type="share">
@@ -52,7 +47,7 @@
 			<!-- 优惠 -->
 			<view class="offer" @tap="onOffer">
 				<view class="offer-detail">
-					<view class="offer-line" v-for="(item,index) in offerList" :key="index">
+					<view class="offer-line" v-for="(item,index) in detailData.offerList" :key="index">
 						<image :src="item.img" mode=""/>
 						<text>{{item.text}}</text>
 					</view>
@@ -63,39 +58,39 @@
 			<view class="return" @tap="onReturn">
 				<view class="return-detail">
 					<icon type="success" color="orange" size="12"/>
-					<text>七天无理由退货 · 48小时发货 · 假一赔十 · 全场包邮</text> 
+					<text v-for="(item,index) in detailData.refundServiceList" :key="index">{{item.name}} · </text> 
 				</view>
 				<text class="icon-youjiantou1 iconfont"></text>
 			</view>
 			<!-- 拼单 -->
 			<view class="single">
 				<view class="single-title">两人再拼单，可直接参与</view>
-				<view class="single-detail">
-					<view class="sd-left">
-						<image class="sd-img" src="../../static/home/assemble-1.jpeg" mode=""/>
-						<view class="sd-name">Loress tom</view>
-					</view>
-					<view class="sd-right">
-						<view class="sd-box">
-							<view class="sb-text">差3人拼成</view>
-							<view class="sb-time">剩余<text>22:22:22</text>结束</view>
+				<swiper :current="0"
+						:circular="true" 
+						:indicator-dots="false" 
+						:autoplay="true" 
+						:interval="5000" 
+						:duration="1000" 
+						:vertical="true"
+						class="single-swiper">
+					<swiper-item class="single-detail"
+							     v-for="(item,index) in detailData.singleList"
+							     :key="index">
+						<view class="sd-left">
+							<image class="sd-img" :src="item.avatar" mode=""/>
+							<view class="sd-name">{{item.username}}</view>
 						</view>
-						<view class="sd-btn" @tap="onSingle">去拼单</view>
-					</view>
-				</view>
-				<view class="single-detail">
-					<view class="sd-left">
-						<image class="sd-img" src="../../static/home/assemble-1.jpeg" mode=""/>
-						<view class="sd-name">Loress tom</view>
-					</view>
-					<view class="sd-right">
-						<view class="sd-box">
-							<view class="sb-text">差3人拼成</view>
-							<view class="sb-time">剩余<text>22:22:22</text>结束</view>
+						<view class="sd-right" @tap="onSingle">
+							<view class="sd-box">
+								<view class="sb-text">差{{item.num}}人拼成</view>
+								<view class="sb-time">
+									剩余<view><uni-countdown :show-day="false" :hour="item.hours" :minute="item.minutes" :second="item.seconds"></uni-countdown></view>结束
+								</view>
+							</view>
+							<view class="sd-btn">去拼单</view>
 						</view>
-						<view class="sd-btn" @tap="onSingle">去拼单</view>
-					</view>
-				</view>
+					</swiper-item>
+				</swiper>
 			</view>
 			<!-- 商品评价 -->
 			<view class="review">
@@ -105,19 +100,23 @@
 				</view>
 				<view class="review-tag">
 					<view class="rt-item" 
-						  v-for="(item,index) in reviewTag" 
+						  v-for="(item,index) in detailData.reviewTag" 
 						  :key="index" 
 						  @tap="onReview(index)"
-						  :class="['rt-item',tagCurrentIndex===index?'active':'']">{{item.text}} <text>({{item.num}})</text></view>
+						  :class="['rt-item',tagCurrentIndex===index?'active':'']">{{item.text}} <text>({{item.count}})</text></view>
 				</view>
-				<view class="review-detail" v-for="(item,index) in reviewDetail" :key="index" @tap="onReview()">
+				<view class="review-detail" v-for="(item,index) in  detailData.reviewDetail" :key="index">
 					<view class="rd-title">
 						<image class="rd-avatar" :src="item.avatar" />
-						<text class="rd-name">{{item.name}}</text>
+						<text class="rd-name">{{item.username}}</text>
 					</view>
-					<view class="rd-text">{{item.text}}</view>
-					<view class="rd-img" v-show="item.imgList">
-						<image :src="item2" mode="" v-for="(item2,index2) in item.imgList" :key="index2"/>
+					<view class="rd-text" @tap="onReview()">{{item.reviewText}}</view>
+					<view class="rd-img" v-show="item.reviewImg">
+						<image :src="item2" 
+							   mode="" 
+							   v-for="(item2,index2) in item.reviewImg" 
+							   :key="index2"
+							   @tap="onPreviewReviewDetailImage(index2,index)"/>
 					</view>
 				</view>
 			</view>
@@ -131,18 +130,19 @@
 				<view class="detail-title">商品详情</view>
 				<view class="detail-list">
 					<image class="detail-item" 
-						   v-for="(item,index) in detailList"
+						   v-for="(item,index) in detailData.goodsDetailList"
 						   :key="index"
 						   :src="item" 
-						   mode=""/>
+						   mode=""
+						   @tap="onPreviewGoodsDetailImage(index)"/>
 				</view>
 			</view>
 			<!-- 详情图片 -->
 			<view class="detail-images">
-				<image v-for="(item,index) in detailList"
+				<image v-for="(item,index) in detailData.detailList"
 					   :key="index"
 					   :src="item" 
-					   @tap="onPreviewDetailImage"/>
+					   @tap="onPreviewDetailImage(index)"/>
 			</view>
 		</scroll-view>
 		<view class="footer">
@@ -180,99 +180,662 @@
 							<view class="select-size">请选择尺码</view>
 						</view>
 					</view>
-					<view class="popup-box" v-for="(item,index) in styleSelect" :key="index">
-						<view class="popup-title">{{item.title}}</view>
-						<view class="popup-list">
-							<view :class="['popup-item',isStyleSelect ? 'active' : '']" 
-								  v-for="(item2,index2) in item.style" 
-								  :key="index2"
-								  @tap="onStyleSelect">{{item2}}</view>
+					<scroll-view class="popup-wrap" scroll-y="true">
+						<view class="popup-wrapper">
+							<view class="popup-box" v-for="(item,index) in detailData.styleSelect" :key="index">
+								<view class="popup-title">{{item.title}}</view>
+								<view class="popup-list">
+									<view :class="['popup-item',isStyleSelect ? 'active' : '']" 
+										  v-for="(item2,index2) in item.style" 
+										  :key="index2"
+										  @tap="onStyleSelect">{{item2}}</view>
+								</view>
+							</view>
+							<view class="popup-update">
+								<view>数量</view>
+								<view class="popup-add-cut">
+									<view class="cut">-</view>
+									<view class="count">1</view>
+									<view class="add">+</view>
+								</view>
+							</view>
 						</view>
-					</view>
+					</scroll-view>
 					<view class="popup-bottom" @tap="onSure">确定</view>
 				</view>
+			</van-popup>
+			<!-- 下弹出框   点击退货-->
+			<van-popup :show="isShowPopupReturn"
+					   position="bottom"
+					   custom-style="height: 60%;"
+					   closeable
+					   @close="onCloseReturn">
+			    <view class="pr">
+				   <view class="pr-title">服务说明</view>
+				   <view class="pr-list">
+					   <view class="pr-item" v-for="(item,index) in refundServiceList" :key="index">
+						   <view class="pr-name">{{item.name}}</view>
+						   <view class="pr-text">{{item.text}}</view>
+					   </view>
+				   </view>
+			    </view>
 			</van-popup>
 		</view>
 	</view>
 </template>
 
 <script>
+	import uniCountdown from "@/wxcomponents/uni-countdown/uni-countdown.vue"
 	export default {
+		components: {uniCountdown},
 		data() {
 			return {
-				bannerList: [
-					'../../static/home/1.jpg',
-					'../../static/home/2.jpg',
-					'../../static/home/3.png'
-				],
-				offerList: [{
-					img: '../../static/images/icon-1.png',
-					text: '10元店铺优惠券'
-				},{
-					img: '../../static/images/icon-1.png',
-					text: '10元店铺优惠券'
-				}],
-				reviewTag: [{
-					text: '便宜',
-					num: '126'
-				},{
-					text: '质量好',
-					num: '126'
-				},{
-					text: '软硬度好',
-					num: '126'
-				},{
-					text: '服务态度好',
-					num: '126'
-				},{
-					text: '枕着舒服',
-					num: '126'
-				}],
-				reviewDetail: [{
-					avatar: '../../static/home/assemble-1.jpeg',
-					name: 'Losres sfsdd',
-					text: '商品质量特别的好晚上睡觉用它-夜到天亮，睡得很踏实没有异味收到货，柔软度还是不错的，枕头本身的味道是很自然的味道。挺好的，有香味，也不贵。枕头买回来枕了两天发现很舒服而且没有味道快递也很快包装的也很好不错告诉包装精美乳胶枕头摸起来软软的，但枕起来又超级有弹性。值得回购呢'
-				},{
-					avatar: '../../static/home/assemble-1.jpeg',
-					name: 'Losres sfsdd',
-					text: '商品质量特别的好晚上睡觉用它-夜到天亮，睡得很踏实没有异味收到货，柔软度还是不错的，枕头本身的味道是很自然的味道。挺好的，有香味，也不贵。枕头买回来枕了两天发现很舒服而且没有味道快递也很快包装的也很好不错告诉包装精美乳胶枕头摸起来软软的，但枕起来又超级有弹性。值得回购呢',
-					imgList: [
-						'../../static/home/assemble-1.jpeg',
-						'../../static/home/assemble-1.jpeg',
-						'../../static/home/assemble-1.jpeg'
-					]
-				}],
-				detailList:[
-					'../../static/images/person1.png',
-					'../../static/images/person2.png',
-					'../../static/images/person3.png',
-					'../../static/images/person4.png',
-					'../../static/images/person5.png',
-					'../../static/images/person6.png'
-				],
-				styleSelect:[
+				dataList:[
 					{
-						title: '尺码',
-						style: [
-							'60cm*40cm','60cm*40cm'
+						"id": 0,
+						"title": "款正品外胎林/煊赫乳胶转/泰国正品波浪按摩枕60*49cm泰国正品波浪按摩枕60*49cm",
+						"smallPrice": 115,
+						"bigPrice": 156,
+						"freight": "免运费",
+						"count": 1,
+						"toBuy": 100,
+						"sales": 100,
+						"toFight": 118,
+						"fightPrice": 100,
+						"AlonePrice": 100,
+						"status": false,
+						"description": "款正品外胎林/煊赫乳胶转/泰国正品波浪按摩枕60*49cm泰国正品波浪按摩枕60*49cm款正品外胎林/煊赫乳胶转/泰国正品波浪按摩枕60*49cm泰国正品波浪按摩枕60*49cm",
+						"imgSrc": [
+							"https://gw.alicdn.com/bao/uploaded/i4/2206483534228/O1CN01TYNFzu1h6T8WV8Lz6_!!0-item_pic.jpg",
+							"https://gw.alicdn.com/bao/uploaded/i1/2112833578/O1CN01GuO7ti1cIlck2lJRt_!!2-item_pic.png",
+							"https://gw.alicdn.com/bao/uploaded/i4/2086953701/O1CN01ceqmmJ1dD6PZoyemf_!!0-item_pic.jpg"
+						],
+						"offerList": [
+							{
+								"img": "../../static/images/icon-1.png",
+								"text": "10元店铺优惠券"
+							},{
+								"img": "../../static/images/icon-1.png",
+								"text": "10元店铺优惠券"
+							}
+						],
+						"refundServiceList": [
+							{
+								"name": "急速退款",
+								"text": "拼单成功6小时内，待发货状态下"
+							},{
+								"name": "全场包邮",
+								"text": "拼单成功6小时内，待发货状态下"
+							},{
+								"name": "7天无理由哦",
+								"text": "拼单成功6小时内，待发货状态下"
+							},{
+								"name": "48小时发货",
+								"text": "拼单成功6小时内，待发货状态下"
+							},{
+								"name": "假一赔十",
+								"text": "拼单成功6小时内，待发货状态下"
+							}
+						],
+						"singleList": [
+							{
+								"remainingTime": 86400000,
+								"username": "Lddss tom",
+								"avatar": "../../static/home/assemble-1.jpeg",
+								"num": 1
+							},{
+								"remainingTime": 86400000,
+								"username": "Lddss sss",
+								"avatar": "../../static/home/assemble-1.jpeg",
+								"num": 2
+							},{
+								"remainingTime": 86400000,
+								"username": "dddd tom",
+								"avatar": "../../static/home/assemble-1.jpeg",
+								"num": 1
+							}
+						],
+						"reviewDetail": [
+							{
+								"username": "Losres sfsdd",
+								"avatar": "../../static/home/assemble-1.jpeg",
+								"reviewText": "商品质量特别的好晚上睡觉用它-夜到天亮，睡得很踏实没有异味收到货，柔软度还是不错的，枕头本身的味道是很自然的味道。挺好的，有香味，也不贵。枕头买回来枕了两天发现很舒服而且没有味道快递也很快包装的也很好不错告诉包装精美乳胶枕头摸起来软软的，但枕起来又超级有弹性。值得回购呢",
+								"reviewTag": [
+									{
+										"type": 0,
+										"text": "便宜",
+										"count": 126
+									},
+									{
+										"type": 1,
+										"text": "质量好",
+										"count": 126
+									},
+									{
+										"type": 2,
+										"text": "软硬度好",
+										"count": 126
+									},
+									{
+										"type": 3,
+										"text": "服务态度好",
+										"count": 126
+									},
+									{
+										"type": 4,
+										"text": "枕着舒服",
+										"count": 126
+									}
+								]
+							},{
+								"username": "Losres sfsdd",
+								"avatar": "../../static/home/assemble-1.jpeg",
+								"reviewText": "商品质量特别的好晚上睡觉用它-夜到天亮，睡得很踏实没有异味收到货，柔软度还是不错的，枕头本身的味道是很自然的味道。挺好的，有香味，也不贵。枕头买回来枕了两天发现很舒服而且没有味道快递也很快包装的也很好不错告诉包装精美乳胶枕头摸起来软软的，但枕起来又超级有弹性。值得回购呢",
+								"reviewImg": [
+									"https://gw.alicdn.com/bao/uploaded/i4/2206483534228/O1CN01TYNFzu1h6T8WV8Lz6_!!0-item_pic.jpg",
+									"https://gw.alicdn.com/bao/uploaded/i1/2112833578/O1CN01GuO7ti1cIlck2lJRt_!!2-item_pic.png",
+									"https://gw.alicdn.com/bao/uploaded/i4/2086953701/O1CN01ceqmmJ1dD6PZoyemf_!!0-item_pic.jpg"
+								],
+								"reviewTag": [
+									{
+										"type": 0,
+										"text": "便宜",
+										"count": 126
+									},
+									{
+										"type": 1,
+										"text": "质量好",
+										"count": 126
+									},
+									{
+										"type": 2,
+										"text": "软硬度好",
+										"count": 126
+									},
+									{
+										"type": 3,
+										"text": "服务态度好",
+										"count": 126
+									},
+									{
+										"type": 4,
+										"text": "枕着舒服",
+										"count": 126
+									}
+								]
+							},
+						],
+						"reviewTag": [
+							{
+								"type": 0,
+								"text": "便宜",
+								"count": 126
+							},
+							{
+								"type": 1,
+								"text": "质量好",
+								"count": 126
+							},
+							{
+								"type": 2,
+								"text": "软硬度好",
+								"count": 126
+							},
+							{
+								"type": 3,
+								"text": "服务态度好",
+								"count": 126
+							},
+							{
+								"type": 4,
+								"text": "枕着舒服",
+								"count": 126
+							}
+						],
+						"goodsDetailList": [
+							"https://gw.alicdn.com/bao/uploaded/i4/2206483534228/O1CN01TYNFzu1h6T8WV8Lz6_!!0-item_pic.jpg",
+							"https://gw.alicdn.com/bao/uploaded/i1/2112833578/O1CN01GuO7ti1cIlck2lJRt_!!2-item_pic.png",
+							"https://gw.alicdn.com/bao/uploaded/i4/2086953701/O1CN01ceqmmJ1dD6PZoyemf_!!0-item_pic.jpg",
+							"https://gw.alicdn.com/bao/uploaded/i4/2206483534228/O1CN01TYNFzu1h6T8WV8Lz6_!!0-item_pic.jpg",
+							"https://gw.alicdn.com/bao/uploaded/i1/2112833578/O1CN01GuO7ti1cIlck2lJRt_!!2-item_pic.png",
+							"https://gw.alicdn.com/bao/uploaded/i4/2086953701/O1CN01ceqmmJ1dD6PZoyemf_!!0-item_pic.jpg"
+						],
+						"detailList": [
+							"https://gw.alicdn.com/bao/uploaded/i4/2206483534228/O1CN01TYNFzu1h6T8WV8Lz6_!!0-item_pic.jpg",
+							"https://gw.alicdn.com/bao/uploaded/i1/2112833578/O1CN01GuO7ti1cIlck2lJRt_!!2-item_pic.png",
+							"https://gw.alicdn.com/bao/uploaded/i4/2086953701/O1CN01ceqmmJ1dD6PZoyemf_!!0-item_pic.jpg",
+							"https://gw.alicdn.com/bao/uploaded/i4/2206483534228/O1CN01TYNFzu1h6T8WV8Lz6_!!0-item_pic.jpg",
+							"https://gw.alicdn.com/bao/uploaded/i1/2112833578/O1CN01GuO7ti1cIlck2lJRt_!!2-item_pic.png",
+							"https://gw.alicdn.com/bao/uploaded/i4/2086953701/O1CN01ceqmmJ1dD6PZoyemf_!!0-item_pic.jpg"
+						],
+						"styleSelect": [
+							{
+								"title": "尺码",
+								"style": [
+									"60cm*40cm","60cm*40cm"
+								]
+							},
+							{
+								"title": "颜色",
+								"style": [
+									"红色","绿色"
+								]
+							}
 						]
-					},
-					{
-						title: '颜色',
-						style: [
-							'红色','绿色'
+					},{
+						"id": 1,
+						"title": "款正品外胎林/煊赫乳胶转/泰国正品波浪按摩枕60*49cm泰国正品波浪按摩枕60*49cm",
+						"smallPrice": 115,
+						"bigPrice": 156,
+						"freight": "免运费",
+						"count": 1,
+						"toBuy": 100,
+						"sales": 100,
+						"toFight": 118,
+						"fightPrice": 100,
+						"AlonePrice": 100,
+						"status": false,
+						"description": "款正品外胎林/煊赫乳胶转/泰国正品波浪按摩枕60*49cm泰国正品波浪按摩枕60*49cm款正品外胎林/煊赫乳胶转/泰国正品波浪按摩枕60*49cm泰国正品波浪按摩枕60*49cm",
+						"imgSrc": [
+							"https://img.alicdn.com/tps/i4/TB1QtfYN3HqK1RjSZJnSuvNLpXa.jpg_250x250Q90.jpg",
+							"https://img.alicdn.com/imgextra/i3/883737303/O1CN01IoENMZ23op0c1gloK_!!883737303.jpg_250x250Q90.jpg",
+							"https://img.alicdn.com/tps/i4/TB1DmirdB1D3KVjSZFySuvuFpXa.jpg_250x250Q90.jpg"
+						],
+						"offerList": [
+							{
+								"img": "../../static/images/icon-1.png",
+								"text": "10元店铺优惠券"
+							},{
+								"img": "../../static/images/icon-1.png",
+								"text": "10元店铺优惠券"
+							}
+						],
+						"refundServiceList": [
+							{
+								"name": "急速退款",
+								"text": "拼单成功6小时内，待发货状态下"
+							},{
+								"name": "全场包邮",
+								"text": "拼单成功6小时内，待发货状态下"
+							},{
+								"name": "7天无理由哦",
+								"text": "拼单成功6小时内，待发货状态下"
+							},{
+								"name": "48小时发货",
+								"text": "拼单成功6小时内，待发货状态下"
+							},{
+								"name": "假一赔十",
+								"text": "拼单成功6小时内，待发货状态下"
+							}
+						],
+						"singleList": [
+							{
+								"remainingTime": 86400000,
+								"username": "Lddss tom",
+								"avatar": "../../static/home/assemble-1.jpeg",
+								"num": 1
+							},{
+								"remainingTime": 86400000,
+								"username": "Lddss sss",
+								"avatar": "../../static/home/assemble-1.jpeg",
+								"num": 2
+							},{
+								"remainingTime": 86400000,
+								"username": "dddd tom",
+								"avatar": "../../static/home/assemble-1.jpeg",
+								"num": 1
+							}
+						],
+						"reviewDetail": [
+							{
+								"username": "Losres sfsdd",
+								"avatar": "../../static/home/assemble-1.jpeg",
+								"reviewText": "商品质量特别的好晚上睡觉用它-夜到天亮，睡得很踏实没有异味收到货，柔软度还是不错的，枕头本身的味道是很自然的味道。挺好的，有香味，也不贵。枕头买回来枕了两天发现很舒服而且没有味道快递也很快包装的也很好不错告诉包装精美乳胶枕头摸起来软软的，但枕起来又超级有弹性。值得回购呢",
+								"reviewTag": [
+									{
+										"type": 0,
+										"text": "便宜",
+										"count": 126
+									},
+									{
+										"type": 1,
+										"text": "质量好",
+										"count": 126
+									},
+									{
+										"type": 2,
+										"text": "软硬度好",
+										"count": 126
+									},
+									{
+										"type": 3,
+										"text": "服务态度好",
+										"count": 126
+									},
+									{
+										"type": 4,
+										"text": "枕着舒服",
+										"count": 126
+									}
+								]
+							},{
+								"username": "Losres sfsdd",
+								"avatar": "../../static/home/assemble-1.jpeg",
+								"reviewText": "商品质量特别的好晚上睡觉用它-夜到天亮，睡得很踏实没有异味收到货，柔软度还是不错的，枕头本身的味道是很自然的味道。挺好的，有香味，也不贵。枕头买回来枕了两天发现很舒服而且没有味道快递也很快包装的也很好不错告诉包装精美乳胶枕头摸起来软软的，但枕起来又超级有弹性。值得回购呢",
+								"reviewImg": [
+									"https://gw.alicdn.com/bao/uploaded/i4/2206483534228/O1CN01TYNFzu1h6T8WV8Lz6_!!0-item_pic.jpg",
+									"https://gw.alicdn.com/bao/uploaded/i1/2112833578/O1CN01GuO7ti1cIlck2lJRt_!!2-item_pic.png",
+									"https://gw.alicdn.com/bao/uploaded/i4/2086953701/O1CN01ceqmmJ1dD6PZoyemf_!!0-item_pic.jpg"
+								],
+								"reviewTag": [
+									{
+										"type": 0,
+										"text": "便宜",
+										"count": 126
+									},
+									{
+										"type": 1,
+										"text": "质量好",
+										"count": 126
+									},
+									{
+										"type": 2,
+										"text": "软硬度好",
+										"count": 126
+									},
+									{
+										"type": 3,
+										"text": "服务态度好",
+										"count": 126
+									},
+									{
+										"type": 4,
+										"text": "枕着舒服",
+										"count": 126
+									}
+								]
+							},
+						],
+						"reviewTag": [
+							{
+								"type": 0,
+								"text": "便宜",
+								"count": 126
+							},
+							{
+								"type": 1,
+								"text": "质量好",
+								"count": 126
+							},
+							{
+								"type": 2,
+								"text": "软硬度好",
+								"count": 126
+							},
+							{
+								"type": 3,
+								"text": "服务态度好",
+								"count": 126
+							},
+							{
+								"type": 4,
+								"text": "枕着舒服",
+								"count": 126
+							}
+						],
+						"goodsDetailList": [
+							"https://gw.alicdn.com/bao/uploaded/i4/2206483534228/O1CN01TYNFzu1h6T8WV8Lz6_!!0-item_pic.jpg",
+							"https://gw.alicdn.com/bao/uploaded/i1/2112833578/O1CN01GuO7ti1cIlck2lJRt_!!2-item_pic.png",
+							"https://gw.alicdn.com/bao/uploaded/i4/2086953701/O1CN01ceqmmJ1dD6PZoyemf_!!0-item_pic.jpg",
+							"https://gw.alicdn.com/bao/uploaded/i4/2206483534228/O1CN01TYNFzu1h6T8WV8Lz6_!!0-item_pic.jpg",
+							"https://gw.alicdn.com/bao/uploaded/i1/2112833578/O1CN01GuO7ti1cIlck2lJRt_!!2-item_pic.png",
+							"https://gw.alicdn.com/bao/uploaded/i4/2086953701/O1CN01ceqmmJ1dD6PZoyemf_!!0-item_pic.jpg"
+						],
+						"detailList": [
+							"https://gw.alicdn.com/bao/uploaded/i4/2206483534228/O1CN01TYNFzu1h6T8WV8Lz6_!!0-item_pic.jpg",
+							"https://gw.alicdn.com/bao/uploaded/i1/2112833578/O1CN01GuO7ti1cIlck2lJRt_!!2-item_pic.png",
+							"https://gw.alicdn.com/bao/uploaded/i4/2086953701/O1CN01ceqmmJ1dD6PZoyemf_!!0-item_pic.jpg",
+							"https://gw.alicdn.com/bao/uploaded/i4/2206483534228/O1CN01TYNFzu1h6T8WV8Lz6_!!0-item_pic.jpg",
+							"https://gw.alicdn.com/bao/uploaded/i1/2112833578/O1CN01GuO7ti1cIlck2lJRt_!!2-item_pic.png",
+							"https://gw.alicdn.com/bao/uploaded/i4/2086953701/O1CN01ceqmmJ1dD6PZoyemf_!!0-item_pic.jpg"
+						],
+						"styleSelect": [
+							{
+								"title": "尺码",
+								"style": [
+									"60cm*40cm","60cm*40cm"
+								]
+							},
+							{
+								"title": "颜色",
+								"style": [
+									"红色","绿色"
+								]
+							}
+						]
+					},{
+						"id": 2,
+						"title": "款正品外胎林/煊赫乳胶转/泰国正品波浪按摩枕60*49cm泰国正品波浪按摩枕60*49cm",
+						"smallPrice": 115,
+						"bigPrice": 156,
+						"freight": "免运费",
+						"count": 1,
+						"toBuy": 100,
+						"sales": 100,
+						"toFight": 118,
+						"fightPrice": 100,
+						"AlonePrice": 100,
+						"status": false,
+						"description": "款正品外胎林/煊赫乳胶转/泰国正品波浪按摩枕60*49cm泰国正品波浪按摩枕60*49cm款正品外胎林/煊赫乳胶转/泰国正品波浪按摩枕60*49cm泰国正品波浪按摩枕60*49cm",
+						"imgSrc": [
+							"https://img.alicdn.com/bao/uploaded/bao/upload/TB15jYnheH2gK0jSZJnXXaT1FXa.png_400x400q60.jpg",
+							"https://img.alicdn.com/bao/uploaded/bao/upload/TB1shYWnW61gK0jSZFlXXXDKFXa.png_400x400q60.jpg",
+							"https://img.alicdn.com/bao/uploaded/bao/upload/TB1NKDkha67gK0jSZFHXXa9jVXa.png_400x400q60.jpg"
+						],
+						"offerList": [
+							{
+								"img": "../../static/images/icon-1.png",
+								"text": "10元店铺优惠券"
+							},{
+								"img": "../../static/images/icon-1.png",
+								"text": "10元店铺优惠券"
+							}
+						],
+						"refundServiceList": [
+							{
+								"name": "急速退款",
+								"text": "拼单成功6小时内，待发货状态下"
+							},{
+								"name": "全场包邮",
+								"text": "拼单成功6小时内，待发货状态下"
+							},{
+								"name": "7天无理由哦",
+								"text": "拼单成功6小时内，待发货状态下"
+							},{
+								"name": "48小时发货",
+								"text": "拼单成功6小时内，待发货状态下"
+							},{
+								"name": "假一赔十",
+								"text": "拼单成功6小时内，待发货状态下"
+							}
+						],
+						"singleList": [
+							{
+								"remainingTime": 86400000,
+								"username": "Lddss tom",
+								"avatar": "../../static/home/assemble-1.jpeg",
+								"num": 1
+							},{
+								"remainingTime": 86400000,
+								"username": "Lddss sss",
+								"avatar": "../../static/home/assemble-1.jpeg",
+								"num": 2
+							},{
+								"remainingTime": 86400000,
+								"username": "dddd tom",
+								"avatar": "../../static/home/assemble-1.jpeg",
+								"num": 1
+							}
+						],
+						"reviewDetail": [
+							{
+								"username": "Losres sfsdd",
+								"avatar": "../../static/home/assemble-1.jpeg",
+								"reviewText": "商品质量特别的好晚上睡觉用它-夜到天亮，睡得很踏实没有异味收到货，柔软度还是不错的，枕头本身的味道是很自然的味道。挺好的，有香味，也不贵。枕头买回来枕了两天发现很舒服而且没有味道快递也很快包装的也很好不错告诉包装精美乳胶枕头摸起来软软的，但枕起来又超级有弹性。值得回购呢",
+								"reviewTag": [
+									{
+										"type": 0,
+										"text": "便宜",
+										"count": 126
+									},
+									{
+										"type": 1,
+										"text": "质量好",
+										"count": 126
+									},
+									{
+										"type": 2,
+										"text": "软硬度好",
+										"count": 126
+									},
+									{
+										"type": 3,
+										"text": "服务态度好",
+										"count": 126
+									},
+									{
+										"type": 4,
+										"text": "枕着舒服",
+										"count": 126
+									}
+								]
+							},{
+								"username": "Losres sfsdd",
+								"avatar": "../../static/home/assemble-1.jpeg",
+								"reviewText": "商品质量特别的好晚上睡觉用它-夜到天亮，睡得很踏实没有异味收到货，柔软度还是不错的，枕头本身的味道是很自然的味道。挺好的，有香味，也不贵。枕头买回来枕了两天发现很舒服而且没有味道快递也很快包装的也很好不错告诉包装精美乳胶枕头摸起来软软的，但枕起来又超级有弹性。值得回购呢",
+								"reviewImg": [
+									"https://gw.alicdn.com/bao/uploaded/i4/2206483534228/O1CN01TYNFzu1h6T8WV8Lz6_!!0-item_pic.jpg",
+									"https://gw.alicdn.com/bao/uploaded/i1/2112833578/O1CN01GuO7ti1cIlck2lJRt_!!2-item_pic.png",
+									"https://gw.alicdn.com/bao/uploaded/i4/2086953701/O1CN01ceqmmJ1dD6PZoyemf_!!0-item_pic.jpg"
+								],
+								"reviewTag": [
+									{
+										"type": 0,
+										"text": "便宜",
+										"count": 126
+									},
+									{
+										"type": 1,
+										"text": "质量好",
+										"count": 126
+									},
+									{
+										"type": 2,
+										"text": "软硬度好",
+										"count": 126
+									},
+									{
+										"type": 3,
+										"text": "服务态度好",
+										"count": 126
+									},
+									{
+										"type": 4,
+										"text": "枕着舒服",
+										"count": 126
+									}
+								]
+							},
+						],
+						"reviewTag": [
+							{
+								"type": 0,
+								"text": "便宜",
+								"count": 126
+							},
+							{
+								"type": 1,
+								"text": "质量好",
+								"count": 126
+							},
+							{
+								"type": 2,
+								"text": "软硬度好",
+								"count": 126
+							},
+							{
+								"type": 3,
+								"text": "服务态度好",
+								"count": 126
+							},
+							{
+								"type": 4,
+								"text": "枕着舒服",
+								"count": 126
+							}
+						],
+						"goodsDetailList": [
+							"https://gw.alicdn.com/bao/uploaded/i4/2206483534228/O1CN01TYNFzu1h6T8WV8Lz6_!!0-item_pic.jpg",
+							"https://gw.alicdn.com/bao/uploaded/i1/2112833578/O1CN01GuO7ti1cIlck2lJRt_!!2-item_pic.png",
+							"https://gw.alicdn.com/bao/uploaded/i4/2086953701/O1CN01ceqmmJ1dD6PZoyemf_!!0-item_pic.jpg",
+							"https://gw.alicdn.com/bao/uploaded/i4/2206483534228/O1CN01TYNFzu1h6T8WV8Lz6_!!0-item_pic.jpg",
+							"https://gw.alicdn.com/bao/uploaded/i1/2112833578/O1CN01GuO7ti1cIlck2lJRt_!!2-item_pic.png",
+							"https://gw.alicdn.com/bao/uploaded/i4/2086953701/O1CN01ceqmmJ1dD6PZoyemf_!!0-item_pic.jpg"
+						],
+						"detailList": [
+							"https://gw.alicdn.com/bao/uploaded/i4/2206483534228/O1CN01TYNFzu1h6T8WV8Lz6_!!0-item_pic.jpg",
+							"https://gw.alicdn.com/bao/uploaded/i1/2112833578/O1CN01GuO7ti1cIlck2lJRt_!!2-item_pic.png",
+							"https://gw.alicdn.com/bao/uploaded/i4/2086953701/O1CN01ceqmmJ1dD6PZoyemf_!!0-item_pic.jpg",
+							"https://gw.alicdn.com/bao/uploaded/i4/2206483534228/O1CN01TYNFzu1h6T8WV8Lz6_!!0-item_pic.jpg",
+							"https://gw.alicdn.com/bao/uploaded/i1/2112833578/O1CN01GuO7ti1cIlck2lJRt_!!2-item_pic.png",
+							"https://gw.alicdn.com/bao/uploaded/i4/2086953701/O1CN01ceqmmJ1dD6PZoyemf_!!0-item_pic.jpg"
+						],
+						"styleSelect": [
+							{
+								"title": "尺码",
+								"style": [
+									"60cm*40cm","60cm*40cm"
+								]
+							},
+							{
+								"title": "颜色",
+								"style": [
+									"红色","绿色"
+								]
+							}
 						]
 					}
 				],
+				detailData: {},
+				timeArr: [],
 				currentIndex: 0,
 				tagCurrentIndex: 0,
 				isShowPopup: false,
+				isShowPopupReturn: false,
 				isCollection: false,
 				isStyleSelect: false
 			}
 		},
-		onLoad() {
-	
+		onLoad(options) {
+			this.id = options.id
+			this.dataList.forEach((item)=>{
+				if(item.id == options.id){
+					this.detailData = item;
+				}
+			})
+			this.detailData.singleList.forEach((item,index) => {
+				let time    = item.remainingTime
+				var hours    = this._toDouble(parseInt(time/3600000))							//计算小时
+				var minutes  = this._toDouble(parseInt((time-hours*3600000)/60000))   			//计算分
+				var seconds  = this._toDouble(parseInt((time-hours*3600000-minutes*60000)/1000))	//计算秒
+				item.hours = hours;
+				item.minutes = minutes;
+				item.seconds = seconds;
+			})
+		},
+		onShow(){
+			let collectArr = uni.getStorageSync('collectArr') || [];
+			this.isCollection = collectArr.some((item) => item.id == this.id)
 		},
 		methods: {
 			// 轮播图动画改变时
@@ -281,7 +844,9 @@
 			},
 			// 点击返回icon
 			onBack(){
-				console.log('点击返回');
+				uni.navigateBack({
+					animationDuration: 100
+				})
 			},
 			// 点击购物车icon
 			onCart(){
@@ -289,42 +854,60 @@
 					url: '/pages/cart/cart'
 				})
 			},
-			// 点击更多icon
-			onMore(){
-				console.log('点击更多');
-			},
 			// 点击预览轮播图片
-			onPreviewBannerImage(){
+			onPreviewBannerImage(index){
 				uni.previewImage({
-					
+					urls: this.detailData.imgSrc,
+					current: index
+				})
+			},
+			// 点击预览评价详情图片
+			onPreviewReviewDetailImage(index2,index){
+				uni.previewImage({
+					urls: this.detailData.reviewDetail[index].reviewImg,
+					current: index2
+				})
+			},
+			// 点击预览商品详情图片
+			onPreviewGoodsDetailImage(index){
+				uni.previewImage({
+					urls: this.detailData.goodsDetailList,
+					current: index
 				})
 			},
 			// 点击预览详情图片
-			onPreviewDetailImage(){
+			onPreviewDetailImage(index){
 				uni.previewImage({
-					
+					urls: this.detailData.detailList,
+					current: index
 				})
 			},
-			// 点击优惠券
+			// 点击优惠券跳转优惠劵界面
 			onOffer(){
-				console.log('跳转优惠劵界面');
+				uni.navigateTo({
+					url: '/pages/coupon/coupon'
+				})
 			},
 			// 点击七天无理由退款
 			onReturn(){
-				console.log('点击七天无理由退款');
+				this.isShowPopupReturn = true;
 			},
-			// 点击去拼单
+			// 退货关闭按钮
+			onCloseReturn(){
+				this.isShowPopupReturn = false;
+			},
+			// 点击去拼单  弹出遮罩层
 			onSingle(){
 				this.isShowPopup = true;
 			},
-			// 点击查看更多评价 跳转页面
+			// 点击查看更多评价 跳转详情页面
 			onReview(index){
 				// 判断传过来的变量是否是一个数字
 				if(typeof(index)=="number"){
 					this.tagCurrentIndex = index;
 				}
 				uni.navigateTo({
-					url: '/pages/review/review?index='+index
+					url: '/pages/review/review?index='+index+'&id='+this.id
 				})
 			},
 			// 跳转首页icon
@@ -335,7 +918,16 @@
 			},
 			// 点击收藏icon
 			onCollection(){
-				console.log(111)
+				let collectArr = uni.getStorageSync('collectArr') || [];
+				let index = this._isHasOne(this.id,collectArr)
+				if(this.isCollection){
+					collectArr.splice(index,1)
+				}else{
+					collectArr.push({
+						id: this.id
+					})
+				}
+				uni.setStorageSync('collectArr',collectArr)
 				this.isCollection = !this.isCollection;
 			},
 			// 点击客服icon
@@ -360,8 +952,28 @@
 			},
 			// 点击确定将选择的产品参数存起来跳转到订单页面
 			onSure(){
-				
-			}
+				console.log(111)
+			},
+			// 返回下标的
+			_isHasOne(id,arr){
+			    // 假设没有该商品，该数组中没有这个id，下标为-1
+			    let index = -1;
+			    for(let i=0;i<arr.length;i++){
+			        if(id == arr[i].id){
+			            index = i;
+			            break;
+			        }
+			    }
+			    return index;
+			},
+			// 时间 + 0
+			_toDouble (num) {
+				if(num<10){
+					return '0'+num
+				}else{
+					return ''+num
+				}
+			}	
 		},
 	}
 </script>
@@ -391,8 +1003,7 @@
 					color: #666;
 				}
 				.back,
-				.cart,
-				.more{
+				.cart,{
 					width: 76rpx;
 					height: 76rpx;
 					background-color: #1f1f1f;
@@ -402,30 +1013,30 @@
 					line-height: 76rpx;
 					color: #fff;
 					font-size: 42rpx;
-					position: absolute;
+					position: fixed;
 					top: 44rpx;
+					z-index: 20;
 				}
 				.back{
 					left: 16rpx;
 				}
 				.cart{
-					right: 116rpx;
+					left: 116rpx;
 				}
-				.more{
-					right: 16rpx;
-				}
-				.more-num{
+				.cartAllCount{
+					display: block;
 					width: 53rpx;
 					height: 38rpx;
 					line-height: 38rpx;
 					text-align: center;
 					color: #fff;
 					font-size: 24rpx;
-					position: absolute;
+					position: fixed;
 					border-radius: 19rpx;
-					right: 26rpx;
-					top: 42rpx;
+					left: 157rpx;
+					top: 36rpx;
 					background-color: #fe4330;
+					z-index: 101;
 				}
 			}
 			.info{
@@ -545,6 +1156,9 @@
 					font-size: 26rpx;
 					margin-bottom: 20rpx;
 				}
+				.single-swiper{
+					height: 100rpx;
+				}
 				.single-detail{
 					display: flex;
 					justify-content: space-between;
@@ -575,9 +1189,20 @@
 								font-size: 26rpx;
 							}
 							.sb-time{
-								font-size: 18rpx;
-								text{
+								display: flex;
+								align-items: center;
+								font-size: 20rpx;
+								view{
+									width: 120rpx;
 									color: #fb3609;	
+									.uni-countdown{
+										color: red!important;
+									}
+									.uni-countdown__number {
+										margin: 0;
+										padding: 0;
+										color: red!important;
+									}
 								}
 							}
 						}
@@ -764,75 +1389,135 @@
 			.alone-shop{
 				background: #fb3609;
 			}
-			.popup{
-				position: relative;
-				height: 56vh;
-				.popup-top{
-					display: flex;
-					padding-left: 48rpx;
-					box-sizing: border-box;
-					margin-bottom: -20rpx;
-					.popup-left{
-						width: 224rpx;
-						height: 224rpx;
-						display: block;
-						border: 8rpx solid #fff;
-						border-radius: 13rpx;
-						margin-right: 48rpx;
-						box-shadow: 9rpx -1rpx 7rpx 2rpx rgba(122, 122, 122, 0.11);
-						transform: translateY(-60rpx);
-					}
-					.popup-right{
-						font-size: 26rpx;
-						font-weight: 700;
-						.popup-price{
-							margin-top: 20rpx;
-							color: #d60e15;
-							font-size: 36rpx;
-							margin-bottom: 12rpx;
-						}
-						.popup-stock{
-							margin-bottom: 20rpx;
-						}
-					}
+		}
+		.popup{
+			position: relative;
+			height: 56vh;
+			.popup-top{
+				display: flex;
+				padding-left: 48rpx;
+				box-sizing: border-box;
+				margin-bottom: -28rpx;
+				.popup-left{
+					width: 224rpx;
+					height: 224rpx;
+					display: block;
+					border: 8rpx solid #fff;
+					border-radius: 13rpx;
+					margin-right: 48rpx;
+					box-shadow: 9rpx -1rpx 7rpx 2rpx rgba(122, 122, 122, 0.11);
+					transform: translateY(-60rpx);
 				}
-				.popup-box{
-					padding-left: 48rpx;
-					box-sizing: border-box;
-					margin: 0rpx 0rpx 36rpx 0rpx;
-					font-size: 34rpx;
-					.popup-list{
-						display: flex;
-						width: 600rpx;
-						.popup-item{
-							margin-top: 30rpx;
-							margin-right: 53rpx;
-							margin-bottom: 20rpx;
-							padding: 10rpx 34rpx;
-							background-color: #bfbfbf;
-							border-radius: 14rpx;
-							font-size: 26rpx;
-							&.active{
-								background: red;
-								color: #fff;
-							}
-						}
+				.popup-right{
+					font-size: 26rpx;
+					font-weight: 700;
+					.popup-price{
+						margin-top: 20rpx;
+						color: #d60e15;
+						font-size: 36rpx;
+						margin-bottom: 12rpx;
 					}
-				}
-				.popup-bottom{
-					width: 100vw;
-					height: 95rpx;
-					background-color: #fb3609;
-					line-height: 95rpx;
-					color: #fff;
-					text-align: center;
-					position: absolute;
-					bottom: 0;
+					.popup-stock{
+						margin-bottom: 20rpx;
+					}
 				}
 			}
-			.van-popup{
-				overflow-y: visible;
+			.popup-wrap{
+				height: 31vh;
+				.popup-wrapper{
+					white-space:nowrap;
+				}
+			}
+			.popup-box{
+				padding: 0 40rpx;
+				box-sizing: border-box;
+				margin: 0rpx 0rpx 24rpx 0rpx;
+				font-size: 34rpx;
+				.popup-list{
+					display: flex;
+					width: 600rpx;
+					.popup-item{
+						margin-top: 20rpx;
+						margin-right: 53rpx;
+						margin-bottom: 10rpx;
+						padding: 10rpx 34rpx;
+						background-color: #bfbfbf;
+						border-radius: 14rpx;
+						font-size: 26rpx;
+						&.active{
+							background: red;
+							color: #fff;
+						}
+					}
+				}
+			}
+			.popup-update{
+				padding: 0 40rpx;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				height: 100rpx;
+				border-top: 1rpx solid #ccc;
+				.popup-add-cut{
+					display: flex;
+					.add,
+					.cut{
+						width: 50rpx;
+						height: 40rpx;
+						font-weight: bold;
+						line-height: 40rpx;
+						text-align: center;
+						background: #ccc;
+					}
+					.count{
+						width: 50rpx;
+						text-align: center;
+						font-size: 24rpx;
+						line-height: 44rpx;
+					}
+				}
+			}
+			.popup-bottom{
+				width: 100vw;
+				height: 8vh;
+				background-color: #fb3609;
+				line-height: 95rpx;
+				color: #fff;
+				text-align: center;
+				position: absolute;
+				bottom: 0;
 			}
 		}
+		.van-popup{
+			overflow-y: visible;
+		}
+		.pr{
+			.pr-title{
+				width: 100vw;
+				height: 100rpx;
+				border-bottom: 1rpx solid #ccc;
+				line-height: 100rpx;
+				text-align: center;	
+			}
+			.pr-list{
+				width: 100vw;
+				box-sizing: border-box;
+				padding: 30rpx;
+				.pr-item{
+					overflow: hidden;
+					text-overflow: ellipsis;
+					white-space: nowrap;
+					margin-bottom: 20rpx;
+					.pr-name{
+						margin-bottom: 5rpx;
+					}
+					.pr-text{
+						font-size: 26rpx;
+						color: #999;
+					}
+				}
+			}
+		}
+		
 	}
 </style>

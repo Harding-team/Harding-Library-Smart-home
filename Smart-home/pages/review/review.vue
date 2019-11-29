@@ -1,43 +1,23 @@
-<!-- <template>
-	<detail-footer></detail-footer>
-</template>
-
-<script>
-	import detailFooter from '../../wxcomponents/footer/footer';
-	export default {
-		data() {
-			return {
-				
-			}
-		},
-		components: {
-			detailFooter
-		}
-	}
-</script>
-
-<style>
-</style> -->
 <template>
 	<view class="container">
 		<scroll-view class="content" scroll-y="true" >
 			<!-- 商品评价 -->
 			<view class="review">
 				<view class="review-tag">
-					<view v-for="(item,index) in reviewTag" 
+					<view v-for="(item,index) in detailData.reviewTag" 
 						  :class="['rt-item',index===tagCurrentIndex?'active':'']" 
 						  :key="index"
-						  @tap="onReviewTag(index)">{{item.text}} <text>({{item.num}})</text>
+						  @tap="onReviewTag(index)">{{item.text}} <text>({{item.count}})</text>
 					</view>
 				</view>
-				<view class="review-detail" v-for="(item,index) in reviewDetail" :key="index">
+				<view class="review-detail" v-for="(item,index) in detailData.reviewDetail" :key="index">
 					<view class="rd-title">
 						<image class="rd-avatar" :src="item.avatar" />
-						<text class="rd-name">{{item.name}}</text>
+						<text class="rd-name">{{item.username}}</text>
 					</view>
-					<view class="rd-text">{{item.text}}</view>
-					<view class="rd-img" v-show="item.imgList">
-						<image :src="item2" mode="" v-for="(item2,index2) in item.imgList" :key="index2"/>
+					<view class="rd-text">{{item.reviewText}}</view>
+					<view class="rd-img" v-show="item.reviewImg">
+						<image :src="item2" mode="" v-for="(item2,index2) in item.reviewImg" :key="index2"/>
 					</view>
 				</view>
 			</view>
@@ -66,7 +46,7 @@
 		<!-- 下弹出框 -->
 		<van-popup :show="isShowPopup"
 				   position="bottom"
-				   custom-style="height: 56%;"
+				   custom-style="height: 60%;"
 				   closeable
 				   @close="onClose">
 			<view class="popup">
@@ -78,18 +58,31 @@
 						<view class="select-size">请选择尺码</view>
 					</view>
 				</view>
-				<view class="popup-box" v-for="(item,index) in styleSelect" :key="index">
-					<view class="popup-title">{{item.title}}</view>
-					<view class="popup-list">
-						<view :class="['popup-item',isStyleSelect ? 'active' : '']" 
-							  v-for="(item2,index2) in item.style" 
-							  :key="index2"
-							  @tap="onStyleSelect">{{item2}}</view>
+				<scroll-view class="popup-wrap" scroll-y="true">
+					<view class="popup-wrapper">
+						<view class="popup-box" v-for="(item,index) in styleSelect" :key="index">
+							<view class="popup-title">{{item.title}}</view>
+							<view class="popup-list">
+								<view :class="['popup-item',isStyleSelect ? 'active' : '']" 
+									  v-for="(item2,index2) in item.style" 
+									  :key="index2"
+									  @tap="onStyleSelect">{{item2}}</view>
+							</view>
+						</view>
+						<view class="popup-update">
+							<view>数量</view>
+							<view class="popup-add-cut">
+								<view class="cut">-</view>
+								<view class="count">1</view>
+								<view class="add">+</view>
+							</view>
+						</view>
 					</view>
-				</view>
+				</scroll-view>
 				<view class="popup-bottom" @tap="onSure">确定</view>
 			</view>
 		</van-popup>
+		
 	</view>
 </template>
 
@@ -97,63 +90,583 @@
 	export default {
 		data() {
 			return {
-				reviewTag: [{
-					text: '便宜',
-					num: '126'
-				},{
-					text: '质量好',
-					num: '126'
-				},{
-					text: '软硬度好',
-					num: '126'
-				},{
-					text: '服务态度好',
-					num: '126'
-				},{
-					text: '枕着舒服',
-					num: '126'
-				}],
-				reviewDetail: [{
-					avatar: '../../static/home/assemble-1.jpeg',
-					name: 'Losres sfsdd',
-					text: '商品质量特别的好晚上睡觉用它-夜到天亮，睡得很踏实没有异味收到货，柔软度还是不错的，枕头本身的味道是很自然的味道。挺好的，有香味，也不贵。枕头买回来枕了两天发现很舒服而且没有味道快递也很快包装的也很好不错告诉包装精美乳胶枕头摸起来软软的，但枕起来又超级有弹性。值得回购呢'
-				},{
-					avatar: '../../static/home/assemble-1.jpeg',
-					name: 'Losres sfsdd',
-					text: '商品质量特别的好晚上睡觉用它-夜到天亮，睡得很踏实没有异味收到货，柔软度还是不错的，枕头本身的味道是很自然的味道。挺好的，有香味，也不贵。枕头买回来枕了两天发现很舒服而且没有味道快递也很快包装的也很好不错告诉包装精美乳胶枕头摸起来软软的，但枕起来又超级有弹性。值得回购呢',
-					imgList: [
-						'../../static/home/assemble-1.jpeg',
-						'../../static/home/assemble-1.jpeg',
-						'../../static/home/assemble-1.jpeg'
-					]
-				},{
-					avatar: '../../static/home/assemble-1.jpeg',
-					name: 'Losres sfsdd',
-					text: '商品质量特别的好晚上睡觉用它-夜到天亮，睡得很踏实没有异味收到货，柔软度还是不错的，枕头本身的味道是很自然的味道。挺好的，有香味，也不贵。枕头买回来枕了两天发现很舒服而且没有味道快递也很快包装的也很好不错告诉包装精美乳胶枕头摸起来软软的，但枕起来又超级有弹性。值得回购呢'
-				},{
-					avatar: '../../static/home/assemble-1.jpeg',
-					name: 'Losres sfsdd',
-					text: '商品质量特别的好晚上睡觉用它-夜到天亮，睡得很踏实没有异味收到货，柔软度还是不错的，枕头本身的味道是很自然的味道。挺好的，有香味，也不贵。枕头买回来枕了两天发现很舒服而且没有味道快递也很快包装的也很好不错告诉包装精美乳胶枕头摸起来软软的，但枕起来又超级有弹性。值得回购呢',
-					imgList: [
-						'../../static/home/assemble-1.jpeg',
-						'../../static/home/assemble-1.jpeg',
-						'../../static/home/assemble-1.jpeg'
-					]
-				}],
-				styleSelect:[
+				dataList:[
 					{
-						title: '尺码',
-						style: [
-							'60cm*40cm','60cm*40cm'
+						"id": 0,
+						"title": "款正品外胎林/煊赫乳胶转/泰国正品波浪按摩枕60*49cm泰国正品波浪按摩枕60*49cm",
+						"smallPrice": 115,
+						"bigPrice": 156,
+						"freight": "免运费",
+						"count": 1,
+						"toBuy": 100,
+						"sales": 100,
+						"toFight": 118,
+						"fightPrice": 100,
+						"AlonePrice": 100,
+						"status": false,
+						"description": "款正品外胎林/煊赫乳胶转/泰国正品波浪按摩枕60*49cm泰国正品波浪按摩枕60*49cm款正品外胎林/煊赫乳胶转/泰国正品波浪按摩枕60*49cm泰国正品波浪按摩枕60*49cm",
+						"imgSrc": [
+							"https://gw.alicdn.com/bao/uploaded/i4/2206483534228/O1CN01TYNFzu1h6T8WV8Lz6_!!0-item_pic.jpg",
+							"https://gw.alicdn.com/bao/uploaded/i1/2112833578/O1CN01GuO7ti1cIlck2lJRt_!!2-item_pic.png",
+							"https://gw.alicdn.com/bao/uploaded/i4/2086953701/O1CN01ceqmmJ1dD6PZoyemf_!!0-item_pic.jpg"
+						],
+						"offerList": [
+							{
+								"img": "../../static/images/icon-1.png",
+								"text": "10元店铺优惠券"
+							},{
+								"img": "../../static/images/icon-1.png",
+								"text": "10元店铺优惠券"
+							}
+						],
+						"refundServiceList": [
+							{
+								"name": "急速退款",
+								"text": "拼单成功6小时内，待发货状态下"
+							},{
+								"name": "全场包邮",
+								"text": "拼单成功6小时内，待发货状态下"
+							},{
+								"name": "7天无理由哦",
+								"text": "拼单成功6小时内，待发货状态下"
+							},{
+								"name": "48小时发货",
+								"text": "拼单成功6小时内，待发货状态下"
+							},{
+								"name": "假一赔十",
+								"text": "拼单成功6小时内，待发货状态下"
+							}
+						],
+						"singleList": [
+							{
+								"remainingTime": 13232,
+								"username": "Lddss tom",
+								"avatar": "../../static/home/assemble-1.jpeg",
+								"num": 1
+							},{
+								"remainingTime": 13232,
+								"username": "Lddss sss",
+								"avatar": "../../static/home/assemble-1.jpeg",
+								"num": 2
+							},{
+								"remainingTime": 13232,
+								"username": "dddd tom",
+								"avatar": "../../static/home/assemble-1.jpeg",
+								"num": 1
+							}
+						],
+						"reviewDetail": [
+							{
+								"username": "Losres sfsdd",
+								"avatar": "../../static/home/assemble-1.jpeg",
+								"reviewText": "商品质量特别的好晚上睡觉用它-夜到天亮，睡得很踏实没有异味收到货，柔软度还是不错的，枕头本身的味道是很自然的味道。挺好的，有香味，也不贵。枕头买回来枕了两天发现很舒服而且没有味道快递也很快包装的也很好不错告诉包装精美乳胶枕头摸起来软软的，但枕起来又超级有弹性。值得回购呢",
+								"reviewTag": [
+									{
+										"type": 0,
+										"text": "便宜",
+										"count": 126
+									},
+									{
+										"type": 1,
+										"text": "质量好",
+										"count": 126
+									},
+									{
+										"type": 2,
+										"text": "软硬度好",
+										"count": 126
+									},
+									{
+										"type": 3,
+										"text": "服务态度好",
+										"count": 126
+									},
+									{
+										"type": 4,
+										"text": "枕着舒服",
+										"count": 126
+									}
+								]
+							},{
+								"username": "Losres sfsdd",
+								"avatar": "../../static/home/assemble-1.jpeg",
+								"reviewText": "商品质量特别的好晚上睡觉用它-夜到天亮，睡得很踏实没有异味收到货，柔软度还是不错的，枕头本身的味道是很自然的味道。挺好的，有香味，也不贵。枕头买回来枕了两天发现很舒服而且没有味道快递也很快包装的也很好不错告诉包装精美乳胶枕头摸起来软软的，但枕起来又超级有弹性。值得回购呢",
+								"reviewImg": [
+									"https://gw.alicdn.com/bao/uploaded/i4/2206483534228/O1CN01TYNFzu1h6T8WV8Lz6_!!0-item_pic.jpg",
+									"https://gw.alicdn.com/bao/uploaded/i1/2112833578/O1CN01GuO7ti1cIlck2lJRt_!!2-item_pic.png",
+									"https://gw.alicdn.com/bao/uploaded/i4/2086953701/O1CN01ceqmmJ1dD6PZoyemf_!!0-item_pic.jpg"
+								],
+								"reviewTag": [
+									{
+										"type": 0,
+										"text": "便宜",
+										"count": 126
+									},
+									{
+										"type": 1,
+										"text": "质量好",
+										"count": 126
+									},
+									{
+										"type": 2,
+										"text": "软硬度好",
+										"count": 126
+									},
+									{
+										"type": 3,
+										"text": "服务态度好",
+										"count": 126
+									},
+									{
+										"type": 4,
+										"text": "枕着舒服",
+										"count": 126
+									}
+								]
+							},
+						],
+						"reviewTag": [
+							{
+								"type": 0,
+								"text": "便宜",
+								"count": 126
+							},
+							{
+								"type": 1,
+								"text": "质量好",
+								"count": 126
+							},
+							{
+								"type": 2,
+								"text": "软硬度好",
+								"count": 126
+							},
+							{
+								"type": 3,
+								"text": "服务态度好",
+								"count": 126
+							},
+							{
+								"type": 4,
+								"text": "枕着舒服",
+								"count": 126
+							}
+						],
+						"goodsDetailList": [
+							"https://gw.alicdn.com/bao/uploaded/i4/2206483534228/O1CN01TYNFzu1h6T8WV8Lz6_!!0-item_pic.jpg",
+							"https://gw.alicdn.com/bao/uploaded/i1/2112833578/O1CN01GuO7ti1cIlck2lJRt_!!2-item_pic.png",
+							"https://gw.alicdn.com/bao/uploaded/i4/2086953701/O1CN01ceqmmJ1dD6PZoyemf_!!0-item_pic.jpg",
+							"https://gw.alicdn.com/bao/uploaded/i4/2206483534228/O1CN01TYNFzu1h6T8WV8Lz6_!!0-item_pic.jpg",
+							"https://gw.alicdn.com/bao/uploaded/i1/2112833578/O1CN01GuO7ti1cIlck2lJRt_!!2-item_pic.png",
+							"https://gw.alicdn.com/bao/uploaded/i4/2086953701/O1CN01ceqmmJ1dD6PZoyemf_!!0-item_pic.jpg"
+						],
+						"detailList": [
+							"https://gw.alicdn.com/bao/uploaded/i4/2206483534228/O1CN01TYNFzu1h6T8WV8Lz6_!!0-item_pic.jpg",
+							"https://gw.alicdn.com/bao/uploaded/i1/2112833578/O1CN01GuO7ti1cIlck2lJRt_!!2-item_pic.png",
+							"https://gw.alicdn.com/bao/uploaded/i4/2086953701/O1CN01ceqmmJ1dD6PZoyemf_!!0-item_pic.jpg",
+							"https://gw.alicdn.com/bao/uploaded/i4/2206483534228/O1CN01TYNFzu1h6T8WV8Lz6_!!0-item_pic.jpg",
+							"https://gw.alicdn.com/bao/uploaded/i1/2112833578/O1CN01GuO7ti1cIlck2lJRt_!!2-item_pic.png",
+							"https://gw.alicdn.com/bao/uploaded/i4/2086953701/O1CN01ceqmmJ1dD6PZoyemf_!!0-item_pic.jpg"
+						],
+						"styleSelect": [
+							{
+								"title": "尺码",
+								"style": [
+									"60cm*40cm","60cm*40cm"
+								]
+							},
+							{
+								"title": "颜色",
+								"style": [
+									"红色","绿色"
+								]
+							}
 						]
-					},
-					{
-						title: '颜色',
-						style: [
-							'红色','绿色'
+					},{
+						"id": 1,
+						"title": "款正品外胎林/煊赫乳胶转/泰国正品波浪按摩枕60*49cm泰国正品波浪按摩枕60*49cm",
+						"smallPrice": 115,
+						"bigPrice": 156,
+						"freight": "免运费",
+						"count": 1,
+						"toBuy": 100,
+						"sales": 100,
+						"toFight": 118,
+						"fightPrice": 100,
+						"AlonePrice": 100,
+						"status": false,
+						"description": "款正品外胎林/煊赫乳胶转/泰国正品波浪按摩枕60*49cm泰国正品波浪按摩枕60*49cm款正品外胎林/煊赫乳胶转/泰国正品波浪按摩枕60*49cm泰国正品波浪按摩枕60*49cm",
+						"imgSrc": [
+							"https://img.alicdn.com/tps/i4/TB1QtfYN3HqK1RjSZJnSuvNLpXa.jpg_250x250Q90.jpg",
+							"https://img.alicdn.com/imgextra/i3/883737303/O1CN01IoENMZ23op0c1gloK_!!883737303.jpg_250x250Q90.jpg",
+							"https://img.alicdn.com/tps/i4/TB1DmirdB1D3KVjSZFySuvuFpXa.jpg_250x250Q90.jpg"
+						],
+						"offerList": [
+							{
+								"img": "../../static/images/icon-1.png",
+								"text": "10元店铺优惠券"
+							},{
+								"img": "../../static/images/icon-1.png",
+								"text": "10元店铺优惠券"
+							}
+						],
+						"refundServiceList": [
+							{
+								"name": "急速退款",
+								"text": "拼单成功6小时内，待发货状态下"
+							},{
+								"name": "全场包邮",
+								"text": "拼单成功6小时内，待发货状态下"
+							},{
+								"name": "7天无理由哦",
+								"text": "拼单成功6小时内，待发货状态下"
+							},{
+								"name": "48小时发货",
+								"text": "拼单成功6小时内，待发货状态下"
+							},{
+								"name": "假一赔十",
+								"text": "拼单成功6小时内，待发货状态下"
+							}
+						],
+						"singleList": [
+							{
+								"remainingTime": 13232,
+								"username": "Lddss tom",
+								"avatar": "../../static/home/assemble-1.jpeg",
+								"num": 1
+							},{
+								"remainingTime": 13232,
+								"username": "Lddss sss",
+								"avatar": "../../static/home/assemble-1.jpeg",
+								"num": 2
+							},{
+								"remainingTime": 13232,
+								"username": "dddd tom",
+								"avatar": "../../static/home/assemble-1.jpeg",
+								"num": 1
+							}
+						],
+						"reviewDetail": [
+							{
+								"username": "Losres sfsdd",
+								"avatar": "../../static/home/assemble-1.jpeg",
+								"reviewText": "商品质量特别的好晚上睡觉用它-夜到天亮，睡得很踏实没有异味收到货，柔软度还是不错的，枕头本身的味道是很自然的味道。挺好的，有香味，也不贵。枕头买回来枕了两天发现很舒服而且没有味道快递也很快包装的也很好不错告诉包装精美乳胶枕头摸起来软软的，但枕起来又超级有弹性。值得回购呢",
+								"reviewTag": [
+									{
+										"type": 0,
+										"text": "便宜",
+										"count": 126
+									},
+									{
+										"type": 1,
+										"text": "质量好",
+										"count": 126
+									},
+									{
+										"type": 2,
+										"text": "软硬度好",
+										"count": 126
+									},
+									{
+										"type": 3,
+										"text": "服务态度好",
+										"count": 126
+									},
+									{
+										"type": 4,
+										"text": "枕着舒服",
+										"count": 126
+									}
+								]
+							},{
+								"username": "Losres sfsdd",
+								"avatar": "../../static/home/assemble-1.jpeg",
+								"reviewText": "商品质量特别的好晚上睡觉用它-夜到天亮，睡得很踏实没有异味收到货，柔软度还是不错的，枕头本身的味道是很自然的味道。挺好的，有香味，也不贵。枕头买回来枕了两天发现很舒服而且没有味道快递也很快包装的也很好不错告诉包装精美乳胶枕头摸起来软软的，但枕起来又超级有弹性。值得回购呢",
+								"reviewImg": [
+									"https://gw.alicdn.com/bao/uploaded/i4/2206483534228/O1CN01TYNFzu1h6T8WV8Lz6_!!0-item_pic.jpg",
+									"https://gw.alicdn.com/bao/uploaded/i1/2112833578/O1CN01GuO7ti1cIlck2lJRt_!!2-item_pic.png",
+									"https://gw.alicdn.com/bao/uploaded/i4/2086953701/O1CN01ceqmmJ1dD6PZoyemf_!!0-item_pic.jpg"
+								],
+								"reviewTag": [
+									{
+										"type": 0,
+										"text": "便宜",
+										"count": 126
+									},
+									{
+										"type": 1,
+										"text": "质量好",
+										"count": 126
+									},
+									{
+										"type": 2,
+										"text": "软硬度好",
+										"count": 126
+									},
+									{
+										"type": 3,
+										"text": "服务态度好",
+										"count": 126
+									},
+									{
+										"type": 4,
+										"text": "枕着舒服",
+										"count": 126
+									}
+								]
+							},
+						],
+						"reviewTag": [
+							{
+								"type": 0,
+								"text": "便宜",
+								"count": 126
+							},
+							{
+								"type": 1,
+								"text": "质量好",
+								"count": 126
+							},
+							{
+								"type": 2,
+								"text": "软硬度好",
+								"count": 126
+							},
+							{
+								"type": 3,
+								"text": "服务态度好",
+								"count": 126
+							},
+							{
+								"type": 4,
+								"text": "枕着舒服",
+								"count": 126
+							}
+						],
+						"goodsDetailList": [
+							"https://gw.alicdn.com/bao/uploaded/i4/2206483534228/O1CN01TYNFzu1h6T8WV8Lz6_!!0-item_pic.jpg",
+							"https://gw.alicdn.com/bao/uploaded/i1/2112833578/O1CN01GuO7ti1cIlck2lJRt_!!2-item_pic.png",
+							"https://gw.alicdn.com/bao/uploaded/i4/2086953701/O1CN01ceqmmJ1dD6PZoyemf_!!0-item_pic.jpg",
+							"https://gw.alicdn.com/bao/uploaded/i4/2206483534228/O1CN01TYNFzu1h6T8WV8Lz6_!!0-item_pic.jpg",
+							"https://gw.alicdn.com/bao/uploaded/i1/2112833578/O1CN01GuO7ti1cIlck2lJRt_!!2-item_pic.png",
+							"https://gw.alicdn.com/bao/uploaded/i4/2086953701/O1CN01ceqmmJ1dD6PZoyemf_!!0-item_pic.jpg"
+						],
+						"detailList": [
+							"https://gw.alicdn.com/bao/uploaded/i4/2206483534228/O1CN01TYNFzu1h6T8WV8Lz6_!!0-item_pic.jpg",
+							"https://gw.alicdn.com/bao/uploaded/i1/2112833578/O1CN01GuO7ti1cIlck2lJRt_!!2-item_pic.png",
+							"https://gw.alicdn.com/bao/uploaded/i4/2086953701/O1CN01ceqmmJ1dD6PZoyemf_!!0-item_pic.jpg",
+							"https://gw.alicdn.com/bao/uploaded/i4/2206483534228/O1CN01TYNFzu1h6T8WV8Lz6_!!0-item_pic.jpg",
+							"https://gw.alicdn.com/bao/uploaded/i1/2112833578/O1CN01GuO7ti1cIlck2lJRt_!!2-item_pic.png",
+							"https://gw.alicdn.com/bao/uploaded/i4/2086953701/O1CN01ceqmmJ1dD6PZoyemf_!!0-item_pic.jpg"
+						],
+						"styleSelect": [
+							{
+								"title": "尺码",
+								"style": [
+									"60cm*40cm","60cm*40cm"
+								]
+							},
+							{
+								"title": "颜色",
+								"style": [
+									"红色","绿色"
+								]
+							}
+						]
+					},{
+						"id": 2,
+						"title": "款正品外胎林/煊赫乳胶转/泰国正品波浪按摩枕60*49cm泰国正品波浪按摩枕60*49cm",
+						"smallPrice": 115,
+						"bigPrice": 156,
+						"freight": "免运费",
+						"count": 1,
+						"toBuy": 100,
+						"sales": 100,
+						"toFight": 118,
+						"fightPrice": 100,
+						"AlonePrice": 100,
+						"status": false,
+						"description": "款正品外胎林/煊赫乳胶转/泰国正品波浪按摩枕60*49cm泰国正品波浪按摩枕60*49cm款正品外胎林/煊赫乳胶转/泰国正品波浪按摩枕60*49cm泰国正品波浪按摩枕60*49cm",
+						"imgSrc": [
+							"https://img.alicdn.com/bao/uploaded/bao/upload/TB15jYnheH2gK0jSZJnXXaT1FXa.png_400x400q60.jpg",
+							"https://img.alicdn.com/bao/uploaded/bao/upload/TB1shYWnW61gK0jSZFlXXXDKFXa.png_400x400q60.jpg",
+							"https://img.alicdn.com/bao/uploaded/bao/upload/TB1NKDkha67gK0jSZFHXXa9jVXa.png_400x400q60.jpg"
+						],
+						"offerList": [
+							{
+								"img": "../../static/images/icon-1.png",
+								"text": "10元店铺优惠券"
+							},{
+								"img": "../../static/images/icon-1.png",
+								"text": "10元店铺优惠券"
+							}
+						],
+						"refundServiceList": [
+							{
+								"name": "急速退款",
+								"text": "拼单成功6小时内，待发货状态下"
+							},{
+								"name": "全场包邮",
+								"text": "拼单成功6小时内，待发货状态下"
+							},{
+								"name": "7天无理由哦",
+								"text": "拼单成功6小时内，待发货状态下"
+							},{
+								"name": "48小时发货",
+								"text": "拼单成功6小时内，待发货状态下"
+							},{
+								"name": "假一赔十",
+								"text": "拼单成功6小时内，待发货状态下"
+							}
+						],
+						"singleList": [
+							{
+								"remainingTime": 13232,
+								"username": "Lddss tom",
+								"avatar": "../../static/home/assemble-1.jpeg",
+								"num": 1
+							},{
+								"remainingTime": 13232,
+								"username": "Lddss sss",
+								"avatar": "../../static/home/assemble-1.jpeg",
+								"num": 2
+							},{
+								"remainingTime": 13232,
+								"username": "dddd tom",
+								"avatar": "../../static/home/assemble-1.jpeg",
+								"num": 1
+							}
+						],
+						"reviewDetail": [
+							{
+								"username": "Losres sfsdd",
+								"avatar": "../../static/home/assemble-1.jpeg",
+								"reviewText": "商品质量特别的好晚上睡觉用它-夜到天亮，睡得很踏实没有异味收到货，柔软度还是不错的，枕头本身的味道是很自然的味道。挺好的，有香味，也不贵。枕头买回来枕了两天发现很舒服而且没有味道快递也很快包装的也很好不错告诉包装精美乳胶枕头摸起来软软的，但枕起来又超级有弹性。值得回购呢",
+								"reviewTag": [
+									{
+										"type": 0,
+										"text": "便宜",
+										"count": 126
+									},
+									{
+										"type": 1,
+										"text": "质量好",
+										"count": 126
+									},
+									{
+										"type": 2,
+										"text": "软硬度好",
+										"count": 126
+									},
+									{
+										"type": 3,
+										"text": "服务态度好",
+										"count": 126
+									},
+									{
+										"type": 4,
+										"text": "枕着舒服",
+										"count": 126
+									}
+								]
+							},{
+								"username": "Losres sfsdd",
+								"avatar": "../../static/home/assemble-1.jpeg",
+								"reviewText": "商品质量特别的好晚上睡觉用它-夜到天亮，睡得很踏实没有异味收到货，柔软度还是不错的，枕头本身的味道是很自然的味道。挺好的，有香味，也不贵。枕头买回来枕了两天发现很舒服而且没有味道快递也很快包装的也很好不错告诉包装精美乳胶枕头摸起来软软的，但枕起来又超级有弹性。值得回购呢",
+								"reviewImg": [
+									"https://gw.alicdn.com/bao/uploaded/i4/2206483534228/O1CN01TYNFzu1h6T8WV8Lz6_!!0-item_pic.jpg",
+									"https://gw.alicdn.com/bao/uploaded/i1/2112833578/O1CN01GuO7ti1cIlck2lJRt_!!2-item_pic.png",
+									"https://gw.alicdn.com/bao/uploaded/i4/2086953701/O1CN01ceqmmJ1dD6PZoyemf_!!0-item_pic.jpg"
+								],
+								"reviewTag": [
+									{
+										"type": 0,
+										"text": "便宜",
+										"count": 126
+									},
+									{
+										"type": 1,
+										"text": "质量好",
+										"count": 126
+									},
+									{
+										"type": 2,
+										"text": "软硬度好",
+										"count": 126
+									},
+									{
+										"type": 3,
+										"text": "服务态度好",
+										"count": 126
+									},
+									{
+										"type": 4,
+										"text": "枕着舒服",
+										"count": 126
+									}
+								]
+							},
+						],
+						"reviewTag": [
+							{
+								"type": 0,
+								"text": "便宜",
+								"count": 126
+							},
+							{
+								"type": 1,
+								"text": "质量好",
+								"count": 126
+							},
+							{
+								"type": 2,
+								"text": "软硬度好",
+								"count": 126
+							},
+							{
+								"type": 3,
+								"text": "服务态度好",
+								"count": 126
+							},
+							{
+								"type": 4,
+								"text": "枕着舒服",
+								"count": 126
+							}
+						],
+						"goodsDetailList": [
+							"https://gw.alicdn.com/bao/uploaded/i4/2206483534228/O1CN01TYNFzu1h6T8WV8Lz6_!!0-item_pic.jpg",
+							"https://gw.alicdn.com/bao/uploaded/i1/2112833578/O1CN01GuO7ti1cIlck2lJRt_!!2-item_pic.png",
+							"https://gw.alicdn.com/bao/uploaded/i4/2086953701/O1CN01ceqmmJ1dD6PZoyemf_!!0-item_pic.jpg",
+							"https://gw.alicdn.com/bao/uploaded/i4/2206483534228/O1CN01TYNFzu1h6T8WV8Lz6_!!0-item_pic.jpg",
+							"https://gw.alicdn.com/bao/uploaded/i1/2112833578/O1CN01GuO7ti1cIlck2lJRt_!!2-item_pic.png",
+							"https://gw.alicdn.com/bao/uploaded/i4/2086953701/O1CN01ceqmmJ1dD6PZoyemf_!!0-item_pic.jpg"
+						],
+						"detailList": [
+							"https://gw.alicdn.com/bao/uploaded/i4/2206483534228/O1CN01TYNFzu1h6T8WV8Lz6_!!0-item_pic.jpg",
+							"https://gw.alicdn.com/bao/uploaded/i1/2112833578/O1CN01GuO7ti1cIlck2lJRt_!!2-item_pic.png",
+							"https://gw.alicdn.com/bao/uploaded/i4/2086953701/O1CN01ceqmmJ1dD6PZoyemf_!!0-item_pic.jpg",
+							"https://gw.alicdn.com/bao/uploaded/i4/2206483534228/O1CN01TYNFzu1h6T8WV8Lz6_!!0-item_pic.jpg",
+							"https://gw.alicdn.com/bao/uploaded/i1/2112833578/O1CN01GuO7ti1cIlck2lJRt_!!2-item_pic.png",
+							"https://gw.alicdn.com/bao/uploaded/i4/2086953701/O1CN01ceqmmJ1dD6PZoyemf_!!0-item_pic.jpg"
+						],
+						"styleSelect": [
+							{
+								"title": "尺码",
+								"style": [
+									"60cm*40cm","60cm*40cm"
+								]
+							},
+							{
+								"title": "颜色",
+								"style": [
+									"红色","绿色"
+								]
+							}
 						]
 					}
 				],
+				detailData: {},
 				isShowPopup: false,
 				isCollection: false,
 				isStyleSelect: false,
@@ -162,6 +675,14 @@
 		},
 		onLoad(options) {
 			this.tagCurrentIndex = options.index;
+			this.dataList.forEach((item)=>{
+				if(item.id == options.id){
+					this.detailData = item;
+				}
+			})
+		},
+		onShow(){
+			
 		},
 		methods: {
 			// 评价标签   点击筛选数据渲染
@@ -338,14 +859,14 @@
 		}
 		.popup{
 			position: relative;
-			height: 56vh;
+			height: 60vh;
 			.popup-top{
 				display: flex;
 				padding-left: 48rpx;
 				box-sizing: border-box;
-				margin-bottom: -20rpx;
+				margin-bottom: -28rpx;
 				.popup-left{
-					width: 224rpx;
+					width: 224rpx;	
 					height: 224rpx;
 					display: block;
 					border: 8rpx solid #fff;
@@ -368,18 +889,24 @@
 					}
 				}
 			}
+			.popup-wrap{
+				height: 31vh;
+				.popup-wrapper{
+					white-space:nowrap;
+				}
+			}
 			.popup-box{
-				padding-left: 48rpx;
+				padding: 0 40rpx;
 				box-sizing: border-box;
-				margin: 0rpx 0rpx 36rpx 0rpx;
+				margin: 0rpx 0rpx 24rpx 0rpx;
 				font-size: 34rpx;
 				.popup-list{
 					display: flex;
 					width: 600rpx;
 					.popup-item{
-						margin-top: 30rpx;
+						margin-top: 20rpx;
 						margin-right: 53rpx;
-						margin-bottom: 20rpx;
+						margin-bottom: 10rpx;
 						padding: 10rpx 34rpx;
 						background-color: #bfbfbf;
 						border-radius: 14rpx;
@@ -391,9 +918,35 @@
 					}
 				}
 			}
+			.popup-update{
+				padding: 0 40rpx;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				height: 100rpx;
+				border-top: 1rpx solid #ccc;
+				.popup-add-cut{
+					display: flex;
+					.add,
+					.cut{
+						width: 50rpx;
+						height: 40rpx;
+						font-weight: bold;
+						line-height: 40rpx;
+						text-align: center;
+						background: #ccc;
+					}
+					.count{
+						width: 50rpx;
+						text-align: center;
+						font-size: 24rpx;
+						line-height: 44rpx;
+					}
+				}
+			}
 			.popup-bottom{
 				width: 100vw;
-				height: 95rpx;
+				height: 8vh;
 				background-color: #fb3609;
 				line-height: 95rpx;
 				color: #fff;

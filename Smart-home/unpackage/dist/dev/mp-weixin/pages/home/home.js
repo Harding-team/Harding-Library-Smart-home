@@ -469,8 +469,8 @@ var _default =
       console.log('限时抢购');
     },
     // 跳转详情
-    goToDetails: function goToDetails() {
-      var id = 1;
+    goToDetails: function goToDetails(index) {
+      var id = index;
       uni.navigateTo({
         url: '/pages/details/details?id=' + id });
 

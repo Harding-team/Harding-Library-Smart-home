@@ -190,7 +190,7 @@
 		        </view>
 		  </view>
 		  <view class='home-paihang'>
-		        <view class='home-paihang-list' v-for="(item,index) in ranking" :key='index' @tap="goToDetails()">
+		        <view class='home-paihang-list' v-for="(item,index) in ranking" :key='index' @tap="goToDetails(index)">
 		              <image class='home-paihang-img' :src='item.images'></image>
 		              <image class='home-paihang-num' src='../../static/home/assemble-no.png'></image>
 		              <view>{{item.name}}</view>
@@ -214,7 +214,7 @@
 		 <view class='home-lick-tlt'>猜你喜欢</view>
 		 <view class='home-lick'>
 		       <view class='home-lick-box'>
-		             <view class='home-lick-list'  v-for="(item,index) in piex" :key='index'  @tap="goToDetails()">
+		             <view class='home-lick-list'  v-for="(item,index) in piex" :key='index'  @tap="goToDetails(index)">
 		                   <image :src='item.images'></image>
 		                   <view>{{item.name}}</view>
 		                   <view>{{item.details}}</view>
@@ -336,8 +336,8 @@
 				console.log('限时抢购')
 			},
 			// 跳转详情
-			goToDetails(){
-				let id = 1
+			goToDetails(index){
+				let id = index
 				uni.navigateTo({
 					url: '/pages/details/details?id='+id
 				})

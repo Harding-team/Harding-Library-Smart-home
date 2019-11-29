@@ -891,11 +891,19 @@
 			// 点击七天无理由退款
 			onReturn(){
 				this.isShowPopupReturn = true;
+<<<<<<< HEAD
 			},
 			// 退货关闭按钮
 			onCloseReturn(){
 				this.isShowPopupReturn = false;
 			},
+=======
+			},
+			// 退货关闭按钮
+			onCloseReturn(){
+				this.isShowPopupReturn = false;
+			},
+>>>>>>> 76ac9e67a0ef38d31a9c6939af1506b1d27882d1
 			// 点击去拼单  弹出遮罩层
 			onSingle(){
 				this.isShowPopup = true;
@@ -974,7 +982,11 @@
 					return ''+num
 				}
 			}	
+<<<<<<< HEAD
 		},
+=======
+		}
+>>>>>>> 76ac9e67a0ef38d31a9c6939af1506b1d27882d1
 	}
 </script>
 

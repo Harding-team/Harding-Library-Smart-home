@@ -150,10 +150,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 var _default =
 {
   data: function data() {
     return {
+      ids: [],
       list: [
       {
         imgUrl: 'http://img5.imgtn.bdimg.com/it/u=1896971167,2172042544&fm=26&gp=0.jpg',
@@ -185,23 +188,104 @@ var _default =
         brief: '更贴合颈椎曲线',
         price: '238.0',
         id: 3,
+        status: false },
+
+      {
+        imgUrl: 'http://img4.imgtn.bdimg.com/it/u=1666966895,993299225&fm=26&gp=0.jpg',
+        name: '泰国波浪平面枕',
+        brief: '泰国天然乳胶原料',
+        price: '228.0',
+        id: 4,
+        status: false },
+
+      {
+        imgUrl: 'http://img3.imgtn.bdimg.com/it/u=1986846950,2606503163&fm=26&gp=0.jpg',
+        name: '美容按摩枕',
+        brief: '更贴合颈椎曲线',
+        price: '238.0',
+        id: 5,
+        status: false },
+
+      {
+        imgUrl: 'http://img4.imgtn.bdimg.com/it/u=1666966895,993299225&fm=26&gp=0.jpg',
+        name: '泰国波浪平面枕',
+        brief: '泰国天然乳胶原料',
+        price: '228.0',
+        id: 6,
+        status: false },
+
+      {
+        imgUrl: 'http://img3.imgtn.bdimg.com/it/u=1986846950,2606503163&fm=26&gp=0.jpg',
+        name: '美容按摩枕',
+        brief: '更贴合颈椎曲线',
+        price: '238.0',
+        id: 7,
+        status: false },
+
+      {
+        imgUrl: 'http://img4.imgtn.bdimg.com/it/u=1666966895,993299225&fm=26&gp=0.jpg',
+        name: '泰国波浪平面枕',
+        brief: '泰国天然乳胶原料',
+        price: '228.0',
+        id: 8,
+        status: false },
+
+      {
+        imgUrl: 'http://img3.imgtn.bdimg.com/it/u=1986846950,2606503163&fm=26&gp=0.jpg',
+        name: '美容按摩枕',
+        brief: '更贴合颈椎曲线',
+        price: '238.0',
+        id: 9,
         status: false }] };
 
 
 
   },
   onLoad: function onLoad() {
+    // console.log(this.dataList[0])
+    var chus = uni.getStorageSync('collectArr');
+    for (var i = 0; i < this.list.length; i++) {
+      for (var j = 0; j < chus.length; j++) {
+        console.log(this.list[i].id, chus[j].id);
+        if (this.list[i].id == chus[j].id) {
+          this.list[i].status = true;
+        }
+      }
 
+    }
   },
   methods: {
-    collect: function collect(index) {
-
+    _isHasOne: function _isHasOne(id, arr) {
+      // 假设没有该商品，该数组中没有这个id，下标为-1
+      var index = -1;
+      for (var i = 0; i < arr.length; i++) {
+        if (id == arr[i].id) {
+          index = i;
+          break;
+        }
+      }
+      return index;
     },
-    // 跳转详情
-    goToDetails: function goToDetails() {
-      var id = 1;
+    //点击收藏按钮收藏
+    collect: function collect(index, id) {
+      // //改变状态从而动态绑定class样式
+      this.list[index].status = !this.list[index].status;
+      var collectArr = uni.getStorageSync("collectArr") || [];
+      var cindex = this._isHasOne(id, collectArr);
+      if (this.list[index].status) {
+        collectArr.push({
+          id: id });
+
+      } else {
+        collectArr.splice(cindex, 1);
+      }
+      uni.setStorageSync("collectArr", collectArr);
+    },
+    tapDetails: function tapDetails(id) {
+      var id = id;
       uni.navigateTo({
-        url: '/pages/details/details?id=' + id });
+        url: '../details/details?id=' + id });
+
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

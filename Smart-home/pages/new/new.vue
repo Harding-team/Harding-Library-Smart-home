@@ -1,35 +1,38 @@
 <template>
+	
 	<view class="content">
+		
 		<view class="text-area">
+			<image src='https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1574912495280&di=4f5d9fe42efb8966b360addd9cb5596a&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fblog%2F201312%2F04%2F20131204184148_hhXUT.jpeg'></image>
 			<view class='mei'>RECOMMENDED 每日推荐</view>
 			<view class="tui">每 日 推 荐</view>
 		</view>
-		<view class='newlist' >
-				<view class='list' v-for="(item,index) in list" :key="index" @tap="goToDetails()">
-					<text class='iconfont icon-shoucang2' @click="collect(index)"></text>
-					<text class='iconfont icon-buoumaotubiao44'></text>
+		<view class='newlist'>
+				<view v-for="(item,index) in list" :key='index' class='list'>
+					<text :class="item.status?' iconfont icon-buoumaotubiao44':'iconfont icon-shoucang2'" @click="collect(index,item.id)"></text>
 					<view class='images'>
 						<image :src='item.imgUrl'></image>
 					</view>
-					<view class='name'>{{item.name}}</view>
-					<view class='brief'>{{item.brief}}</view>
-					<view class='price'>￥{{item.price}}</view>
+					<view @click="tapDetails(item.id)">
+						<view class='name'>{{item.name}}</view>
+						<view class='brief'>{{item.brief}}</view>
+						<view class='price'>￥{{item.price}}</view>
+					</view>
 				</view>
-				
-			
 			<!-- <view class='list'>
-				
 			</view>
 			<view class='list'></view>
 			<view class='list'></view> -->
 		</view>
 	</view>
+
 </template>
 
 <script>
 	export default {
 		data() {
 			return {
+				ids:[],
 				list:[
 					{
 						imgUrl:'http://img5.imgtn.bdimg.com/it/u=1896971167,2172042544&fm=26&gp=0.jpg',
@@ -62,22 +65,103 @@
 						price:'238.0',
 						id:3,
 						status:false
+					},
+					{
+						imgUrl:'http://img4.imgtn.bdimg.com/it/u=1666966895,993299225&fm=26&gp=0.jpg',
+						name:'泰国波浪平面枕',
+						brief:'泰国天然乳胶原料',
+						price:'228.0',
+						id:4,
+						status:false
+					},
+					{
+						imgUrl:'http://img3.imgtn.bdimg.com/it/u=1986846950,2606503163&fm=26&gp=0.jpg',
+						name:'美容按摩枕',
+						brief:'更贴合颈椎曲线',
+						price:'238.0',
+						id:5,
+						status:false
+					},
+					{
+						imgUrl:'http://img4.imgtn.bdimg.com/it/u=1666966895,993299225&fm=26&gp=0.jpg',
+						name:'泰国波浪平面枕',
+						brief:'泰国天然乳胶原料',
+						price:'228.0',
+						id:6,
+						status:false
+					},
+					{
+						imgUrl:'http://img3.imgtn.bdimg.com/it/u=1986846950,2606503163&fm=26&gp=0.jpg',
+						name:'美容按摩枕',
+						brief:'更贴合颈椎曲线',
+						price:'238.0',
+						id:7,
+						status:false
+					},
+					{
+						imgUrl:'http://img4.imgtn.bdimg.com/it/u=1666966895,993299225&fm=26&gp=0.jpg',
+						name:'泰国波浪平面枕',
+						brief:'泰国天然乳胶原料',
+						price:'228.0',
+						id:8,
+						status:false
+					},
+					{
+						imgUrl:'http://img3.imgtn.bdimg.com/it/u=1986846950,2606503163&fm=26&gp=0.jpg',
+						name:'美容按摩枕',
+						brief:'更贴合颈椎曲线',
+						price:'238.0',
+						id:9,
+						status:false
 					}
 				]
 			}
 		},
 		onLoad() {
-
+			// console.log(this.dataList[0])
+			var chus=uni.getStorageSync('collectArr')
+			for(var i=0;i<this.list.length;i++){
+				for(var j=0;j<chus.length;j++){
+					console.log(this.list[i].id,chus[j].id)
+					if(this.list[i].id==chus[j].id){
+						this.list[i].status=true
+					}
+				}
+				
+			}
 		},
 		methods: {
-			collect(index){
-				
+			_isHasOne(id,arr){
+				// 假设没有该商品，该数组中没有这个id，下标为-1
+				let index = -1;
+				for(let i=0;i<arr.length;i++){
+					if(id == arr[i].id){
+						index = i;
+						break;
+					}
+				}
+				return index;
 			},
-			// 跳转详情
-			goToDetails(){
-				let id = 1
+			//点击收藏按钮收藏
+			collect(index,id){
+				// //改变状态从而动态绑定class样式
+				this.list[index].status=!this.list[index].status
+				let collectArr=uni.getStorageSync("collectArr")||[];
+				let cindex = this._isHasOne(id,collectArr);
+				if(this.list[index].status){
+					collectArr.push({
+						id:id
+					})
+				}else{
+					collectArr.splice(cindex,1)
+				}
+				uni.setStorageSync("collectArr",collectArr)
+			},
+			tapDetails(id){
+				var id=id;
 				uni.navigateTo({
-					url: '/pages/details/details?id='+id
+					url:'../details/details?id='+id,
+		
 				})
 			}
 		}
@@ -90,7 +174,6 @@
 		position:relative;
 		width:100vw;
 		height:100vh;
-		/* overflow:hidden; */
 	}
 	.content .text-area{
 		padding-top:135rpx;
@@ -99,17 +182,39 @@
 		text-align:center;
 		width:100%;
 		height:340rpx;
-		/* background:url("../../luimage/banner.png"); */
 		background-size:100% 185%;
+		overflow:hidden;
+		
+	}
+	.content .text-area image{
+		width:100%;
+		height:150%;
+		position:absolute;
+		top:0;
+		left:0;
 	}
 	.content .text-area .mei{
+		width:500rpx;
 		font-size: 36rpx;
 		color:#fff;
+		position:absolute;
+		z-index:2;
+		position:absolute;
+		left:50%;
+		
+		margin-left:-250rpx;
+		z-index:2;
 	}
 	.content .text-area .tui{
+		width:300rpx;
 		font-size:24rpx;
 		color:#fff;
 		marin-top:5rpx;
+		position:absolute;
+		left:50%;
+		top:200rpx;
+		margin-left:-150rpx;
+		z-index:2;
 	}
 	.content .newlist{
 		width:100vw;
@@ -130,18 +235,11 @@
 		box-shadow:0 0 10rpx 2rpx #ddd;
 		box-sizing:border-box;
 	}
-	.content .newlist .list .icon-shoucang2{
+	.content .newlist .list .iconfont{
 		position:absolute;
 		right:10rpx;
 		top:20rpx;
 		z-index:2;
-	}
-	.content .newlist .list .icon-buoumaotubiao44{
-		position:absolute;
-		right:10rpx;
-		top:20rpx;
-		z-index:3;
-		display:none;
 	}
 	.content .newlist .list .active{
 		display:block;

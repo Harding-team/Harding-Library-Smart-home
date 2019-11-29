@@ -18,6 +18,21 @@
 					<view></view>
 					<view></view>
 				</view>
+<<<<<<< HEAD
+=======
+				<view class="dian" style="right:-4upx;">
+					<view></view>
+					<view></view>
+					<view></view>
+					<view></view>
+					<view></view>
+					<view></view>
+					<view></view>
+					<view></view>
+					<view></view>
+					<view></view>
+				</view>
+>>>>>>> 76ac9e67a0ef38d31a9c6939af1506b1d27882d1
 				<view class="price">
 					<view style="text-align: left; margin-left: 20upx;">满{{item.manPrice}}立减</view>
 					<view style="font-size:40upx;">¥<text>{{item.price}} </text> 购物券</view>
@@ -59,6 +74,8 @@
 					},{
 						price:'2',
 						manPrice:'100',
+						price:'245',
+						manPrice:'20',
 						id:'3'
 					}
 				]

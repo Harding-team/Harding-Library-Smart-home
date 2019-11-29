@@ -143,28 +143,110 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
     return {
-      address: {} };
+      payFlag: true,
+      address: {},
+      arr: [
+      {
+        name: '狼牙枕1',
+        specification: '米色',
+        price: '238.00',
+        freight: '0.00',
+        count: 3,
+        id: '0' },
+      {
+        name: '狼牙枕2',
+        specification: '米色',
+        price: '138.00',
+        freight: '0.00',
+        count: 2,
+        id: '1' },
+      {
+        name: '狼牙枕3',
+        specification: '米色',
+        price: '8.00',
+        freight: '0.00',
+        count: 2,
+        id: '2' }],
 
+
+      allPrice: '0.00' };
 
   },
-  onLoad: function onLoad() {
+  onLoad: function onLoad(options) {
+    // this.arr = options.arr;
+    var obj = uni.getStorageSync('addressObj') || {};
+    this.address = obj;
+  },
+  onShow: function onShow() {
+    var num = 0;
+    this.arr.forEach(function (item) {
+      num += item.price * item.count;
+    });
+    this.allPrice = num + '.00';
   },
   methods: {
-    getAddress: function getAddress() {var _this = this;
-      uni.chooseAddress({
-        success: function success(res) {
-          console.log(res);
-          var obj = {
-            name: res.userName,
-            area: res.provinceName + res.cityName + res.countyName,
-            street: res.detailInfo };
+    getAddress: function getAddress() {//跳转获取用户地址信息页面
+      uni.navigateTo({
+        url: '/pages/getAddress/getAddress' });
 
-          _this.address = obj;
-        } });
+    },
+    payTap: function payTap(flag) {//选择支付方式事件
+      this.payFlag = flag;
+    },
+    goToCoupon: function goToCoupon() {//跳转优惠券页面
+      uni.navigateTo({
+        url: '/pages/coupon/coupon' });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

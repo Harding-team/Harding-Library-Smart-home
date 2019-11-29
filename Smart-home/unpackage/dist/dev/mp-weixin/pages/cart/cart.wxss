@@ -1,0 +1,185 @@
+.cart {
+  wdith: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+.cart .cartKong {
+  width: 100%;
+  height: 100%;
+  text-align: center ;
+}
+.cart .cartKong view {
+  margin-top: 550rpx;
+}
+.cart .cartKong view .kong {
+  width: 100%;
+  font-size: 30rpx;
+  color: #999;
+  margin-top: 49rpx;
+  text-align: center;
+}
+.cart .cartKong .btn {
+  width: 202rpx;
+  height: 78rpx;
+  line-height: 78rpx;
+  margin-top: 58rpx;
+  background-color: #278c58;
+  border-radius: 14rpx;
+  font-size: 26rpx;
+  color: #fff;
+}
+.cart .cartMan {
+  width: 100%;
+  height: 100%;
+  background: #ddd;
+}
+.cart .cartMan .shoopList {
+  position: relative;
+  width: 100%;
+  height: 250rpx;
+  background: #fff;
+  margin-bottom: 20rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.cart .cartMan .shoopList .choose {
+  margin-left: 20rpx;
+}
+.cart .cartMan .shoopList .titleImg {
+  margin-left: 20rpx;
+}
+.cart .cartMan .shoopList .titleImg image {
+  width: 180rpx;
+  height: 180rpx;
+}
+.cart .cartMan .shoopList .right {
+  height: 180rpx;
+  margin-left: 30rpx;
+}
+.cart .cartMan .shoopList .right .name {
+  width: 140rpx;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
+  white-space: nowrap;
+  height: 50rpx;
+  font-size: 36rpx;
+  color: #333333;
+}
+.cart .cartMan .shoopList .right .color {
+  font-size: 26rpx;
+  color: #afafaf;
+  margin-top: 10rpx;
+}
+.cart .cartMan .shoopList .right .price {
+  font-size: 30rpx;
+  color: #df0000;
+  margin-top: 35rpx;
+}
+.cart .cartMan .shoopList .num {
+  position: absolute;
+  width: 150rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  bottom: 55rpx;
+  right: 30rpx;
+}
+.cart .cartMan .shoopList .num .jia {
+  width: 42rpx;
+  height: 40rpx;
+  border: 1rpx solid #b5b5b5;
+  text-align: center;
+  lin-height: 40rpx;
+  border-radius: 4rpx;
+  font-size: 28rpx;
+}
+.cart .cartMan .shoopList .num .jian {
+  width: 42rpx;
+  height: 40rpx;
+  border: 1rpx solid #b5b5b5;
+  text-align: center;
+  border-radius: 4rpx;
+  lin-height: 32rpx;
+  font-size: 28rpx;
+}
+.cart .cartMan .shoopList .num .numOne {
+  width: 70rpx;
+  height: 40rpx;
+  text-align: center;
+  border: 1rpx solid #b5b5b5;
+  lin-height: 40rpx;
+  font-size: 28rpx;
+}
+.cart .cartMan .jieSuan {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 140rpx;
+  background: #fff;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+.cart .cartMan .jieSuan .icone {
+  width: 200rpx;
+  height: 140rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.cart .cartMan .jieSuan .icone .quan {
+  margin-left: 20rpx;
+}
+.cart .cartMan .jieSuan .icone .iconeOne {
+  margin-left: 20rpx;
+  height: 50rpx;
+}
+.cart .cartMan .jieSuan .zonngPrice {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 150rpx;
+  height: 140rpx;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 200rpx;
+}
+.cart .cartMan .jieSuan .suan {
+  height: 140rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.cart .cartMan .jieSuan .suan .sunOne {
+  width: 150rpx;
+  height: 70rpx;
+  background: #f00;
+  border-radius: 12rpx;
+  text-align: center;
+  color: #fff;
+  line-height: 70rpx;
+}
+

@@ -122,7 +122,22 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;} //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -162,7 +177,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 var _default =
 {
-  data: function data() {
+  data: function data() {var _ref;
     return {
       number: 0,
       couponArr: [
@@ -179,11 +194,13 @@ var _default =
       {
         price: '55',
         manPrice: '500',
-        id: '2' },
-      {
+        id: '2' }, (_ref = {
+
         price: '2',
-        manPrice: '100',
-        id: '3' }] };
+        manPrice: '100' }, _defineProperty(_ref, "price",
+      '245'), _defineProperty(_ref, "manPrice",
+      '20'), _defineProperty(_ref, "id",
+      '3'), _ref)] };
 
 
 

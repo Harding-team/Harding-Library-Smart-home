@@ -48,7 +48,6 @@
 						description:'天然乳胶',
 						imgSrc:'https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1574666627&di=35b2f2df4e32e92808cb60f4216398ab&src=http://wx4.sinaimg.cn/crop.0.0.1024.574/8a533d85ly1fqpto24uq4j20sg0izdld.jpg',
 						freight:'22.00',
-						orderNumber:9876543211025666
 						orderNumber:9876543211025666,
 						id:'1'
 					},{

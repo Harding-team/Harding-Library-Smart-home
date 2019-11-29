@@ -18,19 +18,6 @@
 					<view></view>
 					<view></view>
 				</view>
-				<view class="dian" style="right:-2upx;">
-				<view class="dian" style="right:-4upx;">
-					<view></view>
-					<view></view>
-					<view></view>
-					<view></view>
-					<view></view>
-					<view></view>
-					<view></view>
-					<view></view>
-					<view></view>
-					<view></view>
-				</view>
 				<view class="price">
 					<view style="text-align: left; margin-left: 20upx;">满{{item.manPrice}}立减</view>
 					<view style="font-size:40upx;">¥<text>{{item.price}} </text> 购物券</view>

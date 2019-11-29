@@ -184,7 +184,7 @@
 }
 .container .popup {
   position: relative;
-  height: 56vh;
+  height: 60vh;
 }
 .container .popup .popup-top {
   display: -webkit-box;
@@ -194,7 +194,7 @@
   padding-left: 48rpx;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  margin-bottom: -20rpx;
+  margin-bottom: -28rpx;
 }
 .container .popup .popup-top .popup-left {
   width: 224rpx;
@@ -222,11 +222,17 @@
 .container .popup .popup-top .popup-right .popup-stock {
   margin-bottom: 20rpx;
 }
+.container .popup .popup-wrap {
+  height: 31vh;
+}
+.container .popup .popup-wrap .popup-wrapper {
+  white-space: nowrap;
+}
 .container .popup .popup-box {
-  padding-left: 48rpx;
+  padding: 0 40rpx;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  margin: 0rpx 0rpx 36rpx 0rpx;
+  margin: 0rpx 0rpx 24rpx 0rpx;
   font-size: 34rpx;
 }
 .container .popup .popup-box .popup-list {
@@ -237,9 +243,9 @@
   width: 600rpx;
 }
 .container .popup .popup-box .popup-list .popup-item {
-  margin-top: 30rpx;
+  margin-top: 20rpx;
   margin-right: 53rpx;
-  margin-bottom: 20rpx;
+  margin-bottom: 10rpx;
   padding: 10rpx 34rpx;
   background-color: #bfbfbf;
   border-radius: 14rpx;
@@ -249,9 +255,47 @@
   background: red;
   color: #fff;
 }
+.container .popup .popup-update {
+  padding: 0 40rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100rpx;
+  border-top: 1rpx solid #ccc;
+}
+.container .popup .popup-update .popup-add-cut {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+.container .popup .popup-update .popup-add-cut .add,
+.container .popup .popup-update .popup-add-cut .cut {
+  width: 50rpx;
+  height: 40rpx;
+  font-weight: bold;
+  line-height: 40rpx;
+  text-align: center;
+  background: #ccc;
+}
+.container .popup .popup-update .popup-add-cut .count {
+  width: 50rpx;
+  text-align: center;
+  font-size: 24rpx;
+  line-height: 44rpx;
+}
 .container .popup .popup-bottom {
   width: 100vw;
-  height: 95rpx;
+  height: 8vh;
   background-color: #fb3609;
   line-height: 95rpx;
   color: #fff;

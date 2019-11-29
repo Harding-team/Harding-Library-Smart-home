@@ -24,8 +24,7 @@
   color: #666;
 }
 .container .content .banner .back,
-.container .content .banner .cart,
-.container .content .banner .more {
+.container .content .banner .cart {
   width: 76rpx;
   height: 76rpx;
   background-color: #1f1f1f;
@@ -35,30 +34,30 @@
   line-height: 76rpx;
   color: #fff;
   font-size: 42rpx;
-  position: absolute;
+  position: fixed;
   top: 44rpx;
+  z-index: 20;
 }
 .container .content .banner .back {
   left: 16rpx;
 }
 .container .content .banner .cart {
-  right: 116rpx;
+  left: 116rpx;
 }
-.container .content .banner .more {
-  right: 16rpx;
-}
-.container .content .banner .more-num {
+.container .content .banner .cartAllCount {
+  display: block;
   width: 53rpx;
   height: 38rpx;
   line-height: 38rpx;
   text-align: center;
   color: #fff;
   font-size: 24rpx;
-  position: absolute;
+  position: fixed;
   border-radius: 19rpx;
-  right: 26rpx;
-  top: 42rpx;
+  left: 157rpx;
+  top: 36rpx;
   background-color: #fe4330;
+  z-index: 101;
 }
 .container .content .info {
   width: 100vw;
@@ -224,6 +223,9 @@
   font-size: 26rpx;
   margin-bottom: 20rpx;
 }
+.container .content .single .single-swiper {
+  height: 100rpx;
+}
 .container .content .single .single-detail {
   display: -webkit-box;
   display: -webkit-flex;
@@ -275,10 +277,27 @@
   font-size: 26rpx;
 }
 .container .content .single .single-detail .sd-right .sd-box .sb-time {
-  font-size: 18rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 20rpx;
 }
-.container .content .single .single-detail .sd-right .sd-box .sb-time text {
+.container .content .single .single-detail .sd-right .sd-box .sb-time view {
+  width: 120rpx;
   color: #fb3609;
+}
+.container .content .single .single-detail .sd-right .sd-box .sb-time view .uni-countdown {
+  color: red!important;
+}
+.container .content .single .single-detail .sd-right .sd-box .sb-time view .uni-countdown__number {
+  margin: 0;
+  padding: 0;
+  color: red!important;
 }
 .container .content .single .single-detail .sd-right .sd-btn {
   width: 135rpx;
@@ -535,11 +554,11 @@
 .container .footer .alone-shop {
   background: #fb3609;
 }
-.container .footer .popup {
+.container .popup {
   position: relative;
   height: 56vh;
 }
-.container .footer .popup .popup-top {
+.container .popup .popup-top {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -547,9 +566,9 @@
   padding-left: 48rpx;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  margin-bottom: -20rpx;
+  margin-bottom: -28rpx;
 }
-.container .footer .popup .popup-top .popup-left {
+.container .popup .popup-top .popup-left {
   width: 224rpx;
   height: 224rpx;
   display: block;
@@ -562,49 +581,93 @@
       -ms-transform: translateY(-60rpx);
           transform: translateY(-60rpx);
 }
-.container .footer .popup .popup-top .popup-right {
+.container .popup .popup-top .popup-right {
   font-size: 26rpx;
   font-weight: 700;
 }
-.container .footer .popup .popup-top .popup-right .popup-price {
+.container .popup .popup-top .popup-right .popup-price {
   margin-top: 20rpx;
   color: #d60e15;
   font-size: 36rpx;
   margin-bottom: 12rpx;
 }
-.container .footer .popup .popup-top .popup-right .popup-stock {
+.container .popup .popup-top .popup-right .popup-stock {
   margin-bottom: 20rpx;
 }
-.container .footer .popup .popup-box {
-  padding-left: 48rpx;
+.container .popup .popup-wrap {
+  height: 31vh;
+}
+.container .popup .popup-wrap .popup-wrapper {
+  white-space: nowrap;
+}
+.container .popup .popup-box {
+  padding: 0 40rpx;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  margin: 0rpx 0rpx 36rpx 0rpx;
+  margin: 0rpx 0rpx 24rpx 0rpx;
   font-size: 34rpx;
 }
-.container .footer .popup .popup-box .popup-list {
+.container .popup .popup-box .popup-list {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   width: 600rpx;
 }
-.container .footer .popup .popup-box .popup-list .popup-item {
-  margin-top: 30rpx;
+.container .popup .popup-box .popup-list .popup-item {
+  margin-top: 20rpx;
   margin-right: 53rpx;
-  margin-bottom: 20rpx;
+  margin-bottom: 10rpx;
   padding: 10rpx 34rpx;
   background-color: #bfbfbf;
   border-radius: 14rpx;
   font-size: 26rpx;
 }
-.container .footer .popup .popup-box .popup-list .popup-item.active {
+.container .popup .popup-box .popup-list .popup-item.active {
   background: red;
   color: #fff;
 }
-.container .footer .popup .popup-bottom {
+.container .popup .popup-update {
+  padding: 0 40rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100rpx;
+  border-top: 1rpx solid #ccc;
+}
+.container .popup .popup-update .popup-add-cut {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+.container .popup .popup-update .popup-add-cut .add,
+.container .popup .popup-update .popup-add-cut .cut {
+  width: 50rpx;
+  height: 40rpx;
+  font-weight: bold;
+  line-height: 40rpx;
+  text-align: center;
+  background: #ccc;
+}
+.container .popup .popup-update .popup-add-cut .count {
+  width: 50rpx;
+  text-align: center;
+  font-size: 24rpx;
+  line-height: 44rpx;
+}
+.container .popup .popup-bottom {
   width: 100vw;
-  height: 95rpx;
+  height: 8vh;
   background-color: #fb3609;
   line-height: 95rpx;
   color: #fff;
@@ -612,7 +675,34 @@
   position: absolute;
   bottom: 0;
 }
-.container .footer .van-popup {
+.container .van-popup {
   overflow-y: visible;
+}
+.container .pr .pr-title {
+  width: 100vw;
+  height: 100rpx;
+  border-bottom: 1rpx solid #ccc;
+  line-height: 100rpx;
+  text-align: center;
+}
+.container .pr .pr-list {
+  width: 100vw;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 30rpx;
+}
+.container .pr .pr-list .pr-item {
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-bottom: 20rpx;
+}
+.container .pr .pr-list .pr-item .pr-name {
+  margin-bottom: 5rpx;
+}
+.container .pr .pr-list .pr-item .pr-text {
+  font-size: 26rpx;
+  color: #999;
 }
 

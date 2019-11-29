@@ -344,10 +344,6 @@
 
 
 
-
-
-
-
 /* 标题 */
 .status_bar {
      height: 25px;

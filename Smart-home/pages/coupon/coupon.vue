@@ -36,10 +36,7 @@
 					<view>收藏+关注</view>
 				</view>
 				<view class="btn">
-<<<<<<< HEAD
 					<view>立即使用</view>
-=======
->>>>>>> d480efc20a72045eda85c1b9f2929fbd13cfd352
 					<view  @click="goToDetails(item.id)">立即使用</view>
 				</view>
 			</view>
@@ -58,15 +55,12 @@
 				number:0,
 				couponArr:[
 					{
-<<<<<<< HEAD
 						price:'5',
 						manPrice:'199',
 					},{
 						price:'55',
 						manPrice:'500',
 					},{
-=======
->>>>>>> d480efc20a72045eda85c1b9f2929fbd13cfd352
 						price:'2',
 						manPrice:'100',
 						id:'1'
@@ -75,13 +69,10 @@
 						manPrice:'500',
 						id:'2'
 					},{
-<<<<<<< HEAD
 						price:'2',
 						manPrice:'100',
-=======
 						price:'245',
 						manPrice:'20',
->>>>>>> d480efc20a72045eda85c1b9f2929fbd13cfd352
 						id:'3'
 					}
 				]

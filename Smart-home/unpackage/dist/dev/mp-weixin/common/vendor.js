@@ -734,7 +734,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -6990,7 +6990,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -7011,14 +7011,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -7094,7 +7094,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -7501,15 +7501,9 @@ module.exports = g;
 
 /***/ }),
 /* 4 */
-<<<<<<< HEAD
 /*!***************************************************************!*\
   !*** D:/git/Harding-Library-Smart-home/Smart-home/pages.json ***!
   \***************************************************************/
-=======
-/*!*****************************************************************************************!*\
-  !*** C:/Users/齐文蒸/Desktop/智能家具uni-app/Harding-Library-Smart-home/Smart-home/pages.json ***!
-  \*****************************************************************************************/
->>>>>>> d480efc20a72045eda85c1b9f2929fbd13cfd352
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -8414,40 +8408,20 @@ module.exports = {"_from":"@dcloudio/uni-stat@next","_id":"@dcloudio/uni-stat@2.
 
 /***/ }),
 /* 7 */
-<<<<<<< HEAD
 /*!********************************************************************************!*\
   !*** D:/git/Harding-Library-Smart-home/Smart-home/pages.json?{"type":"style"} ***!
   \********************************************************************************/
-=======
-/*!**********************************************************************************************************!*\
-  !*** C:/Users/齐文蒸/Desktop/智能家具uni-app/Harding-Library-Smart-home/Smart-home/pages.json?{"type":"style"} ***!
-  \**********************************************************************************************************/
->>>>>>> d480efc20a72045eda85c1b9f2929fbd13cfd352
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-<<<<<<< HEAD
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/home/home": { "navigationStyle": "custom" }, "pages/new/new": { "navigationBarTitleText": "新品" }, "pages/cart/cart": { "navigationBarTitleText": "购物车" }, "pages/my/my": { "navigationBarTitleText": "我的" }, "pages/details/details": { "navigationStyle": "custom" }, "pages/review/review": { "navigationBarTitleText": "评价详情" }, "pages/coupon/coupon": { "navigationBarTitleText": "领卷中心" }, "pages/order/order": { "navigationBarTitleText": "我的订单" }, "pages/collection/collection": { "navigationBarTitleText": "商品收藏" }, "pages/history/history": { "navigationBarTitleText": "历史浏览" }, "pages/refund/refund": { "navigationBarTitleText": "退款/售后" }, "pages/allorder/allorder": { "navigationBarTitleText": "订单分类" }, "pages/confirmorder/confirmorder": { "navigationBarTitleText": "确认订单" } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "", "navigationBarBackgroundColor": "#F8F8F8", "backgroundColor": "#F8F8F8" } };exports.default = _default;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/home/home": { "navigationStyle": "custom" }, "pages/new/new": { "navigationBarTitleText": "新品" }, "pages/cart/cart": { "navigationBarTitleText": "购物车" }, "pages/my/my": { "navigationBarTitleText": "我的" }, "pages/details/details": { "navigationStyle": "custom" }, "pages/review/review": { "navigationBarTitleText": "评价详情" }, "pages/coupon/coupon": { "navigationBarTitleText": "领卷中心" }, "pages/order/order": { "navigationBarTitleText": "我的订单" }, "pages/collection/collection": { "navigationBarTitleText": "商品收藏" }, "pages/history/history": { "navigationBarTitleText": "历史浏览" }, "pages/refund/refund": { "navigationBarTitleText": "退款/售后" }, "pages/allorder/allorder": { "navigationBarTitleText": "订单分类" }, "pages/confirmorder/confirmorder": { "navigationBarTitleText": "确认订单" }, "pages/getAddress/getAddress": { "navigationBarTitleText": "收货地址" } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "", "navigationBarBackgroundColor": "#F8F8F8", "backgroundColor": "#F8F8F8" } };exports.default = _default;
 
 /***/ }),
 /* 8 */
 /*!*******************************************************************************!*\
   !*** D:/git/Harding-Library-Smart-home/Smart-home/pages.json?{"type":"stat"} ***!
   \*******************************************************************************/
-=======
-<<<<<<< HEAD
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/home/home": { "navigationStyle": "custom", "usingComponents": {} }, "pages/new/new": { "navigationBarTitleText": "新品", "usingComponents": {} }, "pages/cart/cart": { "navigationBarTitleText": "购物车", "usingComponents": {} }, "pages/my/my": { "navigationBarTitleText": "我的", "usingComponents": {} }, "pages/details/details": { "navigationStyle": "custom", "usingComponents": {} }, "pages/review/review": { "navigationBarTitleText": "评价详情", "usingComponents": {} }, "pages/coupon/coupon": { "navigationBarTitleText": "领卷中心", "usingComponents": {} }, "pages/order/order": { "navigationBarTitleText": "我的订单", "usingComponents": {} }, "pages/collection/collection": { "navigationBarTitleText": "商品收藏", "usingComponents": {} }, "pages/history/history": { "navigationBarTitleText": "历史浏览", "usingComponents": {} }, "pages/refund/refund": { "navigationBarTitleText": "退款/售后", "usingComponents": {} }, "pages/allorder/allorder": { "navigationBarTitleText": "订单分类", "usingComponents": {} }, "pages/confirmorder/confirmorder": { "navigationBarTitleText": "确认订单", "usingComponents": {} }, "pages/getAddress/getAddress": { "navigationBarTitleText": "收货地址", "usingComponents": {} } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "", "navigationBarBackgroundColor": "#F8F8F8", "backgroundColor": "#F8F8F8" } };exports.default = _default;
-=======
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/home/home": { "navigationStyle": "custom" }, "pages/new/new": { "navigationBarTitleText": "新品" }, "pages/cart/cart": { "navigationBarTitleText": "购物车" }, "pages/my/my": { "navigationBarTitleText": "我的" }, "pages/details/details": { "navigationStyle": "custom" }, "pages/review/review": { "navigationBarTitleText": "评价详情" }, "pages/coupon/coupon": { "navigationBarTitleText": "领卷中心" }, "pages/order/order": { "navigationBarTitleText": "我的订单" }, "pages/collection/collection": { "navigationBarTitleText": "商品收藏" }, "pages/history/history": { "navigationBarTitleText": "历史浏览" }, "pages/refund/refund": { "navigationBarTitleText": "退款/售后" }, "pages/allorder/allorder": { "navigationBarTitleText": "订单分类" }, "pages/confirmorder/confirmorder": { "navigationBarTitleText": "确认订单" }, "pages/getAddress/getAddress": { "navigationBarTitleText": "收货地址" } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "", "navigationBarBackgroundColor": "#F8F8F8", "backgroundColor": "#F8F8F8" } };exports.default = _default;
->>>>>>> 979b22d4e205edf13afa29a31af2f1abe9f1c172
-
-/***/ }),
-/* 8 */
-/*!*********************************************************************************************************!*\
-  !*** C:/Users/齐文蒸/Desktop/智能家具uni-app/Harding-Library-Smart-home/Smart-home/pages.json?{"type":"stat"} ***!
-  \*********************************************************************************************************/
->>>>>>> d480efc20a72045eda85c1b9f2929fbd13cfd352
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 

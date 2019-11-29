@@ -1,35 +1,21 @@
 <template>
 	<view class="confirmorder">
 		<!-- 地图部分 -->
-<<<<<<< HEAD
-		<view class="address" v-if="!address.name" @click="getAddress()">
-=======
 		<view class="address fff" v-if="!address.name" @click="getAddress()">
->>>>>>> d480efc20a72045eda85c1b9f2929fbd13cfd352
 			<text class="iconfont icon-danxuan" style="font-size:38rpx; color:#248756;"></text>
 			<view class="address-box" >请选择收货地址</view>
 			<text class="iconfont icon-iconfonti" style="font-size:72rpx;"></text>
 		</view>
-<<<<<<< HEAD
-		<view class="address" id="address" v-else>
-			<text class="iconfont icon-danxuan" style="font-size:38rpx; color:#248756;"></text>
-			<view class="address-box" >
-				<view>{{address.name}}</view>
-				<view>{{address.area}}</view>
-=======
 		<view class="address fff" id="address" v-else @click="getAddress()">
 			<text class="iconfont icon-danxuan" style="font-size:38rpx; color:#248756;"></text>
 			<view class="address-box" >
 				<view>{{address.name}}</view>
 				<view>{{address.province}} {{address.city}} {{address.county}}</view>
->>>>>>> d480efc20a72045eda85c1b9f2929fbd13cfd352
 			</view>
 			<text class="iconfont icon-iconfonti" style="font-size:72rpx;"></text>
 		</view>
 		<!-- 彩色线条 -->
 		<view class="btm-img"><image src="/static/qiimg/1.png"></image></view>
-<<<<<<< HEAD
-=======
 		<!-- 商品信息 -->
 		<view class="box" v-for="(item,index) in arr" :key="index">
 			<view class="info fff">
@@ -77,7 +63,6 @@
 			<view>应付款 : <text> ¥ {{allPrice}}</text></view>
 			<view>提交订单</view>
 		</view>
->>>>>>> d480efc20a72045eda85c1b9f2929fbd13cfd352
 	</view>
 </template>
 
@@ -85,26 +70,6 @@
 	export default {
 		data() {
 			return {
-<<<<<<< HEAD
-				address:{
-				}
-			}
-		},
-		onLoad() {
-		},
-		methods: {
-			getAddress(){
-				uni.chooseAddress({
-					success:(res)=>{
-						console.log(res)
-						let obj = {
-							name:res.userName,
-							area:res.provinceName+res.cityName+res.countyName,
-							street:res.detailInfo
-						}
-						this.address = obj
-					}
-=======
 				payFlag:true,
 				address:{},
 				arr:[
@@ -158,7 +123,6 @@
 			goToCoupon(){//跳转优惠券页面
 				uni.navigateTo({
 					url:'/pages/coupon/coupon'
->>>>>>> d480efc20a72045eda85c1b9f2929fbd13cfd352
 				})
 			}
 		}
@@ -170,11 +134,10 @@
 	margin:0;
 	padding:0;
 }
-<<<<<<< HEAD
 .confirmorder{
 	width:100vw;
 	// 地图部分
-=======
+	}
 body{
 	background: #f2f2f2;
 }
@@ -221,7 +184,6 @@ body{
 		}
 	}
 	// 地址部分
->>>>>>> d480efc20a72045eda85c1b9f2929fbd13cfd352
 	.address{
 		padding:0 28rpx 0 40rpx;
 		height:110rpx;
@@ -261,8 +223,6 @@ body{
 			display: block;
 		}
 	}
-<<<<<<< HEAD
-=======
 	// 提交订单
 	.addOrder{
 		width:100vw;
@@ -293,6 +253,5 @@ body{
 			border-radius: 12rpx;
 		}
 	}
->>>>>>> d480efc20a72045eda85c1b9f2929fbd13cfd352
 }
 </style>

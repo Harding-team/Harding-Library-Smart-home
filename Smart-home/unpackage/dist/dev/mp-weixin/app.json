@@ -12,7 +12,8 @@
     "pages/history/history",
     "pages/refund/refund",
     "pages/allorder/allorder",
-    "pages/confirmorder/confirmorder"
+    "pages/confirmorder/confirmorder",
+    "pages/getAddress/getAddress"
   ],
   "subPackages": [],
   "window": {

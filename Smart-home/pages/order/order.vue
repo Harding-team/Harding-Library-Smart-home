@@ -26,11 +26,11 @@
 			<!-- 商品按钮 -->
 			<view class="btn" v-if="item.orderNumber">
 				<view class="delete">删除</view>
-				<view class="evaluation">评价</view>
+				<view class="evaluation" @click="goToReview(item.id)">评价</view>
 			</view>
 			<view class="btn" v-else>
 				<view class="cancelOrder">取消订单</view>
-				<view class="toPay">去支付</view>
+				<view class="toPay" @click="goToConfirmorder(index)">去支付</view>
 			</view>
 		</view>
 	</view>
@@ -75,6 +75,18 @@
 				console.log(1111);
 				uni.navigateTo({
 					url:'/pages/details/details?id='+id
+				})
+			},
+			goToConfirmorder(index){//跳转确认订单页面
+				let arr = [];
+				arr.push(this.orderArr[index])
+				uni.navigateTo({
+					url:'/pages/confirmorder/confirmorder?arr='+arr
+				})
+			},
+			goToReview(id){//跳转评论页面
+				uni.navigateTo({
+					url:'/pages/review/review'
 				})
 			}
 		}

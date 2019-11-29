@@ -218,6 +218,7 @@ html{
 			}
 		}
 	}
+	//退款价钱
 	.price{
 		padding:0 18upx 16upx;
 		border-bottom:1px solid #ccc;
@@ -226,6 +227,7 @@ html{
 		margin-top:26upx;
 		font-size:28upx;
 	}
+	//查看详情
 	//按钮部分
 	.seeDetails{
 		padding:18upx 0;

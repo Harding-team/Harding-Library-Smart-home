@@ -101,19 +101,28 @@
 				this.addressArr = arr;
 			},
 			detele(index){//删除
-				this.addressArr.splice(index,1)
-				let defaultStatus = this.addressArr.some((item=>{
-					return item.defaultStatus == true;
-				}))
-				if(!defaultStatus && this.addressArr.length>0){
-					this.addressArr[0].defaultStatus = true;
-				}
-				let useStatus = this.addressArr.some((item=>{
-					return item.useStatus == true;
-				}))
-				if(!useStatus && this.addressArr.length>0){
-					this.addressArr[0].useStatus = true;
-				}
+				uni.showModal({
+					title:'删除',
+					content:'是否删除此地址',
+					showCancel:true,
+					success:(res)=>{
+						if(res.confirm){
+							this.addressArr.splice(index,1)
+							let defaultStatus = this.addressArr.some((item=>{
+								return item.defaultStatus == true;
+							}))
+							if(!defaultStatus && this.addressArr.length>0){
+								this.addressArr[0].defaultStatus = true;
+							}
+							let useStatus = this.addressArr.some((item=>{
+								return item.useStatus == true;
+							}))
+							if(!useStatus && this.addressArr.length>0){
+								this.addressArr[0].useStatus = true;
+							}
+						}
+					}
+				})
 			},
 			wxAdd(){//获取微信地址
 				uni.chooseAddress({

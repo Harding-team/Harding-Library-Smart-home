@@ -25,17 +25,13 @@
 			<view class="allPrice">共计{{item.count}}件商品合计:<text style="color:red;">￥{{item.count*item.price}}</text> (含运费 ￥{{item.freight}})</view>
 			<!-- 商品按钮 -->
 			<view class="btn" v-if="item.orderNumber">
-				<view class="delete">删除</view>
-				<view class="evaluation">评价</view>
-			</view>
-			<view class="btn" v-else>
-				<view class="cancelOrder">取消订单</view>
-				<view class="toPay">去支付</view>
+				<view class="delete" @click="detele(index,'0')">删除</view>
 				<view class="evaluation" @click="goToReview(item.id)">评价</view>
 			</view>
 			<view class="btn" v-else>
-				<view class="cancelOrder">取消订单</view>
+				<view class="cancelOrder" @click="detele(index,'1')">取消订单</view>
 				<view class="toPay" @click="goToConfirmorder(index)">去支付</view>
+				<view class="evaluation" @click="goToReview(item.id)">评价</view>
 			</view>
 		</view>
 	</view>
@@ -91,7 +87,19 @@
 			},
 			goToReview(id){//跳转评论页面
 				uni.navigateTo({
-					url:'/pages/review/review'
+					url:'/pages/review/review?id='+id+'&index=0'
+				})
+			},
+			detele(index,type){//删除或取消订单
+				let str = type=='0'?'删除':'取消'
+				uni.showModal({
+					title:str,
+					content:`确认${str}这个订单吗?`,
+					success:res=>{
+						if(res.confirm){
+							this.orderArr.splice(index,1);
+						}
+					}
 				})
 			}
 		}

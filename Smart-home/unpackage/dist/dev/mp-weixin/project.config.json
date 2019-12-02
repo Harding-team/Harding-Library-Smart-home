@@ -26,9 +26,24 @@
 			"current": -1,
 			"list": []
 		},
-		"miniprogram": {
+		"gamePlugin": {
 			"current": -1,
 			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+<<<<<<< HEAD
+			"list": []
+=======
+			"list": [
+				{
+					"id": -1,
+					"name": "pages/confirmorder/confirmorder",
+					"pathName": "pages/confirmorder/confirmorder",
+					"scene": null
+				}
+			]
+>>>>>>> c5802f4cc07389fe3ebd6e37b0a3ccce6e312356
 		}
 	}
 }

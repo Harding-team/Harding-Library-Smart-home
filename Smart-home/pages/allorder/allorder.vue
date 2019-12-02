@@ -6,13 +6,13 @@
 		</view>
 		<!-- 下面有商品部分 -->
 		<view class="have" v-if="allorderArr.length">
-			<view class="info" v-for="(item,index) in allorderArr" :key="index" @click="goToDetails(item.id)">
+			<view class="info" v-for="(item,index) in allorderArr" :key="index" >
 				<view class="shop">
 					<image src="../../static/home/assemble-1.jpeg"></image>
 					<view>{{item.shopName}}</view>
 					<text>交易成功</text>
 				</view>
-				<view class="info-content">
+				<view class="info-content" @click="goToDetails(item.id)">
 					<image :src="item.imgSrc"></image>
 					<view class="info-r">
 						<view class="name">{{item.title}}<view class="num">x{{item.count}}</view></view>
@@ -24,9 +24,9 @@
 				</view>
 				<!-- 按钮部分 -->
 				<view class="seeDetails">
-					<view>删除订单</view>
+					<view @click="detele(index)">删除订单</view>
 					<view>申请退款</view>
-					<view>再次购买</view>
+					<view @click="goToDetails(item.id)">再次购买</view>
 				</view>
 			</view>
 			<view class="have-btm">没有更多订单(<text>找不到订单?</text>)</view>
@@ -35,7 +35,7 @@
 		<view class="no" v-else>
 			<text class="iconfont icon-6"></text>
 			<view>您还没有相关订单</view>
-			<view>没找到订单? 试试<text>查看全部</text>或<text>查看帮助</text></view>
+			<view>没找到订单? 试试<text @click="viewAll()">查看全部</text>或<text>查看帮助</text></view>
 		</view>
 		<!-- 精品推荐 -->
 		<view class="recommend">
@@ -60,23 +60,23 @@
 			return {
 				tabbarArr:['全部','代付款','待分享','待发货','待收货','待评价'],
 				tabbarIndex:0,
-				allorderArr:[
-					{
-						title:'NeoDPillo印尼邓禄普官方正品原装进口天然乳胶枕头波浪颈椎枕...',
-						imgSrc:'http://img1.imgtn.bdimg.com/it/u=2973069531,657782944&fm=26&gp=0.jpg',
-						count:1,
-						price:'299',
-						shopName:'neodpillo海外旗舰店',
-						id:'1'
-					},{
-						title:'Neo然乳胶枕头波浪颈椎枕...',
-						imgSrc:'http://img1.imgtn.bdimg.com/it/u=2752453349,2871240348&fm=26&gp=0.jpg',
-						count:13,
-						price:'23339',
-						shopName:'恒源祥苏恒专卖店',
-						id:'2'
-					}
-				],
+				// allorderArr:[
+				// 	{
+				// 		title:'NeoDPillo印尼邓禄普官方正品原装进口天然乳胶枕头波浪颈椎枕...',
+				// 		imgSrc:'http://img1.imgtn.bdimg.com/it/u=2973069531,657782944&fm=26&gp=0.jpg',
+				// 		count:1,
+				// 		price:'299',
+				// 		shopName:'neodpillo海外旗舰店',
+				// 		id:'1'
+				// 	},{
+				// 		title:'Neo然乳胶枕头波浪颈椎枕...',
+				// 		imgSrc:'http://img1.imgtn.bdimg.com/it/u=2752453349,2871240348&fm=26&gp=0.jpg',
+				// 		count:13,
+				// 		price:'23339',
+				// 		shopName:'恒源祥苏恒专卖店',
+				// 		id:'2'
+				// 	}
+				// ],
 				recommendArr:[
 					{
 						imgSrc:'../../static/home/1.jpg',
@@ -123,6 +123,21 @@
 				uni.navigateTo({
 					url:'/pages/details/details?id='+id
 				})
+			},
+			detele(index){//删除订单
+				uni.showModal({
+					title:'删除',
+					content:'是否删除此订单',
+					showCancel:true,
+					success:(res)=>{
+						if(res.confirm){
+							this.allorderArr.splice(index,1)
+						}
+					}
+				})
+			},
+			viewAll(){//查看全部订单
+				this.tabbarIndex = 0;
 			}
 		}
 	}

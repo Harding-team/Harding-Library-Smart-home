@@ -224,22 +224,31 @@ var _default =
       flag ? arr[index].sticky = true : arr[index].sticky = false;
       this.addressArr = arr;
     },
-    detele: function detele(index) {//删除
-      this.addressArr.splice(index, 1);
-      var defaultStatus = this.addressArr.some(function (item) {
-        return item.defaultStatus == true;
-      });
-      if (!defaultStatus && this.addressArr.length > 0) {
-        this.addressArr[0].defaultStatus = true;
-      }
-      var useStatus = this.addressArr.some(function (item) {
-        return item.useStatus == true;
-      });
-      if (!useStatus && this.addressArr.length > 0) {
-        this.addressArr[0].useStatus = true;
-      }
+    detele: function detele(index) {var _this = this; //删除
+      uni.showModal({
+        title: '删除',
+        content: '是否删除此地址',
+        showCancel: true,
+        success: function success(res) {
+          if (res.confirm) {
+            _this.addressArr.splice(index, 1);
+            var defaultStatus = _this.addressArr.some(function (item) {
+              return item.defaultStatus == true;
+            });
+            if (!defaultStatus && _this.addressArr.length > 0) {
+              _this.addressArr[0].defaultStatus = true;
+            }
+            var useStatus = _this.addressArr.some(function (item) {
+              return item.useStatus == true;
+            });
+            if (!useStatus && _this.addressArr.length > 0) {
+              _this.addressArr[0].useStatus = true;
+            }
+          }
+        } });
+
     },
-    wxAdd: function wxAdd() {var _this = this; //获取微信地址
+    wxAdd: function wxAdd() {var _this2 = this; //获取微信地址
       uni.chooseAddress({
         success: function success(res) {
           var obj = {
@@ -253,7 +262,7 @@ var _default =
             useStatus: false,
             sticky: false };
 
-          _this.addressArr.push(obj);
+          _this2.addressArr.push(obj);
         } });
 
     },

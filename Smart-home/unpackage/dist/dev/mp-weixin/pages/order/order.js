@@ -161,10 +161,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 var _default =
 {
   data: function data() {
@@ -215,7 +211,19 @@ var _default =
     },
     goToReview: function goToReview(id) {//跳转评论页面
       uni.navigateTo({
-        url: '/pages/review/review' });
+        url: '/pages/review/review?id=' + id + '&index=0' });
+
+    },
+    detele: function detele(index, type) {var _this = this; //删除或取消订单
+      var str = type == '0' ? '删除' : '取消';
+      uni.showModal({
+        title: str,
+        content: "\u786E\u8BA4".concat(str, "\u8FD9\u4E2A\u8BA2\u5355\u5417?"),
+        success: function success(res) {
+          if (res.confirm) {
+            _this.orderArr.splice(index, 1);
+          }
+        } });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

@@ -171,19 +171,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 var _default =
 {
   data: function data() {var _ref;
     return {
       number: 0,
       couponArr: [
-      {
-        price: '5',
-        manPrice: '199' },
-      {
-        price: '55',
-        manPrice: '500' },
       {
         price: '2',
         manPrice: '100',

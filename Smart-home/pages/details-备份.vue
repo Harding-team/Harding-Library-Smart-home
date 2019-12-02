@@ -162,9 +162,9 @@
 				</button>
 			</view>
 			<!-- 发起拼单 -->
-			<view class="start-fight" @tap="onStartFight(1)" data-type="1">发起拼单</view>
+			<view class="start-fight" @tap="onStartFight">发起拼单</view>
 			<!-- 单独购买 -->
-			<view class="alone-shop" @tap="onAloneShop(2)" data-type="2">单独购买</view>
+			<view class="alone-shop" @tap="onAloneShop">单独购买</view>
 			<!-- 下弹出框 -->
 			<van-popup :show="isShowPopup"
 					   position="bottom"
@@ -175,31 +175,28 @@
 					<view class="popup-top">
 						<image class="popup-left" src="../../static/home/1.jpg"></image>
 						<view class="popup-right">
-							<view class="popup-price">￥{{detailData.AlonePrice}}</view>
-							<view class="popup-stock">库存{{detailData.stock}}件</view>
+							<view class="popup-price">￥122-133</view>
+							<view class="popup-stock">库存2324件</view>
 							<view class="select-size">请选择尺码</view>
 						</view>
 					</view>
 					<scroll-view class="popup-wrap" scroll-y="true">
 						<view class="popup-wrapper">
-							<view class="popup-box" v-for="(item,index) in detailData.specificationList" :key="index">
+							<view class="popup-box" v-for="(item,index) in detailData.styleSelectList" :key="index">
 								<view class="popup-title">{{item.title}}</view>
 								<view class="popup-list">
-									<view v-for="(item2,index2) in item.specification"
-										  :class="['popup-item',specificationCurrentIndex == index2 ? 'active' : '']"
+									<view v-for="(item2,index2) in item.style"
+										  :class="['popup-item',styleSelectCurrentIndex == index2 ? 'active' : '']"
 										  :key="index2"
-										  @tap="onSpecification(index2,index)">{{item2.name}}</view>
+										  @tap="onStyleSelect(index2)">{{item2.name}}</view>
 								</view>
 							</view>
 							<view class="popup-update">
 								<view>数量</view>
 								<view class="popup-add-cut">
-									<view class="cut" @tap="onCut()">-</view>
-									<input type="text" 
-										   class="count" 
-										   value="detailData.count"
-										   v-model="countText">
-									<view class="add" @tap="onAdd()">+</view>
+									<view class="cut">-</view>
+									<view class="count">1</view>
+									<view class="add">+</view>
 								</view>
 							</view>
 						</view>
@@ -216,7 +213,7 @@
 			    <view class="pr">
 				   <view class="pr-title">服务说明</view>
 				   <view class="pr-list">
-					   <view class="pr-item" v-for="(item,index) in detailData.refundServiceList" :key="index">
+					   <view class="pr-item" v-for="(item,index) in refundServiceList" :key="index">
 						   <view class="pr-name">{{item.name}}</view>
 						   <view class="pr-text">{{item.text}}</view>
 					   </view>
@@ -246,7 +243,6 @@
 						"toFight": 118,
 						"fightPrice": 100,
 						"AlonePrice": 100,
-						"stock": 2329,
 						"status": false,
 						"description": "款正品外胎林/煊赫乳胶转/泰国正品波浪按摩枕60*49cm泰国正品波浪按摩枕60*49cm款正品外胎林/煊赫乳胶转/泰国正品波浪按摩枕60*49cm泰国正品波浪按摩枕60*49cm",
 						"imgSrc": [
@@ -412,16 +408,16 @@
 							"https://gw.alicdn.com/bao/uploaded/i1/2112833578/O1CN01GuO7ti1cIlck2lJRt_!!2-item_pic.png",
 							"https://gw.alicdn.com/bao/uploaded/i4/2086953701/O1CN01ceqmmJ1dD6PZoyemf_!!0-item_pic.jpg"
 						],
-						"specificationList": [{
+						"styleSelectList": [{
 							"title": "尺码",
-							"specification": [{
+							"style": [{
 									"name": "60cm*40cm"
 								},{
 									"name": "60cm*40cm"
 							}]
 						},{
 							"title": "颜色",
-							"specification": [{
+							"style": [{
 									"name": "白色"
 								},{
 									"name": "黑丝"
@@ -441,7 +437,6 @@
 						"toFight": 118,
 						"fightPrice": 100,
 						"AlonePrice": 100,
-						"stock": 2329,
 						"status": false,
 						"description": "款正品外胎林/煊赫乳胶转/泰国正品波浪按摩枕60*49cm泰国正品波浪按摩枕60*49cm款正品外胎林/煊赫乳胶转/泰国正品波浪按摩枕60*49cm泰国正品波浪按摩枕60*49cm",
 						"imgSrc": [
@@ -607,16 +602,16 @@
 							"https://gw.alicdn.com/bao/uploaded/i1/2112833578/O1CN01GuO7ti1cIlck2lJRt_!!2-item_pic.png",
 							"https://gw.alicdn.com/bao/uploaded/i4/2086953701/O1CN01ceqmmJ1dD6PZoyemf_!!0-item_pic.jpg"
 						],
-						"specificationList": [{
+						"styleSelectList": [{
 							"title": "尺码",
-							"specification": [{
+							"style": [{
 									"name": "60cm*40cm"
 								},{
 									"name": "60cm*40cm"
 							}]
 						},{
 							"title": "颜色",
-							"specification": [{
+							"style": [{
 									"name": "白色"
 								},{
 									"name": "黑丝"
@@ -636,7 +631,6 @@
 						"toFight": 118,
 						"fightPrice": 100,
 						"AlonePrice": 100,
-						"stock": 2329,
 						"status": false,
 						"description": "款正品外胎林/煊赫乳胶转/泰国正品波浪按摩枕60*49cm泰国正品波浪按摩枕60*49cm款正品外胎林/煊赫乳胶转/泰国正品波浪按摩枕60*49cm泰国正品波浪按摩枕60*49cm",
 						"imgSrc": [
@@ -802,16 +796,16 @@
 							"https://gw.alicdn.com/bao/uploaded/i1/2112833578/O1CN01GuO7ti1cIlck2lJRt_!!2-item_pic.png",
 							"https://gw.alicdn.com/bao/uploaded/i4/2086953701/O1CN01ceqmmJ1dD6PZoyemf_!!0-item_pic.jpg"
 						],
-						"specificationList": [{
+						"styleSelectList": [{
 							"title": "尺码",
-							"specification": [{
+							"style": [{
 									"name": "60cm*40cm"
 								},{
 									"name": "60cm*40cm"
 							}]
 						},{
 							"title": "颜色",
-							"specification": [{
+							"style": [{
 									"name": "白色"
 								},{
 									"name": "黑丝"
@@ -828,10 +822,7 @@
 				isShowPopup: false,
 				isShowPopupReturn: false,
 				isCollection: false,
-				specificationCurrentIndex: 0,
-				btnType: '',
-				specification: [],
-				countText: 1
+				styleSelectCurrentIndex: 0
 			}
 		},
 		onLoad(options) {
@@ -887,9 +878,9 @@
 				})
 			},
 			// 点击预览商品详情图片
-			onPreviewGoodsDetailImage(index2,index){
+			onPreviewGoodsDetailImage(index){
 				uni.previewImage({
-					urls: this.detailData.goodsDetailList[index].specification[index2],
+					urls: this.detailData.goodsDetailList,
 					current: index
 				})
 			},
@@ -915,7 +906,7 @@
 				this.isShowPopupReturn = false;
 			},
 			// 点击去拼单  弹出遮罩层
-			onSingle(ev){
+			onSingle(){
 				this.isShowPopup = true;
 			},
 			// 点击查看更多评价 跳转详情页面
@@ -953,88 +944,27 @@
 				console.log('客服');
 			},
 			// 发起拼单
-			onStartFight(type){
+			onStartFight(){
 				this.isShowPopup = true;
-				this.btnType = type;
 			},
 			// 单独购买
-			onAloneShop(type){
+			onAloneShop(){
 				this.isShowPopup = true;
-				this.btnType = type;
 			},
 			// 点击关闭
 			onClose(){
 				this.isShowPopup = false;
 			},
 			// 点击样式选择，尺码，颜色
-			onSpecification(index2,index){
-				this.specificationCurrentIndex = index2;
-				this.specification.push({
-					size: this.detailData.specificationList[index].specification[index2].name
-				})
+			onStyleSelect(index){
+				this.styleSelectCurrentIndex = index;
+				// this.isStyleSelect = !this.isStyleSelect;
 			},
 			// 点击确定将选择的产品参数存起来跳转到订单页面
 			onSure(){
-				// 1发起拼单，2单独购买
-				if(this.btnType == 1){
-					// console.log(1)
-				}else if(this.btnType == 2){
-					let obj = {
-						id: this.detailData.id,
-						title: this.detailData.title,
-						price: this.detailData.AlonePrice,
-						img: this.detailData.imgSrc[0],
-						size: this.specification[0].size
-					}
-					this._addToCart(obj,this.countText);
-					uni.showToast({
-					    title: '加入购物车成功',
-					    duration: 2000,
-						icon: "none"
-					});
-				}
+				console.log(111)
 			},
-			// 加按钮
-			onAdd(){
-				this.countText++
-			},
-			// 减按钮
-			onCut(){
-				this.countText--
-				if(this.countText < 1){
-					this.countText = 1
-				}
-			},
-			//1.往购物车里面添加商品
-			_addToCart(item,count){
-			    let cartData = this._getDataFromStorage();
-			    let index = this._isHasOne(item.id,cartData);
-			    if(index == -1){
-			        item.count = count;
-			        item.status = true;
-			        cartData.push(item);
-			    }else{
-			        //如果不是-1说明当前商品在购物车里面存在:只需要更改数量，将原来的加上新传过来的
-			        cartData[index].count += count;
-			    }
-			    wx.setStorageSync('cart', cartData);
-			},
-			//2.拿购物车的数据:用参数来区分是拿所有商品还是只拿选中商品
-			_getDataFromStorage(flag){	
-			    let cartData = wx.getStorageSync('cart') || [];
-			    let newArr = [];
-			    if(flag){
-			        for(let i=0;i<cartData.length;i++){
-			            if(cartData[i].status){
-			                newArr.push(cartData[i])
-			            }
-			        }
-			        return newArr;
-			    }else{
-			        return cartData;
-			    }
-			},
-			//3.查找在购物车中是否存在当前添加的商品
+			// 返回下标的
 			_isHasOne(id,arr){
 			    // 假设没有该商品，该数组中没有这个id，下标为-1
 			    let index = -1;
@@ -1045,15 +975,6 @@
 			        }
 			    }
 			    return index;
-			},
-			//4.求所有的商品总数
-			_getTotalNum(){
-			    let cartData = this._getDataFromStorage();
-			    let total = 0;
-			    cartData.forEach(function(item){
-			        total += item.count
-			    })
-			    return total;
 			},
 			// 时间 + 0
 			_toDouble (num) {

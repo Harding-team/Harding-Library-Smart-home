@@ -350,6 +350,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
 {
   components: { uniCountdown: uniCountdown },
   data: function data() {
@@ -367,6 +370,7 @@ __webpack_require__.r(__webpack_exports__);
         "toFight": 118,
         "fightPrice": 100,
         "AlonePrice": 100,
+        "stock": 2329,
         "status": false,
         "description": "款正品外胎林/煊赫乳胶转/泰国正品波浪按摩枕60*49cm泰国正品波浪按摩枕60*49cm款正品外胎林/煊赫乳胶转/泰国正品波浪按摩枕60*49cm泰国正品波浪按摩枕60*49cm",
         "imgSrc": [
@@ -532,18 +536,21 @@ __webpack_require__.r(__webpack_exports__);
         "https://gw.alicdn.com/bao/uploaded/i1/2112833578/O1CN01GuO7ti1cIlck2lJRt_!!2-item_pic.png",
         "https://gw.alicdn.com/bao/uploaded/i4/2086953701/O1CN01ceqmmJ1dD6PZoyemf_!!0-item_pic.jpg"],
 
-        "styleSelect": [
-        {
+        "specificationList": [{
           "title": "尺码",
-          "style": [
-          "60cm*40cm", "60cm*40cm"] },
-
+          "specification": [{
+            "name": "60cm*40cm" },
+          {
+            "name": "60cm*40cm" }] },
 
         {
           "title": "颜色",
-          "style": [
-          "红色", "绿色"] }] },
-
+          "specification": [{
+            "name": "白色" },
+          {
+            "name": "黑丝" },
+          {
+            "name": "绿色" }] }] },
 
 
       {
@@ -558,6 +565,7 @@ __webpack_require__.r(__webpack_exports__);
         "toFight": 118,
         "fightPrice": 100,
         "AlonePrice": 100,
+        "stock": 2329,
         "status": false,
         "description": "款正品外胎林/煊赫乳胶转/泰国正品波浪按摩枕60*49cm泰国正品波浪按摩枕60*49cm款正品外胎林/煊赫乳胶转/泰国正品波浪按摩枕60*49cm泰国正品波浪按摩枕60*49cm",
         "imgSrc": [
@@ -723,18 +731,21 @@ __webpack_require__.r(__webpack_exports__);
         "https://gw.alicdn.com/bao/uploaded/i1/2112833578/O1CN01GuO7ti1cIlck2lJRt_!!2-item_pic.png",
         "https://gw.alicdn.com/bao/uploaded/i4/2086953701/O1CN01ceqmmJ1dD6PZoyemf_!!0-item_pic.jpg"],
 
-        "styleSelect": [
-        {
+        "specificationList": [{
           "title": "尺码",
-          "style": [
-          "60cm*40cm", "60cm*40cm"] },
-
+          "specification": [{
+            "name": "60cm*40cm" },
+          {
+            "name": "60cm*40cm" }] },
 
         {
           "title": "颜色",
-          "style": [
-          "红色", "绿色"] }] },
-
+          "specification": [{
+            "name": "白色" },
+          {
+            "name": "黑丝" },
+          {
+            "name": "绿色" }] }] },
 
 
       {
@@ -749,6 +760,7 @@ __webpack_require__.r(__webpack_exports__);
         "toFight": 118,
         "fightPrice": 100,
         "AlonePrice": 100,
+        "stock": 2329,
         "status": false,
         "description": "款正品外胎林/煊赫乳胶转/泰国正品波浪按摩枕60*49cm泰国正品波浪按摩枕60*49cm款正品外胎林/煊赫乳胶转/泰国正品波浪按摩枕60*49cm泰国正品波浪按摩枕60*49cm",
         "imgSrc": [
@@ -914,18 +926,21 @@ __webpack_require__.r(__webpack_exports__);
         "https://gw.alicdn.com/bao/uploaded/i1/2112833578/O1CN01GuO7ti1cIlck2lJRt_!!2-item_pic.png",
         "https://gw.alicdn.com/bao/uploaded/i4/2086953701/O1CN01ceqmmJ1dD6PZoyemf_!!0-item_pic.jpg"],
 
-        "styleSelect": [
-        {
+        "specificationList": [{
           "title": "尺码",
-          "style": [
-          "60cm*40cm", "60cm*40cm"] },
-
+          "specification": [{
+            "name": "60cm*40cm" },
+          {
+            "name": "60cm*40cm" }] },
 
         {
           "title": "颜色",
-          "style": [
-          "红色", "绿色"] }] }],
-
+          "specification": [{
+            "name": "白色" },
+          {
+            "name": "黑丝" },
+          {
+            "name": "绿色" }] }] }],
 
 
 
@@ -937,7 +952,10 @@ __webpack_require__.r(__webpack_exports__);
       isShowPopup: false,
       isShowPopupReturn: false,
       isCollection: false,
-      isStyleSelect: false };
+      specificationCurrentIndex: 0,
+      btnType: '',
+      specification: [],
+      countText: 1 };
 
   },
   onLoad: function onLoad(options) {var _this = this;
@@ -993,9 +1011,9 @@ __webpack_require__.r(__webpack_exports__);
 
     },
     // 点击预览商品详情图片
-    onPreviewGoodsDetailImage: function onPreviewGoodsDetailImage(index) {
+    onPreviewGoodsDetailImage: function onPreviewGoodsDetailImage(index2, index) {
       uni.previewImage({
-        urls: this.detailData.goodsDetailList,
+        urls: this.detailData.goodsDetailList[index].specification[index2],
         current: index });
 
     },
@@ -1021,7 +1039,7 @@ __webpack_require__.r(__webpack_exports__);
       this.isShowPopupReturn = false;
     },
     // 点击去拼单  弹出遮罩层
-    onSingle: function onSingle() {
+    onSingle: function onSingle(ev) {
       this.isShowPopup = true;
     },
     // 点击查看更多评价 跳转详情页面
@@ -1056,29 +1074,91 @@ __webpack_require__.r(__webpack_exports__);
     },
     // 点击客服icon
     onCustomer: function onCustomer() {
-
+      console.log('客服');
     },
     // 发起拼单
-    onStartFight: function onStartFight() {
+    onStartFight: function onStartFight(type) {
       this.isShowPopup = true;
+      this.btnType = type;
     },
     // 单独购买
-    onAloneShop: function onAloneShop() {
+    onAloneShop: function onAloneShop(type) {
       this.isShowPopup = true;
+      this.btnType = type;
     },
     // 点击关闭
     onClose: function onClose() {
       this.isShowPopup = false;
     },
     // 点击样式选择，尺码，颜色
-    onStyleSelect: function onStyleSelect() {
-      this.isStyleSelect = !this.isStyleSelect;
+    onSpecification: function onSpecification(index2, index) {
+      this.specificationCurrentIndex = index2;
+      this.specification.push({
+        size: this.detailData.specificationList[index].specification[index2].name });
+
     },
     // 点击确定将选择的产品参数存起来跳转到订单页面
     onSure: function onSure() {
-      console.log(111);
+      // 1发起拼单，2单独购买
+      if (this.btnType == 1) {
+        // console.log(1)
+      } else if (this.btnType == 2) {
+        var obj = {
+          id: this.detailData.id,
+          title: this.detailData.title,
+          price: this.detailData.AlonePrice,
+          img: this.detailData.imgSrc[0],
+          size: this.specification[0].size };
+
+        this._addToCart(obj, this.countText);
+        uni.showToast({
+          title: '加入购物车成功',
+          duration: 2000,
+          icon: "none" });
+
+      }
     },
-    // 返回下标的
+    // 加按钮
+    onAdd: function onAdd() {
+      this.countText++;
+    },
+    // 减按钮
+    onCut: function onCut() {
+      this.countText--;
+      if (this.countText < 1) {
+        this.countText = 1;
+      }
+    },
+    //1.往购物车里面添加商品
+    _addToCart: function _addToCart(item, count) {
+      var cartData = this._getDataFromStorage();
+      var index = this._isHasOne(item.id, cartData);
+      if (index == -1) {
+        item.count = count;
+        item.status = true;
+        cartData.push(item);
+      } else {
+        //如果不是-1说明当前商品在购物车里面存在:只需要更改数量，将原来的加上新传过来的
+        cartData[index].count += count;
+      }
+      wx.setStorageSync('cart', cartData);
+    },
+    //2.拿购物车的数据:用参数来区分是拿所有商品还是只拿选中商品
+    _getDataFromStorage: function _getDataFromStorage(flag) {
+      var cartData = wx.getStorageSync('cart') || [];
+      var newArr = [];
+      if (flag) {
+        for (var i = 0; i < cartData.length; i++) {
+          if (cartData[i].status) {
+            newArr.push(cartData[i]);
+          }
+        }
+        return newArr;
+      } else {
+        return cartData;
+      }
+    },
+    //3.查找在购物车中是否存在当前添加的商品
     _isHasOne: function _isHasOne(id, arr) {
       // 假设没有该商品，该数组中没有这个id，下标为-1
       var index = -1;
@@ -1089,6 +1169,15 @@ __webpack_require__.r(__webpack_exports__);
         }
       }
       return index;
+    },
+    //4.求所有的商品总数
+    _getTotalNum: function _getTotalNum() {
+      var cartData = this._getDataFromStorage();
+      var total = 0;
+      cartData.forEach(function (item) {
+        total += item.count;
+      });
+      return total;
     },
     // 时间 + 0
     _toDouble: function _toDouble(num) {

@@ -8,7 +8,7 @@
 			<button class='btn' @click="goAround()">去逛逛</button>
 		</view>
 		<view class='cartMan' v-if="lists.length!==0">
-			<view class='shoopList' v-for="(item,index) in lists">
+			<view class='shoopList' v-for="(item,index) in lists" :key="index">
 				<view class='choose'>
 					<text @click="danxuan(index)" :class='item.check?"iconfont icon-danxuan":"iconfont icon-guanbi"'></text>
 				</view>

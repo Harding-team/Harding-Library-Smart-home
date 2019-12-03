@@ -104,8 +104,6 @@
 			console.log(this.arr)
 			let obj = uni.getStorageSync('addressObj') || {};
 			this.address = obj
-			
-			console.log(options.obj);
 		},
 		onShow() {
 			let num = 0;
@@ -117,12 +115,8 @@
 		methods: {
 			getAddress(){//跳转获取用户地址信息页面
 				uni.navigateTo({
-					url:'/pages/getAddress/getAddress',
-					success() {
-						console.log(222)
-					}
+					url:'/pages/getAddress/getAddress'
 				})
-				console.log(1111)
 			},
 			payTap(flag){//选择支付方式事件
 				this.payFlag = flag;

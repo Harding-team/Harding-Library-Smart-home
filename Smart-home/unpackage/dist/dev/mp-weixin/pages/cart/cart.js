@@ -196,7 +196,7 @@ var _default =
       });
       return allPrice;
     },
-    goAround: function goAround() {
+    goHome: function goHome() {
       uni.switchTab({
         url: "/pages/home/home" });
 

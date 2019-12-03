@@ -228,8 +228,6 @@ var _default =
     console.log(this.arr);
     var obj = uni.getStorageSync('addressObj') || {};
     this.address = obj;
-
-    console.log(options.obj);
   },
   onShow: function onShow() {
     var num = 0;
@@ -241,12 +239,8 @@ var _default =
   methods: {
     getAddress: function getAddress() {//跳转获取用户地址信息页面
       uni.navigateTo({
-        url: '/pages/getAddress/getAddress',
-        success: function success() {
-          console.log(222);
-        } });
+        url: '/pages/getAddress/getAddress' });
 
-      console.log(1111);
     },
     payTap: function payTap(flag) {//选择支付方式事件
       this.payFlag = flag;

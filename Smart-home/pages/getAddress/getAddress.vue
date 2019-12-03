@@ -40,7 +40,7 @@
 					<input type="text" value="sel" v-model="sel" placeholder="电话"/>
 				</view>
 				<view class="section">
-				  <picker mode="region" @change="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+				  <picker mode="region" @change="bindRegionChange" value="region" :custom-item="customItem">
 				    <view class="picker">
 				      当前选择：<text v-if="region[0]">{{region[0]}}，{{region[1]}}，{{region[2]}}</text>
 				    </view>

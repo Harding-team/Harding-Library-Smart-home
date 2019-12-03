@@ -853,12 +853,8 @@
 				countText: 1,
 				specification: [],//存放被选中的值
 				goodsSize: '',
-<<<<<<< HEAD
 				goodsColor: '',
-				totalCount: 0
-=======
-				goodsColor: ''
->>>>>>> b1e56ef2204449b8f702823d12795678c909f20d
+				totalCount: 0,
 			}
 		},
 		onLoad(options) {
@@ -878,6 +874,26 @@
 				item.seconds = seconds;
 			})
 			this.totalCount = this._getTotalNum();
+			
+			let historyArr = uni.getStorageSync('historyArr') || [];
+			let index = this._isHasOne(this.id,historyArr)
+			if(index == -1){
+				historyArr.unshift({
+					id: this.id,
+					img: this.detailData.imgSrc[0],
+					name: this.detailData.title,
+					price: this.detailData.smallPrice
+				})
+			}else{
+				historyArr.splice(index,1)
+				historyArr.unshift({
+					id: this.id,
+					img: this.detailData.imgSrc[0],
+					name: this.detailData.title,
+					price: this.detailData.smallPrice
+				})
+			}
+			uni.setStorageSync('historyArr',historyArr)
 		},
 		onShow(){
 			let collectArr = uni.getStorageSync('collectArr') || [];
@@ -966,7 +982,10 @@
 					collectArr.splice(index,1)
 				}else{
 					collectArr.push({
-						id: this.id
+						id: this.id,
+						img: this.detailData.imgSrc[0],
+						name: this.detailData.title,
+						price: this.detailData.smallPrice
 					})
 				}
 				uni.setStorageSync('collectArr',collectArr)
@@ -1013,14 +1032,10 @@
 			},
 			// 点击确定将选择的产品参数存起来跳转到订单页面
 			onSure(){
-<<<<<<< HEAD
 				// 1发起拼单，2单独购买 3去拼单
 				if(this.btnType == 1 || 3){
-=======
-				// 1发起拼单，2单独购买
-				if(this.btnType == 1){
->>>>>>> b1e56ef2204449b8f702823d12795678c909f20d
-					let obj = {
+					let arr = []
+					arr.push({
 						id: this.detailData.id,
 						title: this.detailData.title,
 						price: this.detailData.AlonePrice,
@@ -1028,9 +1043,7 @@
 						size: this.goodsSize,
 						color: this.goodsColor,
 						count:this.countText
-					}
-					let arr = []
-					arr.push(obj)
+					});
 					uni.navigateTo({
 						url: "/pages/confirmorder/confirmorder?arr="+JSON.stringify(arr)
 					})
@@ -1049,6 +1062,20 @@
 					    duration: 2000,
 						icon: "none"
 					});
+				}else if(this.btnType == 3){
+					let arr = []
+					arr.push({
+						id: this.detailData.id,
+						title: this.detailData.title,
+						price: this.detailData.AlonePrice,
+						img: this.detailData.imgSrc[0],
+						size: this.goodsSize,
+						color: this.goodsColor,
+						count:this.countText
+					});
+					uni.navigateTo({
+						url: "/pages/confirmorder/confirmorder?arr="+JSON.stringify(arr)
+					})
 				}
 			},
 			// 加按钮

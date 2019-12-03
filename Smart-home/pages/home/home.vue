@@ -198,7 +198,7 @@
 		             </view>
 		       </view>  
 		 </view>
-		 <view class='home-all-b'>查看全部宝贝</view>
+		 <view class='home-all-b' @tap="goToNew()">查看全部宝贝</view>
 	  </view>
 </template>
 
@@ -235,11 +235,6 @@
 						images:'../../static/home/tailand-pmz.png'
 					},{
 						name:'泰国美容波浪枕',
-						price:'228.0',
-						details:'泰国天然乳胶原料',
-						images:'../../static/home/tailand-pmz.png'
-					},{
-						name:'泰国薄款波浪枕',
 						price:'228.0',
 						details:'泰国天然乳胶原料',
 						images:'../../static/home/tailand-pmz.png'
@@ -305,6 +300,11 @@
 			goToDetails(index){
 				uni.navigateTo({
 					url: '/pages/details/details?id='+index
+				})
+			},
+			goToNew(){
+				uni.navigateTo({
+					url: '/pages/new/new'
 				})
 			}
 			

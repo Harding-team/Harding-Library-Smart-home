@@ -36,7 +36,7 @@
 					<view>收藏+关注</view>
 				</view>
 				<view class="btn">
-					<view  @click="goToDetails(item.id)">立即使用</view>
+					<view  @tap="onUse(index,item.id)" :class="item.status?'active':''">{{item.status?'已使用':'立即使用'}}</view>
 				</view>
 			</view>
 		</view>
@@ -54,19 +54,20 @@
 				number:0,
 				couponArr:[
 					{
+						id:'1',
 						price:'2',
 						manPrice:'100',
-						id:'1'
+						status: false
 					},{
+						id:'2',
 						price:'55',
 						manPrice:'500',
-						id:'2'
+						status: false
 					},{
-						price:'2',
-						manPrice:'100',
+						id:'3',
 						price:'245',
-						manPrice:'20',
-						id:'3'
+						manPrice:'2000',
+						status: false
 					}
 				]
 			}
@@ -75,11 +76,34 @@
 			this.number = this.couponArr.length
 		},
 		methods: {
-			goToDetails(id){
-				uni.navigateTo({
-					url:'/pages/details/details?id='+id
+			onUse(index,id){
+				this.couponArr[index].status = true
+				uni.showToast({
+					title: '已使用'
 				})
-			}
+				let couponArr = uni.getStorageSync('couponArr') || [];
+				let cindex = this._isHasOne(id,couponArr);
+				if(cindex == -1){
+					couponArr.push({
+						id: this.couponArr[index].id,
+						price: this.couponArr[index].price,
+						manPrice: this.couponArr[index].manPrice,
+						status: this.couponArr[index].status,
+					})
+				}
+				uni.setStorageSync('couponArr',couponArr);
+			},
+			_isHasOne(id,arr){
+			    // 假设没有该商品，该数组中没有这个id，下标为-1
+			    let index = -1;
+			    for(let i=0;i<arr.length;i++){
+			        if(id == arr[i].id){
+			            index = i;
+			            break;
+			        }
+			    }
+			    return index;
+			},
 		}
 	}
 </script>
@@ -167,6 +191,9 @@ body{
 					background: red;
 					color:#fff;
 					font-size:28upx;
+					&.active{
+						background: #ccc;
+					}
 				}
 			}
 		}

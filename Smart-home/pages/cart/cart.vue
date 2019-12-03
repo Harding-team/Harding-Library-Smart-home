@@ -5,7 +5,7 @@
 			<view>
 				<view class='kong'>购物车是空的~</view>
 			</view>
-			<button class='btn' @click="goAround()">去逛逛</button>
+			<button class='btn' @click="goHome()">去逛逛</button>
 		</view>
 		<view class='cartMan' v-if="lists.length!==0">
 			<view class='shoopList' v-for="(item,index) in lists" :key="index">
@@ -72,7 +72,7 @@
 			    })
 			    return allPrice
 			},
-			goAround(){
+			goHome(){
 				uni.switchTab({
 					url:"/pages/home/home"
 				})

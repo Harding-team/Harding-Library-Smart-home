@@ -122,7 +122,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;} //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
 //
 //
 //
@@ -173,24 +173,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 var _default =
 {
-  data: function data() {var _ref;
+  data: function data() {
     return {
       number: 0,
       couponArr: [
       {
+        id: '1',
         price: '2',
         manPrice: '100',
-        id: '1' },
+        status: false },
       {
+        id: '2',
         price: '55',
         manPrice: '500',
-        id: '2' }, (_ref = {
-
-        price: '2',
-        manPrice: '100' }, _defineProperty(_ref, "price",
-      '245'), _defineProperty(_ref, "manPrice",
-      '20'), _defineProperty(_ref, "id",
-      '3'), _ref)] };
+        status: false },
+      {
+        id: '3',
+        price: '245',
+        manPrice: '2000',
+        status: false }] };
 
 
 
@@ -199,10 +200,33 @@ var _default =
     this.number = this.couponArr.length;
   },
   methods: {
-    goToDetails: function goToDetails(id) {
-      uni.navigateTo({
-        url: '/pages/details/details?id=' + id });
+    onUse: function onUse(index, id) {
+      this.couponArr[index].status = true;
+      uni.showToast({
+        title: '已使用' });
 
+      var couponArr = uni.getStorageSync('couponArr') || [];
+      var cindex = this._isHasOne(id, couponArr);
+      if (cindex == -1) {
+        couponArr.push({
+          id: this.couponArr[index].id,
+          price: this.couponArr[index].price,
+          manPrice: this.couponArr[index].manPrice,
+          status: this.couponArr[index].status });
+
+      }
+      uni.setStorageSync('couponArr', couponArr);
+    },
+    _isHasOne: function _isHasOne(id, arr) {
+      // 假设没有该商品，该数组中没有这个id，下标为-1
+      var index = -1;
+      for (var i = 0; i < arr.length; i++) {
+        if (id == arr[i].id) {
+          index = i;
+          break;
+        }
+      }
+      return index;
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

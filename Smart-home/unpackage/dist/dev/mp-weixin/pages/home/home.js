@@ -370,11 +370,6 @@ __webpack_require__.r(__webpack_exports__);
         name: '泰国美容波浪枕',
         price: '228.0',
         details: '泰国天然乳胶原料',
-        images: '../../static/home/tailand-pmz.png' },
-      {
-        name: '泰国薄款波浪枕',
-        price: '228.0',
-        details: '泰国天然乳胶原料',
         images: '../../static/home/tailand-pmz.png' }],
 
 
@@ -438,6 +433,11 @@ __webpack_require__.r(__webpack_exports__);
     goToDetails: function goToDetails(index) {
       uni.navigateTo({
         url: '/pages/details/details?id=' + index });
+
+    },
+    goToNew: function goToNew() {
+      uni.navigateTo({
+        url: '/pages/new/new' });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

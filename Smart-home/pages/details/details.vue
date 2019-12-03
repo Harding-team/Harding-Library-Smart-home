@@ -853,8 +853,12 @@
 				countText: 1,
 				specification: [],//存放被选中的值
 				goodsSize: '',
+<<<<<<< HEAD
 				goodsColor: '',
 				totalCount: 0
+=======
+				goodsColor: ''
+>>>>>>> b1e56ef2204449b8f702823d12795678c909f20d
 			}
 		},
 		onLoad(options) {
@@ -1009,8 +1013,13 @@
 			},
 			// 点击确定将选择的产品参数存起来跳转到订单页面
 			onSure(){
+<<<<<<< HEAD
 				// 1发起拼单，2单独购买 3去拼单
 				if(this.btnType == 1 || 3){
+=======
+				// 1发起拼单，2单独购买
+				if(this.btnType == 1){
+>>>>>>> b1e56ef2204449b8f702823d12795678c909f20d
 					let obj = {
 						id: this.detailData.id,
 						title: this.detailData.title,

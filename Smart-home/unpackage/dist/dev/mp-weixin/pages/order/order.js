@@ -206,7 +206,7 @@ var _default =
       var arr = [];
       arr.push(this.orderArr[index]);
       uni.navigateTo({
-        url: '/pages/confirmorder/confirmorder?arr=' + arr });
+        url: '/pages/confirmorder/confirmorder?arr=' + JSON.parse(arr) });
 
     },
     goToReview: function goToReview(id) {//跳转评论页面

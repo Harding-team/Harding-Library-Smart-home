@@ -21,16 +21,38 @@
 						<view>设为默认</view>
 					</view>
 					<view class="edit">
-						<text>编辑</text>
+						<text @click="edit(index,'编辑')">编辑</text>
 						<text @click="onSticky(index,true)" v-if="!item.sticky">置顶</text>
 						<text @click="onSticky(index,false)" v-if="item.sticky">取消置顶</text>
 					</view>
 				</view>
 			</view>
 		</view>
+		<!-- 添加新地址picker组件 -->
+		<view class="rela-box" v-if="flag">
+			<view class="slit">
+				<view class="slit-tow">
+					<text class="slit-title">{{txt}}收货地址</text>
+					<text class="remove-right" @click="guanbi()">x</text>
+				</view>
+				<view class="slit-inp">
+					<input style="border-right:1px solid #f5f5f5 ;" type="text" value="name" v-model="name" placeholder="收货姓名"/>
+					<input type="text" value="sel" v-model="sel" placeholder="电话"/>
+				</view>
+				<view class="section">
+				  <picker mode="region" @change="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+				    <view class="picker">
+				      当前选择：<text v-if="region[0]">{{region[0]}}，{{region[1]}}，{{region[2]}}</text>
+				    </view>
+				  </picker>
+				</view>
+				<input type="text" class="slit-txt" value="detailedAddress" v-model="detailedAddress" placeholder="详细地址(如街道、小区、乡镇、村)" />
+				<view class="btn-refer" @click="save()">保存</view>
+			</view>
+		</view>
 		<!-- 添加地址 -->
 		<view class="fixed">
-			<view style="background: #ce4031;"><text class="iconfont icon-guanbi2"></text>手动添加</view>
+			<view style="background: #ce4031;" @click="tianjia('添加新')"><text class="iconfont icon-guanbi2"></text>手动添加</view>
 			<view style="background: #58c038;" @click="wxAdd()"><text class="iconfont icon-guanbi2"></text>微信添加</view>
 		</view>
 	</view>
@@ -40,8 +62,15 @@
 	export default {
 		data() {
 			return {
+				region: [],
+				index:0,
 				defaultFlag:true,
 				stickyAddressArr:[],
+				detailedAddress:'',
+				name:'',
+				sel:'',
+				flag:false,
+				txt:'',
 				addressArr:[
 					{
 						name:'齐文蒸',
@@ -142,10 +171,62 @@
 					}
 				})
 			},
-			goToConfirmorder(index){
+			goToConfirmorder(index){//跳转去支付页面
 				uni.navigateTo({
 					url:"/pages/confirmorder/confirmorder?obj="+uni.setStorageSync('addressObj',this.addressArr[index])
 				})
+			},
+			bindRegionChange(e){//选择地址
+				this.region = e.detail.value
+			},
+			save(){//保存地址
+				let obj = {
+					name:this.name,
+					sel:this.sel,
+					province:this.region[0],
+					city:this.region[1],
+					county:this.region[2],
+					detailedAddress:this.detailedAddress,
+					defaultStatus:false,
+					useStatus:false,
+					sticky:false
+				}
+				if(this.txt == '添加新'){
+					this.addressArr.push(obj)
+				}else if(this.txt == '编辑'){
+					obj.defaultStatus = this.addressArr[this.index].defaultStatus
+					obj.useStatus = this.addressArr[this.index].useStatus
+					obj.sticky = this.addressArr[this.index].sticky
+					this.addressArr.splice(this.index,1,obj)
+				}
+				this.flag = false;
+				this.name = '';
+				this.sel = '';
+				this.detailedAddress = '';
+				this.index = 0;
+				this.region = [];
+			},
+			tianjia(str){//手动添加地址
+				this.flag = true;
+				this.txt = str;
+			},
+			guanbi(){//关闭手动添加
+				this.flag = false;
+				this.name = '';
+				this.sel = '';
+				this.detailedAddress = '';
+				this.region = [];
+			},
+			edit(index,str){
+				this.index = index;
+				this.txt = str;
+				this.flag = true;
+				this.name = this.addressArr[index].name;
+				this.sel = this.addressArr[index].sel;
+				this.detailedAddress = this.addressArr[index].detailedAddress;
+				this.region[0] = this.addressArr[index].province;
+				this.region[1] = this.addressArr[index].city;
+				this.region[2] = this.addressArr[index].county;
 			}
 		}
 	}
@@ -265,5 +346,83 @@ body{
 			color:#fff;
 		}
 	}
+}
+// picker
+.rela-box{
+	width: 100vw;
+	height: 100vh;
+	background: rgba(0,0,0,0.5);
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1;
+}
+.slit{
+	position: absolute;
+	top: 25%;
+	left: 3vw;
+	width: 94vw;
+	height: 500rpx;
+	background: #fff;
+	border-radius:10rpx;
+}
+.slit-tow{
+	width: 100%;
+	height: 100rpx;
+	border-bottom: 1px solid #f5f5f5;
+	position: relative;
+}
+.slit-title{
+	text-align: center;
+	line-height: 100rpx;
+	font-size:40rpx;
+	color: #000000;
+	display: block;
+}
+.remove-right{
+	line-height: 100rpx;
+	font-size:42rpx;
+	position: absolute;
+	right: 20rpx;
+	top: 0;
+	color: #ccc;
+}
+.slit-inp{
+	width: 100%;
+	height: 80rpx;
+	box-sizing: border-box;
+	padding: 0rpx 10rpx 0rpx 10rpx;
+	display: flex;
+	border-bottom: 1px solid #f5f5f5;
+}
+.slit-inp input{
+	height: 80rpx;
+	line-height: 80rpx;
+	padding-left:20rpx;
+}
+input::-webkit-input-placeholder { 
+	padding-left: 10rpx;
+} 
+.section{
+	height: 80rpx;
+	line-height: 80rpx;
+	border-bottom:1px solid #f5f5f5 ;
+	padding-left: 20rpx;
+}
+.slit-txt{
+	height: 100rpx;
+	width: 100%;
+	border:none;
+	border-bottom: 1px solid #f5f5f5;
+	padding-left: 20rpx;
+}
+.btn-refer{
+		width: 90%;
+		height: 90rpx;
+		background: red;
+		text-align: center;
+		line-height: 90rpx;
+		color: #fff;
+		margin: 10rpx auto;
 }
 </style>

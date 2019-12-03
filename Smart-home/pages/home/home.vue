@@ -10,12 +10,6 @@
 			    <swiper-item v-for="(item,index) in swiperData" :key='index'>
 			        <image :src='item.name'></image>
 			    </swiper-item>
-			   <!-- <swiper-item>
-					<image src='../../static/images/xinpin-banner.png'></image>
-			    </swiper-item>
-			    <swiper-item>
-			         <image src='../../static/home/1.jpg'></image>
-			    </swiper-item> -->
 			</swiper>
 		  </view>
 		  <!-- 拼团 -->
@@ -37,10 +31,6 @@
 		        <view class='home-pt-pp'>
 		              <view>
 		                  <image v-for="(item,index) in people" :key='index' :src='item.image'></image>
-		                 <!-- <image src='../../static/home/assemble-no.png'></image>
-		                  <image src='../../static/home/assemble-no.png'></image>
-		                  <image src='../../static/home/assemble-no.png'></image>
-		                  <image src='../../static/home/assemble-no.png'></image> -->
 		              </view>
 		        </view>
 				<!-- 倒计时 -->
@@ -188,48 +178,24 @@
 		        </view>
 		  </view>
 		  <view class='home-paihang'>
-		        <view class='home-paihang-list' v-for="(item,index) in ranking" :key='index' @tap="goToDetails()">
+		        <view class='home-paihang-list' v-for="(item,index) in ranking" :key='index' @tap="goToDetails(index)">
 		              <image class='home-paihang-img' :src='item.images'></image>
 		              <image class='home-paihang-num' src='../../static/home/assemble-no.png'></image>
 		              <view>{{item.name}}</view>
 		              <view>{{item.payment}}人付款</view>
 		        </view>
-		        <!-- <view class='home-paihang-list'>
-		              <image class='home-paihang-img' src='../../static/home/tailand11.png'></image>
-		              <image class='home-paihang-num' src='../../static/home/assemble-no.png'></image>
-		              <view>泰国乳胶狼牙按摩枕</view>
-		              <view>199人付款</view>
-		        </view>
-		         <view class='home-paihang-list'>
-		              <image class='home-paihang-img' src='../../static/home/tailand11.png'></image>
-		              <image class='home-paihang-num' src='../../static/home/assemble-no.png'></image>
-		              <view>泰国乳胶狼牙按摩枕</view>
-		              <view>199人付款</view>
-		        </view> -->
 		  </view>
 		  
 		  <!-- 猜你喜欢 -->
 		 <view class='home-lick-tlt'>猜你喜欢</view>
 		 <view class='home-lick'>
 		       <view class='home-lick-box'>
-		             <view class='home-lick-list'  v-for="(item,index) in piex" :key='index'  @tap="goToDetails()">
+		             <view class='home-lick-list'  v-for="(item,index) in piex" :key='index'  @tap="goToDetails(index)">
 		                   <image :src='item.images'></image>
 		                   <view>{{item.name}}</view>
 		                   <view>{{item.details}}</view>
 		                   <view>￥{{item.price}}</view>
 		             </view>
-		            <!-- <view class='home-lick-list'>
-		                   <image src='../../static/home/tailand-pmz.png'></image>
-		                   <view>泰国波浪平面枕</view>
-		                   <view>泰国天然乳胶原料</view>
-		                   <view>￥228.0</view>
-		             </view>
-		             <view class='home-lick-list'>
-		                   <image src='../../static/home/tailand-pmz.png'></image>
-		                   <view>泰国波浪平面枕</view>
-		                   <view>泰国天然乳胶原料</view>
-		                   <view>￥228.0</view>
-		             </view> -->
 		       </view>  
 		 </view>
 		 <view class='home-all-b'>查看全部宝贝</view>
@@ -336,10 +302,9 @@
 				console.log('限时抢购')
 			},
 			// 跳转详情
-			goToDetails(){
-				let id = 1
+			goToDetails(index){
 				uni.navigateTo({
-					url: '/pages/details/details?id='+id
+					url: '/pages/details/details?id='+index
 				})
 			}
 			

@@ -167,69 +167,119 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
     return {
-      stust: false,
-      lists: [
-      {
-        titleImg: 'http://img5.imgtn.bdimg.com/it/u=1896971167,2172042544&fm=26&gp=0.jpg',
-        check: false,
-        name: "狼牙枕aaa",
-        color: '白色',
-        price: 238.00,
-        num: 1 },
-
-      {
-        titleImg: 'http://img5.imgtn.bdimg.com/it/u=1896971167,2172042544&fm=26&gp=0.jpg',
-        check: false,
-        name: "办公枕aaa",
-        color: '米色',
-        price: 58.00,
-        num: 1 },
-
-      {
-        titleImg: 'http://img5.imgtn.bdimg.com/it/u=1896971167,2172042544&fm=26&gp=0.jpg',
-        check: false,
-        name: "乳胶床垫aaa",
-        color: '白色',
-        price: 238.00,
-        num: 1 }] };
-
-
+      totalPrice: 0,
+      allChecked: uni.getStorageSync('allCh') || true,
+      lists: [] };
 
   },
   onLoad: function onLoad() {
-
+    this.lists = uni.getStorageSync("cart") || [];
+    this.totalPrice = this._totalPrice();
   },
   methods: {
+    //计算总价
+    _totalPrice: function _totalPrice(index) {
+      var list = this.lists;
+      var allPrice = 0;
+      list.forEach(function (item) {
+        if (item.status) {
+          allPrice += item.count * item.price;
+        }
+      });
+      return allPrice;
+    },
     goAround: function goAround() {
       uni.switchTab({
-        url: "../home/home" });
+        url: "/pages/home/home" });
 
     },
     //加按钮
     jia: function jia(index) {
-      var num = this.lists[index].num;
-      num++;
-      this.lists[index].num = num;
-      console.log(num);
+      var count = this.lists[index].count;
+      count++;
+      this.lists[index].count = count;
+      uni.setStorageSync('cart', this.lists);
     },
     //减按钮
     jian: function jian(index) {
-      var num = this.lists[index].num;
-      num--;
-      this.lists[index].num = num;
+      console.log(index);
+      var count = this.lists[index].count;
+      var price = this.lists[index].price;
+      if (count <= 1) {
+        count = 1;
+      } else {
+        count--;
 
+      }
+
+      this.lists[index].count = count;
+      uni.setStorageSync('cart', this.lists);
     },
     //单选
     danxuan: function danxuan(index) {
-      this.lists[index].check = !this.lists[index].check;
+      this.lists[index].status = !this.lists[index].status;
+      for (var i = 0; i < this.lists.length; i++) {
+        if (!this.lists[i].status) {
+          this.allChecked = false;
+          break;
+        }
+      }
+
+      this.list = this.lists,
+      this.allChecked = this.allChecked;
+
+      wx.setStorageSync('cart', this.lists);
+      wx.setStorageSync('allCh', this.allChecked);
+      this.totalPrice = this._totalPrice();
     },
     //全选
-    quanxuan: function quanxuan() {
-      this.stust = !this.stust;
+    allCheck: function allCheck(index) {
+      var allStatus = wx.getStorageSync('allCh');
+      var list = this.lists;
+      allStatus = !allStatus;
+      list.forEach(function (item) {
+        item.status = allStatus;
+      });
+      this.allChecked = allStatus,
+      this.lists = list;
+      wx.setStorageSync('allCh', allStatus);
+      wx.setStorageSync('cart', this.lists);
+      this.totalPrice = this._totalPrice();
+    },
+    //删除
+    remove: function remove(index) {var _this = this;
+      uni.showModal({
+        title: '提示',
+        content: "确定删除吗？",
+        success: function success(res) {
+          if (res.confirm) {
+            console.log(res.confirm);
+            wx.showToast({
+              title: '删除成功',
+              icon: 'success',
+              duration: 2000 });
+
+            //删除逻辑
+            var list = _this.lists;
+
+            list.splice(index, 1);
+            _this.totalPrice = _this._totalPrice();
+            _this.lists = list;
+
+            wx.setStorageSync('cart', _this.lists);
+          } else if (res.cancel) {
+            console.log("取消");
+          }
+        } });
+
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

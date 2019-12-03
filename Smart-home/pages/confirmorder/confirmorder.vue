@@ -103,6 +103,8 @@
 			// this.arr = options.arr;
 			let obj = uni.getStorageSync('addressObj') || {};
 			this.address = obj
+			
+			console.log(options.obj);
 		},
 		onShow() {
 			let num = 0;

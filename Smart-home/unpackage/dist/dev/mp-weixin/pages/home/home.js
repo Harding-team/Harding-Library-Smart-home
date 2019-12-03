@@ -337,40 +337,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 {
   components: { uniCountdown: uniCountdown },
   data: function data() {
@@ -469,10 +435,9 @@ __webpack_require__.r(__webpack_exports__);
       console.log('限时抢购');
     },
     // 跳转详情
-    goToDetails: function goToDetails() {
-      var id = 1;
+    goToDetails: function goToDetails(index) {
       uni.navigateTo({
-        url: '/pages/details/details?id=' + id });
+        url: '/pages/details/details?id=' + index });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

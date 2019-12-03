@@ -10,30 +10,34 @@
 		<view class='cartMan' v-if="lists.length!==0">
 			<view class='shoopList' v-for="(item,index) in lists" :key="index">
 				<view class='choose'>
-					<text @click="danxuan(index)" :class='item.check?"iconfont icon-danxuan":"iconfont icon-guanbi"'></text>
+					<text @click="danxuan(index)" :class='item.status?"iconfont icon-danxuan":"iconfont icon-guanbi"'></text>
 				</view>
 				<view class='titleImg'>
-					<image :src='item.titleImg'></image>
+					<image :src='item.img'></image>
 				</view>
 				<view class='right'>
-					<view class='name'>{{item.name}}</view>
+					<view class='name'>{{item.title}}</view>
 					<view class='color'>{{item.color}}</view>
 					<view class='price'>￥{{item.price}}</view>
 				</view>
-				<view class='num'>
-					<view @clcik="jian(index)" class='jian'>-</view>
-					<view class='numOne'>0</view>
+				<view class='num' :class="item.status?'active':''">
+					<view @click="jian(index)" class='jian'>-</view>
+					<view class='numOne'>{{item.count}}</view>
 					<view @click="jia(index)" class='jia'>+</view>
+				</view>
+				<view class='delete' :class="item.status?'':'active'" @click="remove(index)">
+				  <view class='iconfont icon-shanchu'></view>
+				  <view class='text'>删除</view>
 				</view>
 			</view>
 			<view class='jieSuan'>
 				<view class='icone'>
-					<view @click="quanxuan()" class='quan' :class='stust?"iconfont icon-danxuan":"iconfont icon-guanbi"'></view>
+					<view @click="allCheck(index)" class='quan' :class='allChecked?"iconfont icon-danxuan":"iconfont icon-guanbi"'></view>
 					<view class='iconeOne'>全选</view>
 				</view>
 				<view class="zonngPrice">
 					<text>￥</text>
-					<text>238.00</text>
+					<text>{{totalPrice}}</text>
 				</view>
 				<view class='suan'>
 					<view class='sunOne'>去结算</view>
@@ -47,67 +51,114 @@
 	export default {
 		data() {
 			return {
-				stust:false,
-				lists:[
-					{
-						titleImg:'http://img5.imgtn.bdimg.com/it/u=1896971167,2172042544&fm=26&gp=0.jpg',
-						check:false,
-						name:"狼牙枕aaa",
-						color:'白色',
-						price:238.00,
-						num:1
-					},
-					{
-						titleImg:'http://img5.imgtn.bdimg.com/it/u=1896971167,2172042544&fm=26&gp=0.jpg',
-						check:false,
-						name:"办公枕aaa",
-						color:'米色',
-						price:58.00,
-						num:1
-					},
-					{
-						titleImg:'http://img5.imgtn.bdimg.com/it/u=1896971167,2172042544&fm=26&gp=0.jpg',
-						check:false,
-						name:"乳胶床垫aaa",
-						color:'白色',
-						price:238.00,
-						num:1
-					}
-				]
+				totalPrice: 0,
+				allChecked: uni.getStorageSync('allCh') || true,
+				lists:[]
 			}
 		},
 		onLoad() {
-
+			this.lists=uni.getStorageSync("cart")||[];
+			this.totalPrice=this._totalPrice()
 		},
 		methods: {
+			//计算总价
+			_totalPrice(index){
+			    let list = this.lists;
+			    let allPrice = 0
+			    list.forEach(item => {
+			      if(item.status){
+			        allPrice += item.count * item.price
+			      }
+			    })
+			    return allPrice
+			},
 			goAround(){
 				uni.switchTab({
-					url:"../home/home"
+					url:"/pages/home/home"
 				})
 			},
 			//加按钮
 			jia(index){
-				var num=this.lists[index].num
-				num++
-				this.lists[index].num=num
-				console.log(num)
+				let count=this.lists[index].count
+				count++
+				this.lists[index].count=count
+				uni.setStorageSync('cart', this.lists)
 			},
 			//减按钮
 			jian(index){
-				var num=this.lists[index].num
-				num--
-				this.lists[index].num=num
+				console.log(index)
+				let count=this.lists[index].count
+				let price=this.lists[index].price
+				if(count<=1){
+					count=1
+				}else{
+					count--
+					
+				}
 				
+				this.lists[index].count=count
+				 uni.setStorageSync('cart', this.lists)
 			},
 			//单选
 			danxuan(index){
-				this.lists[index].check=!this.lists[index].check
+				this.lists[index].status=!this.lists[index].status
+				for (var i = 0; i < this.lists.length ; i++) {
+				  if (!this.lists[i].status) {
+					this.allChecked = false;
+					break;
+				  }
+				}
+
+				this.list=this.lists,
+				this.allChecked=this.allChecked
+				
+				wx.setStorageSync('cart', this.lists)
+				wx.setStorageSync('allCh', this.allChecked)
+				this.totalPrice=this._totalPrice()
 			},
 			//全选
-			quanxuan(){
-				this.stust=!this.stust
+			allCheck(index){
+				let allStatus = wx.getStorageSync('allCh')
+				let list = this.lists
+				allStatus = !allStatus
+				list.forEach(item => {
+				  item.status = allStatus
+				})
+				  this.allChecked = allStatus,
+				  this.lists=list
+				wx.setStorageSync('allCh', allStatus)
+				wx.setStorageSync('cart', this.lists)
+				this.totalPrice=this._totalPrice()
+			},
+			//删除
+			remove(index){
+				uni.showModal({
+				  title: '提示',
+				  content: "确定删除吗？",
+				  success: res => {
+					if (res.confirm) {
+					  console.log(res.confirm)
+					  wx.showToast({
+						title: '删除成功',
+						icon: 'success',
+						duration: 2000
+					  })
+					  //删除逻辑
+					  let list = this.lists;
+					  
+					  list.splice(index, 1);
+					  this.totalPrice=this._totalPrice()
+					  this.lists=list
+
+					  wx.setStorageSync('cart',this.lists)
+					} else if (res.cancel) {
+					  console.log("取消")
+					}
+				  }
+				})
 			}
-		}
+		},
+		
 	}
 </script>
 <style lang="less">
@@ -218,6 +269,28 @@
 						lin-height:40rpx;
 						font-size:28rpx;
 					}
+				}
+				.delete {
+				  position: absolute;
+				  right: 30rpx;
+				  top: 50rpx;
+				  display: flex;
+				  text-align:center;
+				  width: 100rpx;
+				  height: 150rpx;
+				  background: #f7f7f7;
+				  border-radius: 10rpx;
+				  display:block;
+				  .icon-shanchu{
+					  margin-top:50rpx;
+				  }
+				  .text{
+					  font-size:26rpx;
+					  margin-top:20rpx;
+				  }
+				}
+				.active{
+				  display:none;
 				}
 			}
 			.jieSuan{

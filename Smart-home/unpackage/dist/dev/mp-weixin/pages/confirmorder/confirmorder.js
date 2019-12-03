@@ -227,6 +227,8 @@ var _default =
     // this.arr = options.arr;
     var obj = uni.getStorageSync('addressObj') || {};
     this.address = obj;
+
+    console.log(options.obj);
   },
   onShow: function onShow() {
     var num = 0;

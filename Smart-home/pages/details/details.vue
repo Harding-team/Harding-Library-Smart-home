@@ -27,7 +27,7 @@
 				<view class="cart" @tap="onCart">
 					<text class="icon-icon22fuzhi iconfont"></text>
 				</view>
-				<view class="cartAllCount">33</view>
+				<view class="cartAllCount">{{totalCount}}</view>
 			</view>
 			<!-- 商品信息 -->
 			<view class="info">
@@ -80,7 +80,7 @@
 							<image class="sd-img" :src="item.avatar" mode=""/>
 							<view class="sd-name">{{item.username}}</view>
 						</view>
-						<view class="sd-right" @tap="onSingle">
+						<view class="sd-right" @tap="onSingle(3)" data-type="3">
 							<view class="sd-box">
 								<view class="sb-text">差{{item.num}}人拼成</view>
 								<view class="sb-time">
@@ -116,7 +116,7 @@
 							   mode="" 
 							   v-for="(item2,index2) in item.reviewImg" 
 							   :key="index2"
-							   @tap="onPreviewReviewDetailImage(index2,index)"/>
+							   @tap="onPreviewReviewDetailImage(index)"/>
 					</view>
 				</view>
 			</view>
@@ -182,13 +182,32 @@
 					</view>
 					<scroll-view class="popup-wrap" scroll-y="true">
 						<view class="popup-wrapper">
-							<view class="popup-box" v-for="(item,index) in detailData.specificationList" :key="index">
+							<!-- <view class="popup-box" v-for="(item,index) in detailData.specificationList" :key="index">
 								<view class="popup-title">{{item.title}}</view>
 								<view class="popup-list">
 									<view v-for="(item2,index2) in item.specification"
-										  :class="['popup-item',specificationCurrentIndex == index2 ? 'active' : '']"
+										  :class="['popup-item',specificationCurrentIndex1 == index2 ? 'active' : '']"
 										  :key="index2"
 										  @tap="onSpecification(index2,index)">{{item2.name}}</view>
+								</view>
+							</view> -->
+							
+							<view class="popup-box">
+								<view class="popup-title">{{detailData.specificationList[0].title}}</view>
+								<view class="popup-list">
+									<view v-for="(item2,index2) in detailData.specificationList[0].specification"
+										  :class="['popup-item',specificationCurrentIndex0 == index2 ? 'active' : '']"
+										  :key="index2"
+										  @tap="onSpecification1(index2)">{{item2.name}}</view>
+								</view>
+							</view>
+							<view class="popup-box">
+								<view class="popup-title">{{detailData.specificationList[1].title}}</view>
+								<view class="popup-list">
+									<view v-for="(item2,index2) in detailData.specificationList[1].specification"
+										  :class="['popup-item',specificationCurrentIndex1 == index2 ? 'active' : '']"
+										  :key="index2"
+										  @tap="onSpecification2(index2)">{{item2.name}}</view>
 								</view>
 							</view>
 							<view class="popup-update">
@@ -417,7 +436,7 @@
 							"specification": [{
 									"name": "60cm*40cm"
 								},{
-									"name": "60cm*40cm"
+									"name": "30cm*20cm"
 							}]
 						},{
 							"title": "颜色",
@@ -612,7 +631,7 @@
 							"specification": [{
 									"name": "60cm*40cm"
 								},{
-									"name": "60cm*40cm"
+									"name": "30cm*20cm"
 							}]
 						},{
 							"title": "颜色",
@@ -807,7 +826,7 @@
 							"specification": [{
 									"name": "60cm*40cm"
 								},{
-									"name": "60cm*40cm"
+									"name": "30cm*20cm"
 							}]
 						},{
 							"title": "颜色",
@@ -828,10 +847,14 @@
 				isShowPopup: false,
 				isShowPopupReturn: false,
 				isCollection: false,
-				specificationCurrentIndex: 0,
+				specificationCurrentIndex0: 0,
+				specificationCurrentIndex1: 0,
 				btnType: '',
-				specification: [],
-				countText: 1
+				countText: 1,
+				specification: [],//存放被选中的值
+				goodsSize: '',
+				goodsColor: '',
+				totalCount: 0
 			}
 		},
 		onLoad(options) {
@@ -842,14 +865,15 @@
 				}
 			})
 			this.detailData.singleList.forEach((item,index) => {
-				let time     = item.remainingTime
-				var hours    = this._toDouble(parseInt(time/3600000))								//计算小时
-				var minutes  = this._toDouble(parseInt((time-hours*3600000)/60000))   				//计算分
-				var seconds  = this._toDouble(parseInt((time-hours*3600000-minutes*60000)/1000))	//计算秒
+				let time     = item.remainingTime;
+				var hours    = this._toDouble(parseInt(time/3600000));								//计算小时
+				var minutes  = this._toDouble(parseInt((time-hours*3600000)/60000)); 				//计算分
+				var seconds  = this._toDouble(parseInt((time-hours*3600000-minutes*60000)/1000));	//计算秒
 				item.hours   = hours;
 				item.minutes = minutes;
 				item.seconds = seconds;
 			})
+			this.totalCount = this._getTotalNum();
 		},
 		onShow(){
 			let collectArr = uni.getStorageSync('collectArr') || [];
@@ -880,16 +904,16 @@
 				})
 			},
 			// 点击预览评价详情图片
-			onPreviewReviewDetailImage(index2,index){
+			onPreviewReviewDetailImage(index){
 				uni.previewImage({
 					urls: this.detailData.reviewDetail[index].reviewImg,
-					current: index2
+					current: index
 				})
 			},
 			// 点击预览商品详情图片
-			onPreviewGoodsDetailImage(index2,index){
+			onPreviewGoodsDetailImage(index){
 				uni.previewImage({
-					urls: this.detailData.goodsDetailList[index].specification[index2],
+					urls: this.detailData.detailList,
 					current: index
 				})
 			},
@@ -913,10 +937,6 @@
 			// 退货关闭按钮
 			onCloseReturn(){
 				this.isShowPopupReturn = false;
-			},
-			// 点击去拼单  弹出遮罩层
-			onSingle(ev){
-				this.isShowPopup = true;
 			},
 			// 点击查看更多评价 跳转详情页面
 			onReview(index){
@@ -952,39 +972,67 @@
 			onCustomer(){
 				console.log('客服');
 			},
+			// 点击去拼单  弹出遮罩层
+			onSingle(type){
+				this.isShowPopup = true;
+				this.btnType = type;
+				this.goodsSize  = this.detailData.specificationList[0].specification[0].name;
+				this.goodsColor = this.detailData.specificationList[1].specification[0].name;
+			},
 			// 发起拼单
 			onStartFight(type){
 				this.isShowPopup = true;
 				this.btnType = type;
+				this.goodsSize  = this.detailData.specificationList[0].specification[0].name;
+				this.goodsColor = this.detailData.specificationList[1].specification[0].name;
 			},
 			// 单独购买
 			onAloneShop(type){
 				this.isShowPopup = true;
 				this.btnType = type;
+				this.goodsSize  = this.detailData.specificationList[0].specification[0].name;
+				this.goodsColor = this.detailData.specificationList[1].specification[0].name;
 			},
 			// 点击关闭
 			onClose(){
 				this.isShowPopup = false;
 			},
-			// 点击样式选择，尺码，颜色
-			onSpecification(index2,index){
-				this.specificationCurrentIndex = index2;
-				this.specification.push({
-					size: this.detailData.specificationList[index].specification[index2].name
-				})
+			// 点击样式选择，尺码
+			onSpecification1(index2){
+				this.specificationCurrentIndex0 = index2
+				this.goodsSize = this.detailData.specificationList[0].specification[index2].name
+			},
+			// 点击样式选择,颜色
+			onSpecification2(index2){
+				this.specificationCurrentIndex1 = index2;
+				this.goodsColor = this.detailData.specificationList[1].specification[index2].name
 			},
 			// 点击确定将选择的产品参数存起来跳转到订单页面
 			onSure(){
-				// 1发起拼单，2单独购买
-				if(this.btnType == 1){
-					// console.log(1)
+				// 1发起拼单，2单独购买 3去拼单
+				if(this.btnType == 1 || 3){
+					let obj = {
+						id: this.detailData.id,
+						title: this.detailData.title,
+						price: this.detailData.AlonePrice,
+						img: this.detailData.imgSrc[0],
+						size: this.goodsSize,
+						color: this.goodsColor,
+						count:this.countText
+					}
+					let arr = []
+					arr.push(obj)
+					uni.navigateTo({
+						url: "/pages/confirmorder/confirmorder?arr="+JSON.stringify(arr)
+					})
 				}else if(this.btnType == 2){
 					let obj = {
 						id: this.detailData.id,
 						title: this.detailData.title,
 						price: this.detailData.AlonePrice,
 						img: this.detailData.imgSrc[0],
-						size: this.specification[0].size
+						size: this.goodsSize,
+						color: this.goodsColor
 					}
 					this._addToCart(obj,this.countText);
 					uni.showToast({

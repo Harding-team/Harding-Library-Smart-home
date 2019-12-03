@@ -86,13 +86,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-}
+var render = function () {}
 var staticRenderFns = []
-render._withStripped = true
 
 
 
@@ -160,12 +155,41 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
     return {
+      region: [],
+      index: 0,
       defaultFlag: true,
       stickyAddressArr: [],
+      detailedAddress: '',
+      name: '',
+      sel: '',
+      flag: false,
+      txt: '',
       addressArr: [
       {
         name: '齐文蒸',
@@ -266,10 +290,62 @@ var _default =
         } });
 
     },
-    goToConfirmorder: function goToConfirmorder(index) {
+    goToConfirmorder: function goToConfirmorder(index) {//跳转去支付页面
       uni.navigateTo({
         url: "/pages/confirmorder/confirmorder?obj=" + uni.setStorageSync('addressObj', this.addressArr[index]) });
 
+    },
+    bindRegionChange: function bindRegionChange(e) {//选择地址
+      this.region = e.detail.value;
+    },
+    save: function save() {//保存地址
+      var obj = {
+        name: this.name,
+        sel: this.sel,
+        province: this.region[0],
+        city: this.region[1],
+        county: this.region[2],
+        detailedAddress: this.detailedAddress,
+        defaultStatus: false,
+        useStatus: false,
+        sticky: false };
+
+      if (this.txt == '添加新') {
+        this.addressArr.push(obj);
+      } else if (this.txt == '编辑') {
+        obj.defaultStatus = this.addressArr[this.index].defaultStatus;
+        obj.useStatus = this.addressArr[this.index].useStatus;
+        obj.sticky = this.addressArr[this.index].sticky;
+        this.addressArr.splice(this.index, 1, obj);
+      }
+      this.flag = false;
+      this.name = '';
+      this.sel = '';
+      this.detailedAddress = '';
+      this.index = 0;
+      this.region = [];
+    },
+    tianjia: function tianjia(str) {//手动添加地址
+      this.flag = true;
+      this.txt = str;
+    },
+    guanbi: function guanbi() {//关闭手动添加
+      this.flag = false;
+      this.name = '';
+      this.sel = '';
+      this.detailedAddress = '';
+      this.region = [];
+    },
+    edit: function edit(index, str) {
+      this.index = index;
+      this.txt = str;
+      this.flag = true;
+      this.name = this.addressArr[index].name;
+      this.sel = this.addressArr[index].sel;
+      this.detailedAddress = this.addressArr[index].detailedAddress;
+      this.region[0] = this.addressArr[index].province;
+      this.region[1] = this.addressArr[index].city;
+      this.region[2] = this.addressArr[index].county;
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

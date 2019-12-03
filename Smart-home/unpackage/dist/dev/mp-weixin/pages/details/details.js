@@ -353,6 +353,25 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 {
   components: { uniCountdown: uniCountdown },
   data: function data() {
@@ -541,7 +560,7 @@ __webpack_require__.r(__webpack_exports__);
           "specification": [{
             "name": "60cm*40cm" },
           {
-            "name": "60cm*40cm" }] },
+            "name": "30cm*20cm" }] },
 
         {
           "title": "颜色",
@@ -736,7 +755,7 @@ __webpack_require__.r(__webpack_exports__);
           "specification": [{
             "name": "60cm*40cm" },
           {
-            "name": "60cm*40cm" }] },
+            "name": "30cm*20cm" }] },
 
         {
           "title": "颜色",
@@ -931,7 +950,7 @@ __webpack_require__.r(__webpack_exports__);
           "specification": [{
             "name": "60cm*40cm" },
           {
-            "name": "60cm*40cm" }] },
+            "name": "30cm*20cm" }] },
 
         {
           "title": "颜色",
@@ -952,10 +971,13 @@ __webpack_require__.r(__webpack_exports__);
       isShowPopup: false,
       isShowPopupReturn: false,
       isCollection: false,
-      specificationCurrentIndex: 0,
+      specificationCurrentIndex0: 0,
+      specificationCurrentIndex1: 0,
       btnType: '',
-      specification: [],
-      countText: 1 };
+      countText: 1,
+      specification: [], //存放被选中的值
+      goodsSize: '',
+      goodsColor: '' };
 
   },
   onLoad: function onLoad(options) {var _this = this;
@@ -1004,16 +1026,16 @@ __webpack_require__.r(__webpack_exports__);
 
     },
     // 点击预览评价详情图片
-    onPreviewReviewDetailImage: function onPreviewReviewDetailImage(index2, index) {
+    onPreviewReviewDetailImage: function onPreviewReviewDetailImage(index) {
       uni.previewImage({
         urls: this.detailData.reviewDetail[index].reviewImg,
-        current: index2 });
+        current: index });
 
     },
     // 点击预览商品详情图片
-    onPreviewGoodsDetailImage: function onPreviewGoodsDetailImage(index2, index) {
+    onPreviewGoodsDetailImage: function onPreviewGoodsDetailImage(index) {
       uni.previewImage({
-        urls: this.detailData.goodsDetailList[index].specification[index2],
+        urls: this.detailData.detailList,
         current: index });
 
     },
@@ -1080,37 +1102,58 @@ __webpack_require__.r(__webpack_exports__);
     onStartFight: function onStartFight(type) {
       this.isShowPopup = true;
       this.btnType = type;
+      this.goodsSize = this.detailData.specificationList[0].specification[0].name;
+      this.goodsColor = this.detailData.specificationList[1].specification[0].name;
     },
     // 单独购买
     onAloneShop: function onAloneShop(type) {
       this.isShowPopup = true;
       this.btnType = type;
+      this.goodsSize = this.detailData.specificationList[0].specification[0].name;
+      this.goodsColor = this.detailData.specificationList[1].specification[0].name;
     },
     // 点击关闭
     onClose: function onClose() {
       this.isShowPopup = false;
     },
-    // 点击样式选择，尺码，颜色
-    onSpecification: function onSpecification(index2, index) {
-      this.specificationCurrentIndex = index2;
-      this.specification.push({
-        size: this.detailData.specificationList[index].specification[index2].name });
-
+    // 点击样式选择，尺码
+    onSpecification1: function onSpecification1(index2) {
+      this.specificationCurrentIndex0 = index2;
+      this.goodsSize = this.detailData.specificationList[0].specification[index2].name;
+    },
+    // 点击样式选择,颜色
+    onSpecification2: function onSpecification2(index2) {
+      this.specificationCurrentIndex1 = index2;
+      this.goodsColor = this.detailData.specificationList[1].specification[index2].name;
     },
     // 点击确定将选择的产品参数存起来跳转到订单页面
     onSure: function onSure() {
       // 1发起拼单，2单独购买
       if (this.btnType == 1) {
-        // console.log(1)
-      } else if (this.btnType == 2) {
         var obj = {
           id: this.detailData.id,
           title: this.detailData.title,
           price: this.detailData.AlonePrice,
           img: this.detailData.imgSrc[0],
-          size: this.specification[0].size };
+          size: this.goodsSize,
+          color: this.goodsColor,
+          count: this.countText };
 
-        this._addToCart(obj, this.countText);
+        var arr = [];
+        arr.push(obj);
+        uni.navigateTo({
+          url: "/pages/confirmorder/confirmorder?arr=" + JSON.stringify(arr) });
+
+      } else if (this.btnType == 2) {
+        var _obj = {
+          id: this.detailData.id,
+          title: this.detailData.title,
+          price: this.detailData.AlonePrice,
+          img: this.detailData.imgSrc[0],
+          size: this.goodsSize,
+          color: this.goodsColor };
+
+        this._addToCart(_obj, this.countText);
         uni.showToast({
           title: '加入购物车成功',
           duration: 2000,

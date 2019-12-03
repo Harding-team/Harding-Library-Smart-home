@@ -224,7 +224,8 @@ var _default =
 
   },
   onLoad: function onLoad(options) {
-    // this.arr = options.arr;
+    this.arr = JSON.parse(options.arr);
+    console.log(this.arr);
     var obj = uni.getStorageSync('addressObj') || {};
     this.address = obj;
   },

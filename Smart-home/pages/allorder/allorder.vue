@@ -60,23 +60,23 @@
 			return {
 				tabbarArr:['全部','代付款','待分享','待发货','待收货','待评价'],
 				tabbarIndex:0,
-				// allorderArr:[
-				// 	{
-				// 		title:'NeoDPillo印尼邓禄普官方正品原装进口天然乳胶枕头波浪颈椎枕...',
-				// 		imgSrc:'http://img1.imgtn.bdimg.com/it/u=2973069531,657782944&fm=26&gp=0.jpg',
-				// 		count:1,
-				// 		price:'299',
-				// 		shopName:'neodpillo海外旗舰店',
-				// 		id:'1'
-				// 	},{
-				// 		title:'Neo然乳胶枕头波浪颈椎枕...',
-				// 		imgSrc:'http://img1.imgtn.bdimg.com/it/u=2752453349,2871240348&fm=26&gp=0.jpg',
-				// 		count:13,
-				// 		price:'23339',
-				// 		shopName:'恒源祥苏恒专卖店',
-				// 		id:'2'
-				// 	}
-				// ],
+				allorderArr:[
+					{
+						title:'NeoDPillo印尼邓禄普官方正品原装进口天然乳胶枕头波浪颈椎枕...',
+						imgSrc:'http://img1.imgtn.bdimg.com/it/u=2973069531,657782944&fm=26&gp=0.jpg',
+						count:1,
+						price:'299',
+						shopName:'neodpillo海外旗舰店',
+						id:'1'
+					},{
+						title:'Neo然乳胶枕头波浪颈椎枕...',
+						imgSrc:'http://img1.imgtn.bdimg.com/it/u=2752453349,2871240348&fm=26&gp=0.jpg',
+						count:13,
+						price:'23339',
+						shopName:'恒源祥苏恒专卖店',
+						id:'2'
+					}
+				],
 				recommendArr:[
 					{
 						imgSrc:'../../static/home/1.jpg',

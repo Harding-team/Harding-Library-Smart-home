@@ -39,7 +39,7 @@
 			</view>
 			<view class=" padding flex fff h74" style="margin-top:2rpx;">
 				<view>运费</view>
-				<view >¥{{item.freight}}</view>
+				<view >¥{{item.freight || '0.00'}}</view>
 			</view>
 			<view class=" padding flex margin fff h74">
 				<view style="display:flex; justify-content: flex-start; align-items: center;">
@@ -100,7 +100,8 @@
 			}
 		},
 		onLoad(options) {
-			// this.arr = options.arr;
+			this.arr = JSON.parse(options.arr);
+			console.log(this.arr)
 			let obj = uni.getStorageSync('addressObj') || {};
 			this.address = obj
 		},

@@ -178,7 +178,7 @@
 		        </view>
 		  </view>
 		  <view class='home-paihang'>
-		        <view class='home-paihang-list' v-for="(item,index) in ranking" :key='index' @tap="goToDetails()">
+		        <view class='home-paihang-list' v-for="(item,index) in ranking" :key='index' @tap="goToDetails(index)">
 		              <image class='home-paihang-img' :src='item.images'></image>
 		              <image class='home-paihang-num' src='../../static/home/assemble-no.png'></image>
 		              <view>{{item.name}}</view>
@@ -190,7 +190,7 @@
 		 <view class='home-lick-tlt'>猜你喜欢</view>
 		 <view class='home-lick'>
 		       <view class='home-lick-box'>
-		             <view class='home-lick-list'  v-for="(item,index) in piex" :key='index'  @tap="goToDetails()">
+		             <view class='home-lick-list'  v-for="(item,index) in piex" :key='index'  @tap="goToDetails(index)">
 		                   <image :src='item.images'></image>
 		                   <view>{{item.name}}</view>
 		                   <view>{{item.details}}</view>
@@ -198,7 +198,7 @@
 		             </view>
 		       </view>  
 		 </view>
-		 <view class='home-all-b'>查看全部宝贝</view>
+		 <view class='home-all-b' @tap="goToNew()">查看全部宝贝</view>
 	  </view>
 </template>
 
@@ -235,11 +235,6 @@
 						images:'../../static/home/tailand-pmz.png'
 					},{
 						name:'泰国美容波浪枕',
-						price:'228.0',
-						details:'泰国天然乳胶原料',
-						images:'../../static/home/tailand-pmz.png'
-					},{
-						name:'泰国薄款波浪枕',
 						price:'228.0',
 						details:'泰国天然乳胶原料',
 						images:'../../static/home/tailand-pmz.png'
@@ -309,10 +304,14 @@
 				console.log('限时抢购')
 			},
 			// 跳转详情
-			goToDetails(){
-				let id = 1
+			goToDetails(index){
 				uni.navigateTo({
-					url: '/pages/details/details?id='+id
+					url: '/pages/details/details?id='+index
+				})
+			},
+			goToNew(){
+				uni.navigateTo({
+					url: '/pages/new/new'
 				})
 			}
 			

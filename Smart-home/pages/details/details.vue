@@ -27,7 +27,7 @@
 				<view class="cart" @tap="onCart">
 					<text class="icon-icon22fuzhi iconfont"></text>
 				</view>
-				<view class="cartAllCount">33</view>
+				<view class="cartAllCount">{{totalCount}}</view>
 			</view>
 			<!-- 商品信息 -->
 			<view class="info">
@@ -80,7 +80,7 @@
 							<image class="sd-img" :src="item.avatar" mode=""/>
 							<view class="sd-name">{{item.username}}</view>
 						</view>
-						<view class="sd-right" @tap="onSingle">
+						<view class="sd-right" @tap="onSingle(3)" data-type="3">
 							<view class="sd-box">
 								<view class="sb-text">差{{item.num}}人拼成</view>
 								<view class="sb-time">
@@ -853,7 +853,8 @@
 				countText: 1,
 				specification: [],//存放被选中的值
 				goodsSize: '',
-				goodsColor: ''
+				goodsColor: '',
+				totalCount: 0,
 			}
 		},
 		onLoad(options) {
@@ -864,14 +865,35 @@
 				}
 			})
 			this.detailData.singleList.forEach((item,index) => {
-				let time     = item.remainingTime
-				var hours    = this._toDouble(parseInt(time/3600000))								//计算小时
-				var minutes  = this._toDouble(parseInt((time-hours*3600000)/60000))   				//计算分
-				var seconds  = this._toDouble(parseInt((time-hours*3600000-minutes*60000)/1000))	//计算秒
+				let time     = item.remainingTime;
+				var hours    = this._toDouble(parseInt(time/3600000));								//计算小时
+				var minutes  = this._toDouble(parseInt((time-hours*3600000)/60000)); 				//计算分
+				var seconds  = this._toDouble(parseInt((time-hours*3600000-minutes*60000)/1000));	//计算秒
 				item.hours   = hours;
 				item.minutes = minutes;
 				item.seconds = seconds;
 			})
+			this.totalCount = this._getTotalNum();
+			
+			let historyArr = uni.getStorageSync('historyArr') || [];
+			let index = this._isHasOne(this.id,historyArr)
+			if(index == -1){
+				historyArr.unshift({
+					id: this.id,
+					img: this.detailData.imgSrc[0],
+					name: this.detailData.title,
+					price: this.detailData.smallPrice
+				})
+			}else{
+				historyArr.splice(index,1)
+				historyArr.unshift({
+					id: this.id,
+					img: this.detailData.imgSrc[0],
+					name: this.detailData.title,
+					price: this.detailData.smallPrice
+				})
+			}
+			uni.setStorageSync('historyArr',historyArr)
 		},
 		onShow(){
 			let collectArr = uni.getStorageSync('collectArr') || [];
@@ -936,10 +958,6 @@
 			onCloseReturn(){
 				this.isShowPopupReturn = false;
 			},
-			// 点击去拼单  弹出遮罩层
-			onSingle(ev){
-				this.isShowPopup = true;
-			},
 			// 点击查看更多评价 跳转详情页面
 			onReview(index){
 				// 判断传过来的变量是否是一个数字
@@ -964,7 +982,10 @@
 					collectArr.splice(index,1)
 				}else{
 					collectArr.push({
-						id: this.id
+						id: this.id,
+						img: this.detailData.imgSrc[0],
+						name: this.detailData.title,
+						price: this.detailData.smallPrice
 					})
 				}
 				uni.setStorageSync('collectArr',collectArr)
@@ -973,6 +994,13 @@
 			// 点击客服icon
 			onCustomer(){
 				console.log('客服');
+			},
+			// 点击去拼单  弹出遮罩层
+			onSingle(type){
+				this.isShowPopup = true;
+				this.btnType = type;
+				this.goodsSize  = this.detailData.specificationList[0].specification[0].name;
+				this.goodsColor = this.detailData.specificationList[1].specification[0].name;
 			},
 			// 发起拼单
 			onStartFight(type){
@@ -1004,9 +1032,10 @@
 			},
 			// 点击确定将选择的产品参数存起来跳转到订单页面
 			onSure(){
-				// 1发起拼单，2单独购买
-				if(this.btnType == 1){
-					let obj = {
+				// 1发起拼单，2单独购买 3去拼单
+				if(this.btnType == 1 || 3){
+					let arr = []
+					arr.push({
 						id: this.detailData.id,
 						title: this.detailData.title,
 						price: this.detailData.AlonePrice,
@@ -1014,9 +1043,7 @@
 						size: this.goodsSize,
 						color: this.goodsColor,
 						count:this.countText
-					}
-					let arr = []
-					arr.push(obj)
+					});
 					uni.navigateTo({
 						url: "/pages/confirmorder/confirmorder?arr="+JSON.stringify(arr)
 					})
@@ -1035,6 +1062,20 @@
 					    duration: 2000,
 						icon: "none"
 					});
+				}else if(this.btnType == 3){
+					let arr = []
+					arr.push({
+						id: this.detailData.id,
+						title: this.detailData.title,
+						price: this.detailData.AlonePrice,
+						img: this.detailData.imgSrc[0],
+						size: this.goodsSize,
+						color: this.goodsColor,
+						count:this.countText
+					});
+					uni.navigateTo({
+						url: "/pages/confirmorder/confirmorder?arr="+JSON.stringify(arr)
+					})
 				}
 			},
 			// 加按钮

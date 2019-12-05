@@ -118,6 +118,31 @@
   lin-height: 40rpx;
   font-size: 28rpx;
 }
+.cart .cartMan .shoopList .delete {
+  position: absolute;
+  right: 30rpx;
+  top: 50rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: center;
+  width: 100rpx;
+  height: 150rpx;
+  background: #f7f7f7;
+  border-radius: 10rpx;
+  display: block;
+}
+.cart .cartMan .shoopList .delete .icon-shanchu {
+  margin-top: 50rpx;
+}
+.cart .cartMan .shoopList .delete .text {
+  font-size: 26rpx;
+  margin-top: 20rpx;
+}
+.cart .cartMan .shoopList .active {
+  display: none;
+}
 .cart .cartMan .jieSuan {
   position: fixed;
   bottom: 0;

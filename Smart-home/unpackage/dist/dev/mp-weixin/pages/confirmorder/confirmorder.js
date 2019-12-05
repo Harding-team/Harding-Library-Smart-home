@@ -225,7 +225,6 @@ var _default =
   },
   onLoad: function onLoad(options) {
     this.arr = JSON.parse(options.arr);
-    console.log(this.arr);
     var obj = uni.getStorageSync('addressObj') || {};
     this.address = obj;
   },
@@ -239,12 +238,8 @@ var _default =
   methods: {
     getAddress: function getAddress() {//跳转获取用户地址信息页面
       uni.navigateTo({
-        url: '/pages/getAddress/getAddress',
-        success: function success() {
-          console.log(222);
-        } });
+        url: '/pages/getAddress/getAddress' });
 
-      console.log(1111);
     },
     payTap: function payTap(flag) {//选择支付方式事件
       this.payFlag = flag;
@@ -254,19 +249,19 @@ var _default =
         url: '/pages/coupon/coupon' });
 
     },
-    addOrder: function addOrder() {var _this = this; //提交订单
-      wx.ready(function () {
-        wx.chooseWXPay({
-          timestamp: res.data.timeStamp, // 支付签名时间戳，注意微信jssdk中的所有使用timestamp字段均为小写。但最新版的支付后台生成签名使用的timeStamp字段名需大写其中的S字符
-          nonceStr: res.data.nonceStr, // 支付签名随机串，不长于 32 位
-          package: res.data.package, // 统一支付接口返回的prepay_id参数值，提交格式如：prepay_id=\*\*\*）
-          signType: 'MD5', // 签名方式，默认为'SHA1'，使用新版支付需传入'MD5'
-          paySign: res.data.paySign, // 支付签名
-          success: function success(res) {
-            _this.$router.push({ path: '/creditcard' });
-          } });
-
-      });
+    addOrder: function addOrder() {//提交订单
+      // wx.ready(()=>{
+      // 	wx.chooseWXPay({
+      // 		timestamp: res.data.timeStamp, // 支付签名时间戳，注意微信jssdk中的所有使用timestamp字段均为小写。但最新版的支付后台生成签名使用的timeStamp字段名需大写其中的S字符
+      // 		nonceStr: res.data.nonceStr, // 支付签名随机串，不长于 32 位
+      // 		package: res.data.package, // 统一支付接口返回的prepay_id参数值，提交格式如：prepay_id=\*\*\*）
+      // 		signType: 'MD5', // 签名方式，默认为'SHA1'，使用新版支付需传入'MD5'
+      // 		paySign: res.data.paySign, // 支付签名
+      // 		success:  (res) => {
+      // 		this.$router.push({path:'/creditcard'})
+      // 		}
+      // 	});
+      // })
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

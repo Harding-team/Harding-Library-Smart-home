@@ -8,14 +8,8 @@
 			<!-- ；轮播图 -->
 			<swiper autoplay circular previous-margin="60rpx" next-margin="40rpx" indicator-dots>
 			    <swiper-item v-for="(item,index) in swiperData" :key='index'>
-			        <image :src='item.name'></image>
+			        <image :src='item.ad_code'></image>
 			    </swiper-item>
-			   <!-- <swiper-item>
-					<image src='../../static/images/xinpin-banner.png'></image>
-			    </swiper-item>
-			    <swiper-item>
-			         <image src='../../static/home/1.jpg'></image>
-			    </swiper-item> -->
 			</swiper>
 		  </view>
 		  <!-- 拼团 -->
@@ -37,10 +31,6 @@
 		        <view class='home-pt-pp'>
 		              <view>
 		                  <image v-for="(item,index) in people" :key='index' :src='item.image'></image>
-		                 <!-- <image src='../../static/home/assemble-no.png'></image>
-		                  <image src='../../static/home/assemble-no.png'></image>
-		                  <image src='../../static/home/assemble-no.png'></image>
-		                  <image src='../../static/home/assemble-no.png'></image> -->
 		              </view>
 		        </view>
 				<!-- 倒计时 -->
@@ -194,18 +184,6 @@
 		              <view>{{item.name}}</view>
 		              <view>{{item.payment}}人付款</view>
 		        </view>
-		        <!-- <view class='home-paihang-list'>
-		              <image class='home-paihang-img' src='../../static/home/tailand11.png'></image>
-		              <image class='home-paihang-num' src='../../static/home/assemble-no.png'></image>
-		              <view>泰国乳胶狼牙按摩枕</view>
-		              <view>199人付款</view>
-		        </view>
-		         <view class='home-paihang-list'>
-		              <image class='home-paihang-img' src='../../static/home/tailand11.png'></image>
-		              <image class='home-paihang-num' src='../../static/home/assemble-no.png'></image>
-		              <view>泰国乳胶狼牙按摩枕</view>
-		              <view>199人付款</view>
-		        </view> -->
 		  </view>
 		  
 		  <!-- 猜你喜欢 -->
@@ -218,18 +196,6 @@
 		                   <view>{{item.details}}</view>
 		                   <view>￥{{item.price}}</view>
 		             </view>
-		            <!-- <view class='home-lick-list'>
-		                   <image src='../../static/home/tailand-pmz.png'></image>
-		                   <view>泰国波浪平面枕</view>
-		                   <view>泰国天然乳胶原料</view>
-		                   <view>￥228.0</view>
-		             </view>
-		             <view class='home-lick-list'>
-		                   <image src='../../static/home/tailand-pmz.png'></image>
-		                   <view>泰国波浪平面枕</view>
-		                   <view>泰国天然乳胶原料</view>
-		                   <view>￥228.0</view>
-		             </view> -->
 		       </view>  
 		 </view>
 		 <view class='home-all-b'>查看全部宝贝</view>
@@ -324,6 +290,13 @@
 		onLoad() {
 			//uni.showLoading(); //数据加载中
 			//this.getmsglist();//第一次加载数据
+			uni.request({
+				url:'http://www.puzhentec.com/www/api/public/index.php?s=api/v1.index/index',
+				success:(res)=>{
+					console.log(res)
+					this.swiperData = res.data;
+				}
+			})
 		},
 		methods: {
 			// 跳转领劵中心

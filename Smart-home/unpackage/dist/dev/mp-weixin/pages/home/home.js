@@ -337,40 +337,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 {
   components: { uniCountdown: uniCountdown },
   data: function data() {
@@ -454,9 +420,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
   },
-  onLoad: function onLoad() {
+  onLoad: function onLoad() {var _this = this;
     //uni.showLoading(); //数据加载中
     //this.getmsglist();//第一次加载数据
+    uni.request({
+      url: 'http://www.puzhentec.com/www/api/public/index.php?s=api/v1.index/index',
+      success: function success(res) {
+        console.log(res);
+        _this.swiperData = res.data;
+      } });
+
   },
   methods: {
     // 跳转领劵中心

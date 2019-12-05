@@ -1,4 +1,5 @@
 <script>
+	// import baseurl from './app.js';  
 	export default {
 		onLaunch: function() {
 			// console.log('App Launch')
@@ -18,5 +19,5 @@
 	@import url("./iconfont.css");
 	/* vant */
 	@import url("/wxcomponents/vant/dist/common/index.wxss");
-	/*每个页面公共css */
+	
 </style>

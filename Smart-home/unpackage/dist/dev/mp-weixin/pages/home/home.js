@@ -345,14 +345,7 @@ __webpack_require__.r(__webpack_exports__);
       //	remaining: '', //显示剩余时间
       //	remainingd: ''  //数据返回时间秒 
 
-      swiperData: [
-      {
-        name: '../../static/home/1.jpg' },
-      {
-        name: '../../static/images/xinpin-banner.png' },
-      {
-        name: '../../static/home/1.jpg' }],
-
+      swiperData: [],
 
 
       piex: [
@@ -415,9 +408,21 @@ __webpack_require__.r(__webpack_exports__);
 
 
   },
-  onLoad: function onLoad() {
+  onLoad: function onLoad() {var _this = this;
     //uni.showLoading(); //数据加载中
     //this.getmsglist();//第一次加载数据
+    console.log($baseurl);
+    uni.request({
+      url: 'http://www.puzhentec.com/www/api/public/index.php?s=api/v1.index/index',
+      method: 'GET',
+      data: {},
+      success: function success(res) {
+        console.log(res);
+        _this.swiperData = res.data;
+      },
+      fail: function fail() {},
+      complete: function complete() {} });
+
   },
   methods: {
     // 跳转领劵中心

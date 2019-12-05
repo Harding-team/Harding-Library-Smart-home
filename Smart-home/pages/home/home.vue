@@ -8,7 +8,7 @@
 			<!-- ；轮播图 -->
 			<swiper autoplay circular previous-margin="60rpx" next-margin="40rpx" indicator-dots>
 			    <swiper-item v-for="(item,index) in swiperData" :key='index'>
-			        <image :src='item.name'></image>
+			        <image :src='item.ad_code'></image>
 			    </swiper-item>
 			</swiper>
 		  </view>
@@ -213,13 +213,6 @@
 			//	remainingd: ''  //数据返回时间秒 
 				
 				swiperData:[
-					{
-						name:'../../static/home/1.jpg'
-					},{
-						name:'../../static/images/xinpin-banner.png'
-					},{
-						name:'../../static/home/1.jpg'
-					}
 				],
 				
 				piex:[
@@ -285,6 +278,18 @@
 		onLoad() {
 			//uni.showLoading(); //数据加载中
 			//this.getmsglist();//第一次加载数据
+			console.log($baseurl);
+			uni.request({
+				url: 'http://www.puzhentec.com/www/api/public/index.php?s=api/v1.index/index',
+				method: 'GET',
+				data: {},
+				success: res => {
+					console.log(res);
+					this.swiperData = res.data
+				},
+				fail: () => {},
+				complete: () => {}
+			});
 		},
 		methods: {
 			// 跳转领劵中心

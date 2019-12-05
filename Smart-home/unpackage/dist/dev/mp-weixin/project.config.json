@@ -11,6 +11,8 @@
 	"libVersion": "2.9.2",
 	"appid": "touristappid",
 	"projectname": "Smart-home",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,
@@ -20,24 +22,13 @@
 			"current": -1,
 			"list": []
 		},
-		"plugin": {
-			"current": -1,
-			"list": []
-		},
 		"game": {
 			"current": -1,
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
-			"list": [
-				{
-					"id": -1,
-					"name": "coupon",
-					"pathName": "pages/coupon/coupon",
-					"scene": null
-				}
-			]
+			"current": -1,
+			"list": []
 		}
 	}
 }
